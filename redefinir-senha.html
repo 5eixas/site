@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redefinir senha — PGMEI 2026</title>
+  <!-- VUL-07 CORRIGIDO: Content Security Policy sem 'unsafe-inline' nos scripts -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self';
+             script-src 'self';
+             style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+             font-src https://fonts.gstatic.com;
+             connect-src https://*.supabase.co;
+             img-src 'self' data:;">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080c10;
+      --bg2: #0d1219;
+      --bg3: #111822;
+      --border: #1c2633;
+      --border2: #253040;
+      --text: #dde4ef;
+      --muted: #5a6b80;
+      --muted2: #8a9bb0;
+      --accent: #f0a500;
+      --accent2: #ffbe3a;
+      --accent3: #e08800;
+      --green: #22c77a;
+      --red: #f05252;
+    }
+    html { min-height: 100%; }
+    body {
+      font-family: 'Instrument Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 100; opacity: 0.35;
+    }
+    .grid-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(240,165,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,165,0,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .glow {
+      position: fixed;
+      top: -100px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 400px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.1) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px 40px;
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.5s ease both;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 240px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--accent3), var(--accent2));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--muted2);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: 'Instrument Sans', sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input::placeholder { color: var(--muted); }
+    input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,165,0,0.1); }
+    .senha-match {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      margin-top: 6px;
+      min-height: 16px;
+    }
+    .senha-match.ok { color: var(--green); }
+    .senha-match.err { color: var(--red); }
+    .erro, .mensagem {
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      margin-bottom: 14px;
+      min-height: 20px;
+    }
+    .mensagem.success { color: var(--green); }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--accent3), var(--accent2));
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 4px;
+      position: relative; overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(240,165,0,0.35); }
+    .btn:hover:not(:disabled)::after { opacity: 1; }
+    .btn:disabled { background: var(--border2); color: var(--muted); cursor: not-allowed; }
+    .sucesso {
+      text-align: center;
+      padding: 12px 0;
+    }
+    .sucesso-icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+      display: block;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .sucesso h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .sucesso p { color: var(--muted2); font-size: 14px; line-height: 1.6; }
+    #solicitar-link { display: block; }
+    #form-redefinir { display: none; }
+    #sucesso { display: none; }
+    @media(max-width: 480px) { .card { padding: 32px 24px; } }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+
+  <div class="card">
+    <!-- Formulário de solicitar link de redefinição -->
+    <div id="solicitar-link">
+      <div class="card-icon">🔑</div>
+      <h2>Redefinir senha</h2>
+      <p class="subtitle">Informe seu e-mail para receber o link de recuperação.</p>
+      <form id="form-reset">
+        <div class="form-group">
+          <label>E-mail cadastrado</label>
+          <input type="email" id="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="mensagem" id="mensagem"></div>
+        <button type="submit" class="btn" id="btn-reset">Enviar Link de Redefinição</button>
+      </form>
+    </div>
+
+    <!-- Formulário de definir nova senha (aparece com token na URL) -->
+    <!-- V3-10 CORRIGIDO: removidos oninput="verificar()" e onclick="salvarSenha()" inline.
+         Handlers agora registrados via addEventListener no script abaixo. -->
+    <div id="form-redefinir">
+      <div class="card-icon">🔑</div>
+      <h2>Nova senha</h2>
+      <p class="subtitle">Digite sua nova senha para acessar a extensão PGMEI.</p>
+      <div class="form-group">
+        <label>Nova senha</label>
+        <input type="password" id="nova-senha" placeholder="Mínimo 8 caracteres">
+      </div>
+      <div class="form-group">
+        <label>Confirmar senha</label>
+        <input type="password" id="confirmar-senha" placeholder="Repita a senha">
+        <div class="senha-match" id="match-msg"></div>
+      </div>
+      <div class="erro" id="erro"></div>
+      <button class="btn" id="btn-salvar">Salvar nova senha</button>
+    </div>
+
+    <!-- Tela de sucesso -->
+    <div id="sucesso" class="sucesso">
+      <span class="sucesso-icon">✓</span>
+      <h3 id="sucesso-titulo">Senha alterada!</h3>
+      <p id="sucesso-texto">Abra a extensão do Chrome e faça login com sua nova senha para continuar.</p>
+    </div>
+  </div>
+
+  <script>
+    // ── Endpoints (sem segredos — apenas URLs públicas de Edge Functions) ─────
+    const EDGE_RECOVER   = 'https://kzhoezukwpllgcxzkkbr.supabase.co/functions/v1/recover-password';
+    const EDGE_RESET     = 'https://kzhoezukwpllgcxzkkbr.supabase.co/functions/v1/reset-password-confirm';
+
+    // ── Solicitar link de recuperação ────────────────────────────────────────
+    document.getElementById('form-reset').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const btn   = document.getElementById('btn-reset');
+      const msg   = document.getElementById('mensagem');
+
+      if (!email) {
+        msg.textContent = 'Por favor, insira seu e-mail.';
+        msg.className = 'mensagem';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      msg.textContent = '';
+      msg.className = 'mensagem';
+
+      try {
+        const response = await fetch(EDGE_RECOVER, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Ocorreu um erro ao solicitar a redefinição.');
+        }
+
+        msg.textContent = data.message || 'Se o e-mail estiver cadastrado, você receberá o link em breve.';
+        msg.className = 'mensagem success';
+        btn.textContent = 'Link enviado!';
+
+      } catch (error) {
+        msg.textContent = error.message;
+        msg.className = 'mensagem';
+        btn.disabled = false;
+        btn.textContent = 'Enviar Link de Redefinição';
+      }
+    });
+
+    // ── Ler token de recovery do hash da URL ─────────────────────────────────
+    const tokenData = (() => {
+      const hash   = window.location.hash.substring(1);
+      const params = new URLSearchParams(hash);
+      const result = {
+        access_token:  params.get('access_token'),
+        type:          params.get('type')
+      };
+      if (result.access_token) {
+        try {
+          window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (_) {  }
+      }
+      return result;
+    })();
+
+    if (tokenData.access_token && tokenData.type === 'recovery') {
+      document.getElementById('solicitar-link').style.display = 'none';
+      document.getElementById('form-redefinir').style.display = 'block';
+    } else if (window.location.hash.includes('error=')) {
+      const params = new URLSearchParams(window.location.hash.substring(1));
+      const errorDesc = params.get('error_description') || 'Link inválido ou expirado.';
+      const msg = document.createElement('p');
+      msg.style.cssText = 'color:var(--red);font-family:DM Mono,monospace;font-size:13px;margin-top:16px;';
+      // NEW-03 CORRIGIDO: decodeURIComponent pode lançar URIError com bytes UTF-8
+      // inválidos (ex: %C3%28). Sem try/catch, toda a página JS morre — um atacante
+      // pode enviar um link com hash malformado para impedir o acesso à página de redefinição.
+      let errorText = errorDesc;
+      try {
+        errorText = decodeURIComponent(errorDesc.replace(/\+/g, ' '));
+      } catch (_) {
+        errorText = errorDesc.replace(/\+/g, ' ').replace(/%[0-9A-Fa-f]{0,2}/g, '');
+      }
+      msg.textContent = '✕ ' + errorText;
+      document.querySelector('#solicitar-link .subtitle').after(msg);
+    }
+
+    // ── Feedback visual de conferência de senhas ─────────────────────────────
+    // V3-10 CORRIGIDO: addEventListener em vez de oninput inline
+    function verificar() {
+      const s1  = document.getElementById('nova-senha').value;
+      const s2  = document.getElementById('confirmar-senha').value;
+      const msg = document.getElementById('match-msg');
+      if (!s2) { msg.textContent = ''; return; }
+      if (s1 === s2) {
+        msg.textContent = '✓ Senhas conferem';
+        msg.className = 'senha-match ok';
+      } else {
+        msg.textContent = '✕ Senhas não conferem';
+        msg.className = 'senha-match err';
+      }
+    }
+
+    document.getElementById('nova-senha').addEventListener('input', verificar);
+    document.getElementById('confirmar-senha').addEventListener('input', verificar);
+
+    // ── Salvar nova senha via Edge Function (server-side) ────────────────────
+    // V3-10 CORRIGIDO: addEventListener em vez de onclick inline no btn-salvar
+    async function salvarSenha() {
+      const nova     = document.getElementById('nova-senha').value;
+      const confirma = document.getElementById('confirmar-senha').value;
+      const erroEl   = document.getElementById('erro');
+      erroEl.textContent = '';
+
+      function validarSenha(s) {
+        return s.length >= 8 &&
+               /[A-Z]/.test(s) &&
+               /[a-z]/.test(s) &&
+               /[0-9]/.test(s) &&
+               /[^A-Za-z0-9]/.test(s);
+      }
+
+      if (!validarSenha(nova)) {
+        erroEl.textContent = '⚠ A senha deve ter maiúscula, minúscula, número e símbolo (ex: MinhaS3nh@).';
+        return;
+      }
+
+      if (nova !== confirma) {
+        erroEl.textContent = '⚠ As senhas não conferem.';
+        return;
+      }
+
+      if (!tokenData.access_token) {
+        erroEl.textContent = '✕ Link inválido ou expirado. Solicite um novo e-mail de recuperação.';
+        return;
+      }
+
+      const btn = document.getElementById('btn-salvar');
+      btn.disabled = true;
+      btn.textContent = '⏳ Salvando...';
+
+      try {
+        const res = await fetch(EDGE_RESET, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_token: tokenData.access_token,
+            nova_senha: nova
+          })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Erro ao salvar nova senha.');
+        }
+
+        document.getElementById('nova-senha').value = '';
+        document.getElementById('confirmar-senha').value = '';
+
+        document.getElementById('form-redefinir').style.display = 'none';
+        document.getElementById('sucesso').style.display = 'block';
+
+      } catch (err) {
+        erroEl.textContent = '✕ ' + err.message;
+        btn.disabled = false;
+        btn.textContent = 'Salvar nova senha';
+      }
+    }
+
+    document.getElementById('btn-salvar').addEventListener('click', salvarSenha);
+  </script>
+</body>
+</html>

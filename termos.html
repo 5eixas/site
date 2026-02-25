@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Política de Privacidade e Termos de Uso — PGMEI Automação 2026</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><style>
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ :root {
+ --bg: #080c10;
+ --bg2: #0d1219;
+ --bg3: #111822;
+ --border: #1c2633;
+ --border2: #253040;
+ --text: #dde4ef;
+ --muted: #5a6b80;
+ --muted2: #8a9bb0;
+ --accent: #f0a500;
+ --accent2: #ffbe3a;
+ --accent3: #e08800;
+ --green: #22c77a;
+ --red: #f05252;
+ --glow: rgba(240,165,0,0.18);
+ }
+ html { scroll-behavior: smooth; }
+ body {
+ font-family: 'Instrument Sans', sans-serif;
+ background: var(--bg);
+ color: var(--text);
+ min-height: 100vh;
+ overflow-x: hidden;
+ line-height: 1.65;
+ }
+
+ /* NOISE OVERLAY */
+ body::before {
+ content: '';
+ position: fixed; inset: 0;
+ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+ pointer-events: none;
+ z-index: 1000;
+ opacity: 0.35;
+ }
+
+ /* GRID LINES */
+ .grid-bg {
+ position: fixed; inset: 0; pointer-events: none; z-index: 0;
+ background-image:
+ linear-gradient(rgba(240,165,0,0.03) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(240,165,0,0.03) 1px, transparent 1px);
+ background-size: 60px 60px;
+ }
+
+ .container {
+ position: relative;
+ z-index: 1;
+ max-width: 920px;
+ margin: 0 auto;
+ padding: 80px 24px 120px;
+ }
+
+ .header {
+ text-align: center;
+ padding: 0 0 48px;
+ }
+ .header h1 {
+ font-family: 'Syne', sans-serif;
+ font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+ font-weight: 900;
+ letter-spacing: -0.02em;
+ color: var(--text);
+ margin-bottom: 12px;
+ }
+ .header h1 em {
+ color: var(--accent);
+ font-style: normal;
+ }
+ .header p {
+ font-family: 'DM Mono', monospace;
+ font-size: 13px;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--muted);
+ }
+
+ .tabs {
+ display: flex;
+ gap: 10px;
+ margin: 0 auto 48px;
+ max-width: 480px;
+ }
+ .tab {
+ flex: 1;
+ padding: 14px 20px;
+ background: var(--bg2);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ color: var(--muted2);
+ font-family: 'DM Mono', monospace;
+ font-size: 13px;
+ font-weight: 500;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ cursor: pointer;
+ transition: all 0.2s;
+ text-align: center;
+ }
+ .tab.active {
+ background: var(--accent);
+ border-color: var(--accent);
+ color: #000;
+ box-shadow: 0 0 0 3px rgba(240,165,0,0.12);
+ }
+ .tab:hover:not(.active) {
+ border-color: var(--accent3);
+ color: var(--accent2);
+ }
+
+ .section {
+ display: none;
+ }
+ .section.active {
+ display: block;
+ }
+
+ h2 {
+ font-family: 'Syne', sans-serif;
+ font-size: 1.45rem;
+ font-weight: 800;
+ color: var(--text);
+ margin: 48px 0 20px;
+ letter-spacing: -0.01em;
+ }
+ h3 {
+ font-family: 'Syne', sans-serif;
+ font-size: 1.15rem;
+ font-weight: 700;
+ color: var(--accent2);
+ margin: 32px 0 12px;
+ }
+
+ p, li {
+ font-size: 15px;
+ color: var(--muted2);
+ margin-bottom: 14px;
+ }
+ ul {
+ padding-left: 24px;
+ list-style: none;
+ }
+ ul li {
+ position: relative;
+ margin-bottom: 10px;
+ }
+ ul li::before {
+ content: '◆';
+ color: var(--accent);
+ position: absolute;
+ left: -20px;
+ font-size: 10px;
+ }
+
+ .destaque {
+ background: rgba(240,165,0,0.07);
+ border: 1px solid rgba(240,165,0,0.25);
+ border-radius: 12px;
+ padding: 20px 24px;
+ margin: 24px 0 40px;
+ font-size: 14px;
+ color: var(--accent2);
+ line-height: 1.6;
+ }
+
+ .card {
+ background: var(--bg3);
+ border: 1px solid var(--border);
+ border-radius: 12px;
+ padding: 24px;
+ margin: 24px 0;
+ }
+
+ table.data-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 24px 0;
+ font-family: 'DM Mono', monospace;
+ font-size: 13px;
+ }
+ .data-table th {
+ background: var(--bg);
+ color: var(--muted);
+ padding: 12px 16px;
+ text-align: left;
+ border-bottom: 1px solid var(--border);
+ letter-spacing: 0.04em;
+ text-transform: uppercase;
+ }
+ .data-table td {
+ padding: 14px 16px;
+ border-bottom: 1px solid var(--border2);
+ color: var(--muted2);
+ }
+ .data-table tr:last-child td { border-bottom: none; }
+
+ .atualizado {
+ text-align: center;
+ margin-top: 80px;
+ font-family: 'DM Mono', monospace;
+ font-size: 11px;
+ color: var(--muted);
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ }
+
+ a {
+ color: var(--accent);
+ text-decoration: none;
+ }
+ a:hover {
+ color: var(--accent2);
+ text-decoration: underline;
+ }
+
+ @media (max-width: 640px) {
+ .container { padding: 60px 20px 100px; }
+ .header h1 { font-size: 2.4rem; }
+ .tabs { flex-direction: column; gap: 12px; }
+ }
+ </style></head><body><div class="grid-bg"></div><div class="container"><div class="header"><h1>PGMEI Automação <em>2026</em></h1><p>Documentos legais — Leia antes de usar o serviço</p></div><div class="tabs"><div class="tab active" onclick="trocarAba('privacidade', this)">POLÍTICA DE PRIVACIDADE</div><div class="tab" onclick="trocarAba('termos', this)">TERMOS DE USO</div></div><!-- POLÍTICA DE PRIVACIDADE --><div id="privacidade" class="section active"><div class="destaque">
+ Este documento explica de forma clara quais dados coletamos, por que coletamos e como protegemos suas informações, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
+ </div><h2>1. Quem somos</h2><p>O PGMEI Automação 2026 é um serviço de automação para emissão de guias DAS do MEI, desenvolvido e operado por pessoa física/jurídica brasileira. Para dúvidas sobre privacidade, entre em contato pelo WhatsApp disponível no site.</p><h2>2. Quais dados coletamos</h2><table class="data-table"><tr><th>Dado</th><th>Por que coletamos</th><th>Base legal (LGPD)</th></tr><tr><td>Nome completo</td><td>Identificação do titular da conta</td><td>Execução de contrato</td></tr><tr><td>Email</td><td>Login, comunicações e suporte</td><td>Execução de contrato</td></tr><tr><td>Senha (criptografada)</td><td>Autenticação segura</td><td>Execução de contrato</td></tr><tr><td>CNPJ/CPF (opcional)</td><td>Emissão de nota fiscal</td><td>Obrigação legal</td></tr><tr><td>CNPJs dos clientes MEI</td><td>Automação da emissão de guias</td><td>Legítimo interesse</td></tr><tr><td>Dados de pagamento</td><td>Processados pelo Stripe — não armazenamos cartões</td><td>Execução de contrato</td></tr><tr><td>Logs de uso</td><td>Controle de limite mensal de CNPJs</td><td>Legítimo interesse</td></tr></table><h2>3. Como protegemos seus dados</h2><ul><li>Senhas são armazenadas com hash criptográfico — nunca em texto puro</li><li>Tokens de acesso na extensão são armazenados exclusivamente em memória volátil (session storage) — nunca persistidos em disco</li><li>Banco de dados protegido com Row Level Security — cada usuário acessa apenas seus próprios dados</li><li>Comunicação sempre via HTTPS/TLS</li><li>Pagamentos processados pelo Stripe (certificação PCI DSS nível 1) — não armazenamos dados de cartão</li><li>Chaves de acesso administrativo nunca expostas publicamente</li></ul><h2>4. Com quem compartilhamos seus dados</h2><div class="card"><h3>Stripe</h3><p>Processador de pagamentos. Recebe email, nome e dados de pagamento para processar assinaturas. <a href="https://stripe.com/privacy" target="_blank">Política de privacidade do Stripe</a></p><h3>Supabase</h3><p>Infraestrutura de banco de dados e autenticação. Dados armazenados em servidores na região São Paulo. <a href="https://supabase.com/privacy" target="_blank">Política de privacidade do Supabase</a></p></div><p>Não vendemos, alugamos ou compartilhamos seus dados com terceiros para fins de marketing.</p><h2>5. Por quanto tempo guardamos seus dados</h2><ul><li><strong>Dados da conta:</strong> enquanto a conta estiver ativa</li><li><strong>Após cancelamento:</strong> dados excluídos em até 30 dias mediante solicitação</li><li><strong>Dados fiscais (CNPJ/CPF):</strong> mantidos pelo prazo legal de 5 anos</li><li><strong>Logs de pagamento:</strong> mantidos pelo prazo legal de 5 anos</li></ul><h2>6. Seus direitos como titular (LGPD)</h2><ul><li>✅ <strong>Acesso</strong> — solicitar quais dados temos sobre você</li><li>✅ <strong>Correção</strong> — corrigir dados incorretos</li><li>✅ <strong>Exclusão</strong> — solicitar a exclusão dos seus dados</li><li>✅ <strong>Portabilidade</strong> — receber seus dados em formato legível</li><li>✅ <strong>Revogação</strong> — revogar consentimento a qualquer momento</li><li>✅ <strong>Reclamação</strong> — registrar reclamação na ANPD</li></ul><p>Para exercer qualquer direito, entre em contato pelo WhatsApp disponível no site. Respondemos em até 15 dias úteis.</p><h2>7. Cookies</h2><p>O site de vendas não utiliza cookies de rastreamento ou publicidade. Apenas cookies essenciais para funcionamento do Stripe são utilizados durante o processo de pagamento.</p><h2>8. Alterações nesta política</h2><p>Podemos atualizar esta política a qualquer momento. Notificaremos por email em caso de mudanças relevantes. O uso continuado do serviço após notificação implica aceite das novas condições.</p></div><!-- TERMOS DE USO --><div id="termos" class="section"><div class="destaque">
+ Ao criar uma conta e utilizar o PGMEI Automação 2026, você concorda com estes Termos de Uso. Leia com atenção antes de assinar qualquer plano.
+ </div><h2>1. O serviço</h2><p>O PGMEI Automação 2026 é uma extensão para o navegador Google Chrome que automatiza a emissão de guias DAS do Microempreendedor Individual (MEI) através do portal oficial da Receita Federal (PGMEI). O serviço é destinado exclusivamente a contadores e profissionais de contabilidade.</p><h2>2. Conta e acesso</h2><ul><li>Cada conta é de uso exclusivo e pessoal — não é permitido compartilhar credenciais</li><li>Você é responsável por manter sua senha segura</li><li>Em caso de uso indevido da conta, notifique-nos imediatamente</li><li>É proibido criar contas falsas ou tentar burlar os limites do plano</li></ul><h2>3. Planos e pagamentos</h2><ul><li>Os planos são cobrados mensalmente via Stripe</li><li>O acesso é liberado automaticamente após confirmação do pagamento</li><li>Em caso de inadimplência, o acesso é suspenso automaticamente</li><li>Não há reembolso por período não utilizado após a cobrança</li><li>Os preços podem ser alterados com aviso prévio de 30 dias por email</li></ul><h2>4. Limites de uso</h2><div class="card"><p>Cada plano tem um limite mensal de CNPJs que podem ser processados. Este limite:</p><ul><li>Reseta automaticamente todo dia 1º de cada mês</li><li>Conta CNPJs únicos — o mesmo CNPJ no mesmo mês conta como 1</li><li>Não é transferível entre meses</li><li>Não pode ser burlado apagando e reinserindo CNPJs</li></ul></div><h2>5. Responsabilidades do usuário</h2><ul><li>Você é responsável por ter autorização dos clientes MEI cujos CNPJs cadastrar</li><li>O uso do serviço deve estar em conformidade com a legislação brasileira</li><li>É proibido usar o serviço para fins ilegais ou prejudiciais a terceiros</li><li>Você é responsável pela segurança do computador onde a extensão está instalada</li></ul><h2>6. Limitação de responsabilidade</h2><ul><li>O serviço depende do portal PGMEI da Receita Federal — não nos responsabilizamos por indisponibilidades do portal oficial</li><li>Não garantimos funcionamento ininterrupto — podem ocorrer manutenções programadas</li><li>Não nos responsabilizamos por multas ou atrasos causados por falhas no portal da Receita Federal</li><li>Recomendamos sempre verificar as guias geradas antes do vencimento</li></ul><h2>7. Cancelamento</h2><ul><li>Você pode cancelar a assinatura a qualquer momento pelo portal do Stripe</li><li>O acesso continua até o fim do período pago</li><li>Após cancelamento, seus dados ficam disponíveis por 30 dias para exportação</li><li>Reservamo-nos o direito de cancelar contas que violem estes termos</li></ul><h2>8. Propriedade intelectual</h2><p>O código, design e marca do PGMEI Automação 2026 são de propriedade exclusiva do desenvolvedor. É proibido copiar, distribuir ou criar produtos derivados sem autorização expressa.</p><h2>9. Foro</h2><p>Estes termos são regidos pela legislação brasileira. Eventuais disputas serão resolvidas no foro da comarca do desenvolvedor, com preferência para resolução amigável.</p><h2>10. Contato</h2><p>Para dúvidas, suporte ou exercício de direitos LGPD, entre em contato pelo WhatsApp disponível no site. Respondemos em até 2 dias úteis.</p></div><p class="atualizado">Última atualização: Fevereiro de 2026</p></div><script>
+ function trocarAba(aba, el) {
+ // CORRECAO: 'el' recebido como parametro ao inves de depender do
+ // objeto 'event' global implicito — que nao existe em strict mode.
+ document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+ document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+ document.getElementById(aba).classList.add('active');
+ el.classList.add('active');
+ }
+ </script></body></html>

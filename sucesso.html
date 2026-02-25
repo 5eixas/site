@@ -1,0 +1,157 @@
+<DOCUMENT filename="sucesso.html"><!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pagamento Confirmado – PGMEI Automação 2026</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><style>
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ :root {
+ --bg: #080c10;
+ --bg2: #0d1219;
+ --bg3: #111822;
+ --border: #1c2633;
+ --border2: #253040;
+ --text: #dde4ef;
+ --muted: #5a6b80;
+ --muted2: #8a9bb0;
+ --accent: #f0a500;
+ --accent2: #ffbe3a;
+ --accent3: #e08800;
+ --green: #22c77a;
+ --red: #f05252;
+ }
+ html { min-height: 100%; }
+ body {
+ font-family: 'Instrument Sans', sans-serif;
+ background: var(--bg);
+ color: var(--text);
+ min-height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 24px;
+ position: relative;
+ overflow: hidden;
+ }
+ body::before {
+ content: '';
+ position: fixed; inset: 0;
+ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+ pointer-events: none; z-index: 100; opacity: 0.35;
+ }
+ .grid-bg {
+ position: fixed; inset: 0; pointer-events: none; z-index: 0;
+ background-image:
+ linear-gradient(rgba(240,165,0,0.03) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(240,165,0,0.03) 1px, transparent 1px);
+ background-size: 60px 60px;
+ }
+ .glow {
+ position: fixed;
+ top: -100px; left: 50%; transform: translateX(-50%);
+ width: 500px; height: 400px;
+ background: radial-gradient(ellipse at 50% 0%, rgba(240,165,0,0.1) 0%, transparent 70%);
+ pointer-events: none; z-index: 0;
+ }
+ .card {
+ background: var(--bg2);
+ border: 1px solid var(--border);
+ border-radius: 20px;
+ padding: 44px 40px;
+ max-width: 420px;
+ width: 100%;
+ position: relative;
+ z-index: 1;
+ animation: fadeUp 0.5s ease both;
+ overflow: hidden;
+ text-align: center;
+ }
+ .card::before {
+ content: '';
+ position: absolute;
+ top: 0; left: 50%; transform: translateX(-50%);
+ width: 240px; height: 2px;
+ background: linear-gradient(90deg, transparent, var(--accent), transparent);
+ }
+ @keyframes fadeUp {
+ from { opacity: 0; transform: translateY(20px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+ .card-icon {
+ font-size: 52px;
+ margin-bottom: 16px;
+ display: block;
+ animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+ }
+ @keyframes popIn {
+ from { transform: scale(0.5); opacity: 0; }
+ to { transform: scale(1); opacity: 1; }
+ }
+ h1 {
+ font-family: 'Syne', sans-serif;
+ font-size: 1.5rem;
+ font-weight: 900;
+ color: var(--green);
+ letter-spacing: -0.03em;
+ margin-bottom: 10px;
+ }
+ .subtitle {
+ color: var(--muted2);
+ font-size: 14px;
+ line-height: 1.6;
+ margin-bottom: 32px;
+ }
+ .highlight-box {
+ background: rgba(240,165,0,0.07);
+ border: 1px solid rgba(240,165,0,0.25);
+ border-radius: 10px;
+ padding: 14px 16px;
+ font-size: 13px;
+ color: var(--muted2);
+ line-height: 1.6;
+ margin-bottom: 32px;
+ }
+ .highlight-box strong {
+ color: var(--accent);
+ }
+ .info {
+ color: var(--muted2);
+ font-size: 14px;
+ line-height: 1.6;
+ margin-bottom: 32px;
+ }
+ .btn {
+ width: 100%;
+ padding: 14px;
+ background: linear-gradient(135deg, var(--accent3), var(--accent2));
+ border: none;
+ border-radius: 10px;
+ color: #000;
+ font-family: 'Syne', sans-serif;
+ font-size: 15px;
+ font-weight: 800;
+ letter-spacing: -0.01em;
+ cursor: pointer;
+ transition: all 0.2s;
+ position: relative; overflow: hidden;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 12px;
+ }
+ .btn::after {
+ content: '';
+ position: absolute; inset: 0;
+ background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+ opacity: 0; transition: opacity 0.2s;
+ }
+ .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(240,165,0,0.35); }
+ .btn:hover:not(:disabled)::after { opacity: 1; }
+ .btn:disabled { background: var(--border2); color: var(--muted); cursor: not-allowed; }
+ @media(max-width: 480px) { .card { padding: 32px 24px; } }
+</style></head><body><div class="grid-bg"></div><div class="glow"></div><div class="card"><span class="card-icon">✓</span><h1>Pagamento Confirmado!</h1><p class="subtitle">
+ Sua assinatura foi ativada com sucesso.<br>
+ Bem-vindo ao <strong>PGMEI Automação 2026</strong>!
+ </p><div class="highlight-box">
+ 📧 Em breve você receberá um e-mail de confirmação com todos os detalhes.<br><br>
+ 🔐 Use o <strong>mesmo e-mail e senha</strong> que você cadastrou para acessar a extensão do Chrome.
+ </div><p class="info">
+ Agora é só instalar a extensão e começar a economizar tempo todos os meses!
+ </p><a href="https://linktr.ee/downloaddotidocontador" class="btn" target="_blank" rel="noopener noreferrer">
+ 📲 Receber o link da extensão agora
+ </a></div></body></html></DOCUMENT>
