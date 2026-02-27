@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AutoMEItizado — Escolha seu plano</title>
+<title>MeiQueResolve — Escolha seu plano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -949,7 +949,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
     <div class="logo">
       <div class="logo-mark">PG</div>
       <div>
-        <div class="logo-text">AutoMEItizado</div>
+        <div class="logo-text">MeiQueResolve</div>
         <div class="logo-sub">Extensão para Chrome</div>
       </div>
     </div>
@@ -993,7 +993,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
           <div class="receipt-header">
             <div class="receipt-run-badge">
               <div class="status-dot"></div>
-              AutoMEItizado.js · executando
+              MeiQueResolve.js · executando
             </div>
             <div class="receipt-run-badge" style="font-size:9px; opacity:0.5;">LOTE ATUAL</div>
           </div>
@@ -1053,12 +1053,12 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
     </div>
     <div class="plan-card" data-slug="pro"
       data-price-monthly="49,90" data-price-quarterly="134,73" data-price-semiannual="239,52" data-price-annual="419,16"
-      data-limit="80" onclick="selecionarPlano(this)">
+      data-limit="70" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-003 · PRO</div>
       <div class="popular-tag">★ Mais popular</div>
       <div class="plan-name">Pro</div>
-      <div class="plan-limit">até 80 CNPJs/mês</div>
+      <div class="plan-limit">até 70 CNPJs/mês</div>
       <div class="plan-price">R$ 49<span>,90</span></div>
       <div class="plan-billing">por mês</div>
     </div>
@@ -1105,7 +1105,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-limit">501+ CNPJs/mês</div>
       <div class="plan-price" id="custom-price">R$ 199<span>,90</span></div>
       <div class="plan-billing" id="custom-billing">fixo/mês</div>
-      <div class="plan-overage" id="custom-overage">+ R$0,25 por CNPJ acima de 500</div>
+      <div class="plan-overage" id="custom-overage">+ R$0,30 por CNPJ acima de 500</div>
     </div>
   </div>
 
@@ -1122,10 +1122,9 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div id="aviso-personalizado" class="notice notice-purple" style="display:none; margin-bottom:24px;">
         <strong>✦ Plano Personalizado — 501+ CNPJs</strong><br><br>
         Este plano é configurado sob medida para seu volume.<br><br>
-        💰 <span id="custom-aviso-preco"><strong>R$199,90/mês</strong> base + <strong>R$0,25/CNPJ</strong> acima de 500</span><br>
-        📅 Descontos: 10% trimestral · 20% semestral · 30% anual<br><br>
+        💰 <span id="custom-aviso-preco"><strong>R$199,90/mês</strong> base + <strong>R$0,30/CNPJ</strong> acima de 500</span><br>
         Entre em contato pelo WhatsApp:
-        <a class="btn-wpp" href="https://wa.me/5500000000000?text=Olá!%20Quero%20contratar%20o%20Plano%20Personalizado%20do%20AutoMEItizado%20(501%2B%20CNPJs)" target="_blank">
+        <a class="btn-wpp" href="https://wa.me/5543999042115?text=Olá!%20Quero%20contratar%20o%20Plano%20Personalizado%20do%20MeiQueResolve%20(501%2B%20CNPJs)" target="_blank">
           💬 Falar no WhatsApp
         </a>
       </div>
@@ -1205,7 +1204,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
     </div>
   </div>
 
-  <div class="page-footer">AutoMEItizado 2026 &nbsp;·&nbsp; Todos os direitos reservados</div>
+  <div class="page-footer">MeiQueResolve 2026 &nbsp;·&nbsp; Todos os direitos reservados</div>
 </div>
 
 <script src="https://js.stripe.com/v3/"></script>
@@ -1234,7 +1233,7 @@ toggleBtn.addEventListener('click', () => {
 });
 
 /* ── STRIPE / SUPABASE ── */
-const STRIPE_PUBLIC_KEY = 'pk_test_51T1V8JDlcKI1dmuMLLBXRiPhRLHV6CBNmz45wOM4ISvmuQgaU6Lmp2a8xwVDisgxkj9CfawxgIQ5Crb8oCwhQYAB00YY06BWr5';
+const STRIPE_PUBLIC_KEY = 'pk_live_51T1V85RYUOU0rVEyeGwp5gH2oun0XOJ5N3yvT6fcOkHq8gjzypGzEJHMuHf7NmZYpJZdTGKgtAQYJYMZUCLavU5V00OELwFrY3';
 const SUPABASE_URL = 'https://kzhoezukwpllgcxzkkbr.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6aG9lenVrd3BsbGdjeHpra2JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MzM5NTAsImV4cCI6MjA4NzIwOTk1MH0.AkahuDsRBgXKKAnbt7bN-eeGA-i6pC3kfhcvk-8p5VY';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
@@ -1244,12 +1243,12 @@ let cicloSelecionado = 'monthly';
 let tipoDoc = 'cnpj';
 
 const PRICE_IDS = {
-  starter: { monthly: 'price_1T1VCcDlcKI1dmuMYgSnIDTp', quarterly: 'price_1T3LC1DlcKI1dmuM9AddZfwA', semiannual: 'price_1T3LC1DlcKI1dmuMwSIPqElk', annual: 'price_1T3LC1DlcKI1dmuMBBH6bhtX' },
-  basic: { monthly: 'price_1T1VDEDlcKI1dmuMF37skYlk', quarterly: 'price_1T3LCkDlcKI1dmuM1VPpI9VX', semiannual: 'price_1T3LCkDlcKI1dmuMnrGq2xnW', annual: 'price_1T3LCkDlcKI1dmuMhnliCQ6t' },
-  pro: { monthly: 'price_1T1VDYDlcKI1dmuMC1e6SFbf', quarterly: 'price_1T3LDUDlcKI1dmuMXCm8xkpj', semiannual: 'price_1T3LDUDlcKI1dmuMGxdxvUcM', annual: 'price_1T3LDUDlcKI1dmuMg78FWJR8' },
-  advanced: { monthly: 'price_1T1VDsDlcKI1dmuMOUN9SPtl', quarterly: 'price_1T3LE6DlcKI1dmuMUJcYxAHN', semiannual: 'price_1T3LE6DlcKI1dmuMGs4bcraB', annual: 'price_1T3LE6DlcKI1dmuMrzlFsbgO' },
-  business: { monthly: 'price_1T1VF2DlcKI1dmuMBqzA5rWu', quarterly: 'price_1T3LEgDlcKI1dmuMdC7itqYY', semiannual: 'price_1T3LEgDlcKI1dmuMbxeNmzjN', annual: 'price_1T3LEgDlcKI1dmuMdLFE8m2t' },
-  enterprise: { monthly: 'price_1T3S35DlcKI1dmuMH0YxaHID', quarterly: 'price_1T3LG2DlcKI1dmuMHCHaBnF3', semiannual: 'price_1T3LG2DlcKI1dmuMl913tuoP', annual: 'price_1T3LG2DlcKI1dmuM524O7B0f' }
+  starter: { monthly: 'price_1T4jZ3RYUOU0rVEyz3BCCuFa', quarterly: 'price_1T4jZ3RYUOU0rVEyLHLGmhsp', semiannual: 'price_1T4jZ3RYUOU0rVEyOjBSvSsD', annual: 'price_1T4jZ2RYUOU0rVEytdzz35tf' },
+  basic: { monthly: 'price_1T4jZ3RYUOU0rVEyj4AvRskw', quarterly: 'price_1T4jZ3RYUOU0rVEyYvPjPCgZ', semiannual: 'price_1T4jZ2RYUOU0rVEyJnKhPV3U', annual: 'price_1T4jZ3RYUOU0rVEyDx5Nx99v' },
+  pro: { monthly: 'price_1T4jZ2RYUOU0rVEy0354QOdR', quarterly: 'price_1T4jZ2RYUOU0rVEyaHIRPk7c', semiannual: 'price_1T4jZ2RYUOU0rVEyAl8utbQc', annual: 'price_1T4jZ0RYUOU0rVEyYrExCpDb' },
+  advanced: { monthly: 'price_1T4jZ6RYUOU0rVEy2pxqWgNO', quarterly: 'price_1T4jZ4RYUOU0rVEyciQCZEtw', semiannual: 'price_1T4jZ5RYUOU0rVEyf3W6NeZG', annual: 'price_1T4jZ5RYUOU0rVEyt9HwMSEM' },
+  business: { monthly: 'price_1T4jZ5RYUOU0rVEyGwTNtO1T', quarterly: 'price_1T4jZ5RYUOU0rVEyq3QYYvIM', semiannual: 'price_1T4jZ4RYUOU0rVEytyPYkFiJ', annual: 'price_1T4jZ4RYUOU0rVEyZ90HwZR1' },
+  enterprise: { monthly: 'price_1T4jZ4RYUOU0rVEyPuWClDU6', quarterly: 'price_1T4jZ5RYUOU0rVEyjsRrzUGy', semiannual: 'price_1T4jZ5RYUOU0rVEyT66xbKnE', annual: 'price_1T4jZ5RYUOU0rVEy3g15Cp1m' }
 };
 
 const DISCOUNT_TEXT = {
@@ -1281,10 +1280,10 @@ function calcularPorCNPJ(card, ciclo) {
 }
 
 const CUSTOM_PRICING = {
-  monthly: { base: '199<span>,90</span>', billing: 'fixo/mês', overage: '+ R$0,25 por CNPJ acima de 500', aviso: '<strong>R$199,90/mês</strong> base + <strong>R$0,25/CNPJ</strong> acima de 500' },
-  quarterly: { base: '539<span>,73</span>', billing: 'fixo a cada 3 meses', overage: '+ R$0,675 por CNPJ acima de 500', aviso: '<strong>R$539,73/trimestre</strong> base (R$179,91/mês) + <strong>R$0,675/CNPJ</strong> acima de 500 por trimestre' },
-  semiannual: { base: '959<span>,52</span>', billing: 'fixo a cada 6 meses', overage: '+ R$1,20 por CNPJ acima de 500', aviso: '<strong>R$959,52/semestre</strong> base (R$159,92/mês) + <strong>R$1,20/CNPJ</strong> acima de 500 por semestre' },
-  annual: { base: '1.679<span>,16</span>', billing: 'fixo por ano', overage: '+ R$2,10 por CNPJ acima de 500', aviso: '<strong>R$1.679,16/ano</strong> base (R$139,93/mês) + <strong>R$2,10/CNPJ</strong> acima de 500 por ano' }
+  monthly: { base: '199<span>,90</span>', billing: 'fixo/mês', overage: '+ R$0,30 por CNPJ acima de 500', aviso: '<strong>R$199,90/mês</strong> base + <strong>R$0,30/CNPJ</strong> acima de 500' },
+  quarterly: { base: '539<span>,73</span>', billing: 'fixo a cada 3 meses', overage: '+ R$0,81 por CNPJ acima de 500', aviso: '<strong>R$539,73/trimestre</strong> base (R$179,91/mês) + <strong>R$0,81/CNPJ</strong> acima de 500 por trimestre' },
+  semiannual: { base: '959<span>,52</span>', billing: 'fixo a cada 6 meses', overage: '+ R$1,44 por CNPJ acima de 500', aviso: '<strong>R$959,52/semestre</strong> base (R$159,92/mês) + <strong>R$1,44/CNPJ</strong> acima de 500 por semestre' },
+  annual: { base: '1.679<span>,16</span>', billing: 'fixo por ano', overage: '+ R$2,52 por CNPJ acima de 500', aviso: '<strong>R$1.679,16/ano</strong> base (R$139,93/mês) + <strong>R$2,52/CNPJ</strong> acima de 500 por ano' }
 };
 
 function atualizarCardCustom() {
@@ -1382,7 +1381,7 @@ function trocarDoc(tipo) {
 
 function mostrarErro(msg) { document.getElementById('erro-form').textContent = msg; }
 function esconderAvisoEmail() { document.getElementById('aviso-email-existente').style.display = 'none'; }
-function retornarParaPortal() { window.open('https://billing.stripe.com/p/login/test_4gMbJ17v06vG84k46D7IY00', '_blank'); }
+function retornarParaPortal() { window.open('https://billing.stripe.com/p/login/eVqaEZgP5gVF59G7Nn6g800', '_blank'); }
 
 function abrirModal() {
   const email = document.getElementById('input-email').value.trim();
