@@ -1,236 +1,364 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Política de Privacidade e Termos de Uso — PGMEI Automação 2026</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><style>
- *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- :root {
- --bg: #080c10;
- --bg2: #0d1219;
- --bg3: #111822;
- --border: #1c2633;
- --border2: #253040;
- --text: #dde4ef;
- --muted: #5a6b80;
- --muted2: #8a9bb0;
- --accent: #f0a500;
- --accent2: #ffbe3a;
- --accent3: #e08800;
- --green: #22c77a;
- --red: #f05252;
- --glow: rgba(240,165,0,0.18);
- }
- html { scroll-behavior: smooth; }
- body {
- font-family: 'Instrument Sans', sans-serif;
- background: var(--bg);
- color: var(--text);
- min-height: 100vh;
- overflow-x: hidden;
- line-height: 1.65;
- }
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidade & Termos de Uso — AutoMEItizado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{--paper:#F0ECE3;--paper2:#E6E1D6;--paper3:#D8D2C5;--ink:#0C0C0A;--ink2:#3A3830;--ink3:#7A7568;--lime:#C8FF00;--lime2:#A8D800;--red:#FF2800;--green:#00A86B;--border:#0C0C0A;--border-light:#C0BAB0;--input-bg:#fff;--input-border:#C0BAB0;--section-border:var(--ink);--btn-buy-bg:var(--ink);--btn-buy-color:var(--lime);--btn-buy-hover-bg:#1a1a18;--btn-buy-hover-shadow:var(--lime);--notice-gold-bg:rgba(200,160,0,0.06);--notice-gold-border:#B8960A;--notice-gold-color:var(--ink2);--notice-gold-strong:#8A6F00;--doc-tab-bg:#fff;--doc-tab-border:var(--border-light);--tab-active-bg:var(--ink);--tab-active-color:var(--lime);--footer-border:var(--ink);--toggle-bg:var(--ink);--toggle-color:var(--lime);--toggle-hover-bg:var(--lime);--toggle-hover-color:var(--ink);--link-color:var(--ink);}
+[data-theme="dark"]{--paper:#0a0a08;--paper2:#121210;--paper3:#1e1e18;--ink:#f0f0e6;--ink2:#c0c0b0;--ink3:#808070;--lime:#C8FF00;--lime2:#A8D800;--red:#FF5F5F;--green:#6FCF97;--border:#404036;--border-light:#5a5a4a;--input-bg:#1a1a16;--input-border:#404036;--section-border:#404036;--btn-buy-bg:var(--lime);--btn-buy-color:#0a0a08;--btn-buy-hover-bg:#d8ff30;--btn-buy-hover-shadow:#0a0a08;--notice-gold-bg:rgba(200,255,0,0.05);--notice-gold-border:var(--lime);--notice-gold-color:var(--ink2);--notice-gold-strong:var(--lime);--doc-tab-bg:#1a1a16;--doc-tab-border:#404036;--tab-active-bg:var(--lime);--tab-active-color:#0a0a08;--footer-border:#404036;--toggle-bg:var(--lime);--toggle-color:#0a0a08;--toggle-hover-bg:var(--ink);--toggle-hover-color:var(--lime);--link-color:var(--lime);}
 
- /* NOISE OVERLAY */
- body::before {
- content: '';
- position: fixed; inset: 0;
- background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
- pointer-events: none;
- z-index: 1000;
- opacity: 0.35;
- }
+.theme-toggle{position:fixed;bottom:28px;right:28px;z-index:9999;width:42px;height:42px;background:var(--toggle-bg);color:var(--toggle-color);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s,color .2s,transform .15s;font-family:'IBM Plex Mono',monospace;}
+.theme-toggle:hover{background:var(--toggle-hover-bg);color:var(--toggle-hover-color);transform:scale(1.08);}
 
- /* GRID LINES */
- .grid-bg {
- position: fixed; inset: 0; pointer-events: none; z-index: 0;
- background-image:
- linear-gradient(rgba(240,165,0,0.03) 1px, transparent 1px),
- linear-gradient(90deg, rgba(240,165,0,0.03) 1px, transparent 1px);
- background-size: 60px 60px;
- }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .2s,color .2s;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.55;}
 
- .container {
- position: relative;
- z-index: 1;
- max-width: 920px;
- margin: 0 auto;
- padding: 80px 24px 120px;
- }
+.page{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 40px;}
 
- .header {
- text-align: center;
- padding: 0 0 48px;
- }
- .header h1 {
- font-family: 'Syne', sans-serif;
- font-size: clamp(2.2rem, 5.5vw, 3.8rem);
- font-weight: 900;
- letter-spacing: -0.02em;
- color: var(--text);
- margin-bottom: 12px;
- }
- .header h1 em {
- color: var(--accent);
- font-style: normal;
- }
- .header p {
- font-family: 'DM Mono', monospace;
- font-size: 13px;
- letter-spacing: 0.12em;
- text-transform: uppercase;
- color: var(--muted);
- }
+/* TOPBAR */
+.topbar{border-bottom:2px solid var(--section-border);padding:20px 0;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:36px;height:36px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--lime);letter-spacing:-1px;}
+[data-theme="dark"] .logo-mark{background:var(--lime);color:#0a0a08;}
+.logo-text{font-family:'Barlow',sans-serif;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.logo-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.status-stamp{display:flex;align-items:center;gap:7px;border:1.5px solid var(--green);padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+.status-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:blink 1.8s ease infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.ver-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;background:var(--paper2);border:1px solid var(--border-light);padding:5px 10px;}
 
- .tabs {
- display: flex;
- gap: 10px;
- margin: 0 auto 48px;
- max-width: 480px;
- }
- .tab {
- flex: 1;
- padding: 14px 20px;
- background: var(--bg2);
- border: 1px solid var(--border);
- border-radius: 10px;
- color: var(--muted2);
- font-family: 'DM Mono', monospace;
- font-size: 13px;
- font-weight: 500;
- letter-spacing: 0.08em;
- text-transform: uppercase;
- cursor: pointer;
- transition: all 0.2s;
- text-align: center;
- }
- .tab.active {
- background: var(--accent);
- border-color: var(--accent);
- color: #000;
- box-shadow: 0 0 0 3px rgba(240,165,0,0.12);
- }
- .tab:hover:not(.active) {
- border-color: var(--accent3);
- color: var(--accent2);
- }
+/* TICKER */
+.ticker{border-top:2px solid var(--section-border);border-bottom:2px solid var(--section-border);padding:9px 0;overflow:hidden;font-family:'Bebas Neue',cursive;font-size:12px;letter-spacing:.22em;color:var(--border-light);white-space:nowrap;animation:fadeUp .45s ease both;}
 
- .section {
- display: none;
- }
- .section.active {
- display: block;
- }
+/* SECTION RULE */
+.section-rule{display:flex;align-items:center;gap:0;margin:40px 0 0;border-top:2px solid var(--section-border);padding-top:12px;animation:fadeUp .45s .05s ease both;opacity:0;animation-fill-mode:both;}
+.section-rule-label{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:.08em;color:var(--ink);flex:1;}
+.section-rule-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.12em;text-transform:uppercase;}
 
- h2 {
- font-family: 'Syne', sans-serif;
- font-size: 1.45rem;
- font-weight: 800;
- color: var(--text);
- margin: 48px 0 20px;
- letter-spacing: -0.01em;
- }
- h3 {
- font-family: 'Syne', sans-serif;
- font-size: 1.15rem;
- font-weight: 700;
- color: var(--accent2);
- margin: 32px 0 12px;
- }
+/* HERO DOC */
+.doc-hero{padding:48px 0 0;border-bottom:2px solid var(--section-border);display:flex;gap:0;animation:fadeUp .45s .08s ease both;opacity:0;animation-fill-mode:both;}
+.doc-hero-left{flex:1;border-right:2px solid var(--section-border);padding-right:48px;padding-bottom:40px;}
+.doc-tag{display:inline-block;background:var(--lime);color:#0a0a08;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;margin-bottom:20px;}
+[data-theme="light"] .doc-tag{color:var(--ink);}
+.doc-title{font-family:'Bebas Neue',cursive;font-size:clamp(3.5rem,5vw,7rem);line-height:.9;letter-spacing:-.02em;color:var(--ink);}
+.doc-title .outline{-webkit-text-stroke:2px var(--ink);color:transparent;}
+.doc-subtitle{font-size:15px;color:var(--ink2);line-height:1.65;margin-top:16px;max-width:380px;}
+.doc-hero-right{padding-left:40px;padding-bottom:40px;display:flex;flex-direction:column;justify-content:flex-end;}
+.doc-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;line-height:2;}
+.doc-meta span{color:var(--lime);}
 
- p, li {
- font-size: 15px;
- color: var(--muted2);
- margin-bottom: 14px;
- }
- ul {
- padding-left: 24px;
- list-style: none;
- }
- ul li {
- position: relative;
- margin-bottom: 10px;
- }
- ul li::before {
- content: '◆';
- color: var(--accent);
- position: absolute;
- left: -20px;
- font-size: 10px;
- }
+/* TABS */
+.doc-tabs-wrap{margin:0 0 0;border-bottom:2px solid var(--section-border);display:flex;animation:fadeUp .45s .12s ease both;opacity:0;animation-fill-mode:both;}
+.doc-tab{flex:1;padding:16px 20px;background:var(--doc-tab-bg);border:none;border-right:2px solid var(--doc-tab-border);color:var(--ink3);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .12s;text-align:left;display:flex;align-items:center;gap:8px;}
+.doc-tab:last-child{border-right:none;}
+.doc-tab.active{background:var(--tab-active-bg);color:var(--tab-active-color);}
+.doc-tab:hover:not(.active){color:var(--ink);}
+[data-theme="dark"] .doc-tab:hover:not(.active){color:var(--lime);}
+.tab-num{font-size:9px;opacity:.6;}
 
- .destaque {
- background: rgba(240,165,0,0.07);
- border: 1px solid rgba(240,165,0,0.25);
- border-radius: 12px;
- padding: 20px 24px;
- margin: 24px 0 40px;
- font-size: 14px;
- color: var(--accent2);
- line-height: 1.6;
- }
+/* CONTENT */
+.doc-content{animation:fadeUp .45s .15s ease both;opacity:0;animation-fill-mode:both;}
+.doc-section{display:none;padding:0 0 80px;}
+.doc-section.active{display:block;}
 
- .card {
- background: var(--bg3);
- border: 1px solid var(--border);
- border-radius: 12px;
- padding: 24px;
- margin: 24px 0;
- }
+/* Notice */
+.notice{padding:16px 20px;font-size:14px;line-height:1.65;border-left:3px solid;margin:40px 0;}
+.notice-gold{background:var(--notice-gold-bg);border-color:var(--notice-gold-border);color:var(--notice-gold-color);}
+.notice-gold strong{color:var(--notice-gold-strong);}
 
- table.data-table {
- width: 100%;
- border-collapse: collapse;
- margin: 24px 0;
- font-family: 'DM Mono', monospace;
- font-size: 13px;
- }
- .data-table th {
- background: var(--bg);
- color: var(--muted);
- padding: 12px 16px;
- text-align: left;
- border-bottom: 1px solid var(--border);
- letter-spacing: 0.04em;
- text-transform: uppercase;
- }
- .data-table td {
- padding: 14px 16px;
- border-bottom: 1px solid var(--border2);
- color: var(--muted2);
- }
- .data-table tr:last-child td { border-bottom: none; }
+/* Headings */
+.doc-h2{font-family:'Bebas Neue',cursive;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:.06em;color:var(--ink);margin:48px 0 16px;padding-top:32px;border-top:1.5px solid var(--border-light);display:flex;align-items:baseline;gap:16px;}
+.doc-h2 .h2-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.12em;text-transform:uppercase;font-weight:400;}
+.doc-h3{font-family:'Barlow',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin:24px 0 10px;letter-spacing:.02em;text-transform:uppercase;}
 
- .atualizado {
- text-align: center;
- margin-top: 80px;
- font-family: 'DM Mono', monospace;
- font-size: 11px;
- color: var(--muted);
- letter-spacing: 0.1em;
- text-transform: uppercase;
- }
+p,li{font-size:15px;color:var(--ink2);margin-bottom:12px;line-height:1.7;}
+strong{color:var(--ink);font-weight:600;}
+a{color:var(--link-color);text-decoration:none;font-weight:600;}
+a:hover{text-decoration:underline;}
 
- a {
- color: var(--accent);
- text-decoration: none;
- }
- a:hover {
- color: var(--accent2);
- text-decoration: underline;
- }
+ul{padding-left:0;list-style:none;}
+ul li{position:relative;padding-left:20px;margin-bottom:10px;}
+ul li::before{content:'◆';color:var(--lime);position:absolute;left:0;font-size:8px;top:7px;}
 
- @media (max-width: 640px) {
- .container { padding: 60px 20px 100px; }
- .header h1 { font-size: 2.4rem; }
- .tabs { flex-direction: column; gap: 12px; }
- }
- </style></head><body><div class="grid-bg"></div><div class="container"><div class="header"><h1>PGMEI Automação <em>2026</em></h1><p>Documentos legais — Leia antes de usar o serviço</p></div><div class="tabs"><div class="tab active" onclick="trocarAba('privacidade', this)">POLÍTICA DE PRIVACIDADE</div><div class="tab" onclick="trocarAba('termos', this)">TERMOS DE USO</div></div><!-- POLÍTICA DE PRIVACIDADE --><div id="privacidade" class="section active"><div class="destaque">
- Este documento explica de forma clara quais dados coletamos, por que coletamos e como protegemos suas informações, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
- </div><h2>1. Quem somos</h2><p>O PGMEI Automação 2026 é um serviço de automação para emissão de guias DAS do MEI, desenvolvido e operado por pessoa física/jurídica brasileira. Para dúvidas sobre privacidade, entre em contato pelo WhatsApp disponível no site.</p><h2>2. Quais dados coletamos</h2><table class="data-table"><tr><th>Dado</th><th>Por que coletamos</th><th>Base legal (LGPD)</th></tr><tr><td>Nome completo</td><td>Identificação do titular da conta</td><td>Execução de contrato</td></tr><tr><td>Email</td><td>Login, comunicações e suporte</td><td>Execução de contrato</td></tr><tr><td>Senha (criptografada)</td><td>Autenticação segura</td><td>Execução de contrato</td></tr><tr><td>CNPJ/CPF (opcional)</td><td>Emissão de nota fiscal</td><td>Obrigação legal</td></tr><tr><td>CNPJs dos clientes MEI</td><td>Automação da emissão de guias</td><td>Legítimo interesse</td></tr><tr><td>Dados de pagamento</td><td>Processados pelo Stripe — não armazenamos cartões</td><td>Execução de contrato</td></tr><tr><td>Logs de uso</td><td>Controle de limite mensal de CNPJs</td><td>Legítimo interesse</td></tr></table><h2>3. Como protegemos seus dados</h2><ul><li>Senhas são armazenadas com hash criptográfico — nunca em texto puro</li><li>Tokens de acesso na extensão são armazenados exclusivamente em memória volátil (session storage) — nunca persistidos em disco</li><li>Banco de dados protegido com Row Level Security — cada usuário acessa apenas seus próprios dados</li><li>Comunicação sempre via HTTPS/TLS</li><li>Pagamentos processados pelo Stripe (certificação PCI DSS nível 1) — não armazenamos dados de cartão</li><li>Chaves de acesso administrativo nunca expostas publicamente</li></ul><h2>4. Com quem compartilhamos seus dados</h2><div class="card"><h3>Stripe</h3><p>Processador de pagamentos. Recebe email, nome e dados de pagamento para processar assinaturas. <a href="https://stripe.com/privacy" target="_blank">Política de privacidade do Stripe</a></p><h3>Supabase</h3><p>Infraestrutura de banco de dados e autenticação. Dados armazenados em servidores na região São Paulo. <a href="https://supabase.com/privacy" target="_blank">Política de privacidade do Supabase</a></p></div><p>Não vendemos, alugamos ou compartilhamos seus dados com terceiros para fins de marketing.</p><h2>5. Por quanto tempo guardamos seus dados</h2><ul><li><strong>Dados da conta:</strong> enquanto a conta estiver ativa</li><li><strong>Após cancelamento:</strong> dados excluídos em até 30 dias mediante solicitação</li><li><strong>Dados fiscais (CNPJ/CPF):</strong> mantidos pelo prazo legal de 5 anos</li><li><strong>Logs de pagamento:</strong> mantidos pelo prazo legal de 5 anos</li></ul><h2>6. Seus direitos como titular (LGPD)</h2><ul><li>✅ <strong>Acesso</strong> — solicitar quais dados temos sobre você</li><li>✅ <strong>Correção</strong> — corrigir dados incorretos</li><li>✅ <strong>Exclusão</strong> — solicitar a exclusão dos seus dados</li><li>✅ <strong>Portabilidade</strong> — receber seus dados em formato legível</li><li>✅ <strong>Revogação</strong> — revogar consentimento a qualquer momento</li><li>✅ <strong>Reclamação</strong> — registrar reclamação na ANPD</li></ul><p>Para exercer qualquer direito, entre em contato pelo WhatsApp disponível no site. Respondemos em até 15 dias úteis.</p><h2>7. Cookies</h2><p>O site de vendas não utiliza cookies de rastreamento ou publicidade. Apenas cookies essenciais para funcionamento do Stripe são utilizados durante o processo de pagamento.</p><h2>8. Alterações nesta política</h2><p>Podemos atualizar esta política a qualquer momento. Notificaremos por email em caso de mudanças relevantes. O uso continuado do serviço após notificação implica aceite das novas condições.</p></div><!-- TERMOS DE USO --><div id="termos" class="section"><div class="destaque">
- Ao criar uma conta e utilizar o PGMEI Automação 2026, você concorda com estes Termos de Uso. Leia com atenção antes de assinar qualquer plano.
- </div><h2>1. O serviço</h2><p>O PGMEI Automação 2026 é uma extensão para o navegador Google Chrome que automatiza a emissão de guias DAS do Microempreendedor Individual (MEI) através do portal oficial da Receita Federal (PGMEI). O serviço é destinado exclusivamente a contadores e profissionais de contabilidade.</p><h2>2. Conta e acesso</h2><ul><li>Cada conta é de uso exclusivo e pessoal — não é permitido compartilhar credenciais</li><li>Você é responsável por manter sua senha segura</li><li>Em caso de uso indevido da conta, notifique-nos imediatamente</li><li>É proibido criar contas falsas ou tentar burlar os limites do plano</li></ul><h2>3. Planos e pagamentos</h2><ul><li>Os planos são cobrados mensalmente via Stripe</li><li>O acesso é liberado automaticamente após confirmação do pagamento</li><li>Em caso de inadimplência, o acesso é suspenso automaticamente</li><li>Não há reembolso por período não utilizado após a cobrança</li><li>Os preços podem ser alterados com aviso prévio de 30 dias por email</li></ul><h2>4. Limites de uso</h2><div class="card"><p>Cada plano tem um limite mensal de CNPJs que podem ser processados. Este limite:</p><ul><li>Reseta automaticamente todo dia 1º de cada mês</li><li>Conta CNPJs únicos — o mesmo CNPJ no mesmo mês conta como 1</li><li>Não é transferível entre meses</li><li>Não pode ser burlado apagando e reinserindo CNPJs</li></ul></div><h2>5. Responsabilidades do usuário</h2><ul><li>Você é responsável por ter autorização dos clientes MEI cujos CNPJs cadastrar</li><li>O uso do serviço deve estar em conformidade com a legislação brasileira</li><li>É proibido usar o serviço para fins ilegais ou prejudiciais a terceiros</li><li>Você é responsável pela segurança do computador onde a extensão está instalada</li></ul><h2>6. Limitação de responsabilidade</h2><ul><li>O serviço depende do portal PGMEI da Receita Federal — não nos responsabilizamos por indisponibilidades do portal oficial</li><li>Não garantimos funcionamento ininterrupto — podem ocorrer manutenções programadas</li><li>Não nos responsabilizamos por multas ou atrasos causados por falhas no portal da Receita Federal</li><li>Recomendamos sempre verificar as guias geradas antes do vencimento</li></ul><h2>7. Cancelamento</h2><ul><li>Você pode cancelar a assinatura a qualquer momento pelo portal do Stripe</li><li>O acesso continua até o fim do período pago</li><li>Após cancelamento, seus dados ficam disponíveis por 30 dias para exportação</li><li>Reservamo-nos o direito de cancelar contas que violem estes termos</li></ul><h2>8. Propriedade intelectual</h2><p>O código, design e marca do PGMEI Automação 2026 são de propriedade exclusiva do desenvolvedor. É proibido copiar, distribuir ou criar produtos derivados sem autorização expressa.</p><h2>9. Foro</h2><p>Estes termos são regidos pela legislação brasileira. Eventuais disputas serão resolvidas no foro da comarca do desenvolvedor, com preferência para resolução amigável.</p><h2>10. Contato</h2><p>Para dúvidas, suporte ou exercício de direitos LGPD, entre em contato pelo WhatsApp disponível no site. Respondemos em até 2 dias úteis.</p></div><p class="atualizado">Última atualização: Fevereiro de 2026</p></div><script>
- function trocarAba(aba, el) {
- // CORRECAO: 'el' recebido como parametro ao inves de depender do
- // objeto 'event' global implicito — que nao existe em strict mode.
- document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
- document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
- document.getElementById(aba).classList.add('active');
- el.classList.add('active');
- }
- </script></body></html>
+/* Table */
+.table-wrap{overflow-x:auto;border:1.5px solid var(--section-border);margin:20px 0 32px;}
+table.data-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:12px;}
+.data-table th{background:var(--paper2);color:var(--ink3);padding:12px 16px;text-align:left;border-bottom:1.5px solid var(--border-light);font-size:9px;letter-spacing:.14em;text-transform:uppercase;}
+.data-table td{padding:14px 16px;border-bottom:1px solid var(--border-light);color:var(--ink2);vertical-align:top;line-height:1.5;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:rgba(200,255,0,0.02);}
+.tag-legal{display:inline-block;background:var(--notice-gold-bg);border:1px solid var(--notice-gold-border);color:var(--notice-gold-strong);font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;letter-spacing:.06em;white-space:nowrap;}
+
+/* Rights grid */
+.rights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;border:1.5px solid var(--section-border);margin:16px 0 28px;}
+.right-item{padding:16px 18px;border-right:1.5px solid var(--section-border);border-bottom:1.5px solid var(--section-border);}
+.right-item:nth-child(3n){border-right:none;}
+.right-check{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--green);font-weight:600;margin-bottom:5px;}
+.right-name{font-family:'Barlow',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.right-desc{font-size:12px;color:var(--ink3);line-height:1.5;margin:0;}
+
+/* Partners */
+.partners{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--section-border);margin:16px 0 24px;}
+.partner-item{padding:20px;border-right:1.5px solid var(--section-border);}
+.partner-item:last-child{border-right:none;}
+.partner-name{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:.06em;color:var(--ink);margin-bottom:8px;}
+.partner-desc{font-size:13px;color:var(--ink2);line-height:1.55;margin:0 0 8px;}
+
+/* Card box */
+.info-card{background:var(--paper2);border:1.5px solid var(--border-light);border-left:3px solid var(--lime);padding:18px 20px;margin:16px 0;}
+
+/* Footer */
+.page-footer{text-align:center;padding:28px 0 40px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);border-top:2px solid var(--footer-border);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:900px){.doc-hero{flex-direction:column;}.doc-hero-left{border-right:none;border-bottom:2px solid var(--section-border);padding-right:0;margin-bottom:0;padding-bottom:32px;}.doc-hero-right{padding-left:0;padding-top:24px;}.rights-grid{grid-template-columns:1fr 1fr;}.right-item:nth-child(3n){border-right:1.5px solid var(--section-border);}.right-item:nth-child(2n){border-right:none;}}
+@media(max-width:640px){.page{padding:0 20px;}.doc-title{font-size:3.5rem;}.doc-tabs-wrap{flex-direction:column;}.doc-tab{border-right:none;border-bottom:1.5px solid var(--doc-tab-border);}.doc-tab:last-child{border-bottom:none;}.rights-grid{grid-template-columns:1fr;}.right-item{border-right:none;}.partners{grid-template-columns:1fr;}.partner-item{border-right:none;border-bottom:1.5px solid var(--section-border);}.partner-item:last-child{border-bottom:none;}}
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" title="Alternar tema">☀️</button>
+
+<div class="page">
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark">PG</div>
+      <div>
+        <div class="logo-text">AutoMEItizado</div>
+        <div class="logo-sub">Extensão para Chrome</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="status-stamp"><div class="status-dot"></div>Documentos legais</div>
+      <div class="ver-badge">v2026</div>
+    </div>
+  </div>
+
+  <div class="ticker">LGPD · PRIVACIDADE · TERMOS DE USO · LGPD · PRIVACIDADE · TERMOS DE USO · LGPD · PRIVACIDADE · TERMOS DE USO · LGPD · PRIVACIDADE · TERMOS DE USO ·</div>
+
+  <div class="section-rule">
+    <div class="section-rule-label">Documentos Legais</div>
+    <div class="section-rule-num">Leia antes de usar</div>
+  </div>
+
+  <!-- DOC HERO -->
+  <div class="doc-hero">
+    <div class="doc-hero-left">
+      <div class="doc-tag">AutoMEItizado · PGMEI 2026</div>
+      <div class="doc-title">
+        PRIVA<span class="outline">CIDADE</span><br>
+        &amp; TERMOS
+      </div>
+      <p class="doc-subtitle">Documentos legais em conformidade com a LGPD (Lei nº 13.709/2018). Leia com atenção antes de utilizar o serviço.</p>
+    </div>
+    <div class="doc-hero-right">
+      <div class="doc-meta">
+        <div>Legislação: <span>LGPD · Lei nº 13.709/2018</span></div>
+        <div>Última atualização: <span>Fevereiro · 2026</span></div>
+        <div>Idioma: <span>Português · BR</span></div>
+        <div>Jurisdição: <span>Brasil</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="doc-tabs-wrap">
+    <button class="doc-tab active" id="tab-priv" onclick="trocarAba('privacidade',this)">
+      <span class="tab-num">01 ·</span> Política de Privacidade
+    </button>
+    <button class="doc-tab" id="tab-termos" onclick="trocarAba('termos',this)">
+      <span class="tab-num">02 ·</span> Termos de Uso
+    </button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="doc-content">
+
+    <!-- ══ PRIVACIDADE ══════════════════════════════════════════════════════ -->
+    <div id="privacidade" class="doc-section active">
+
+      <div class="notice notice-gold">
+        <strong>Resumo:</strong> Este documento explica de forma clara quais dados coletamos, por que coletamos e como protegemos suas informações, em conformidade com a LGPD — Lei nº 13.709/2018.
+      </div>
+
+      <div class="doc-h2"><span class="h2-num">01</span> Quem somos</div>
+      <p>O AutoMEItizado (PGMEI Automação 2026) é um serviço de automação para emissão de guias DAS do MEI, desenvolvido e operado por pessoa física/jurídica brasileira. Para dúvidas sobre privacidade, entre em contato pelo WhatsApp disponível no site.</p>
+
+      <div class="doc-h2"><span class="h2-num">02</span> Quais dados coletamos</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Dado coletado</th>
+              <th>Finalidade</th>
+              <th>Base legal (LGPD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Nome completo</td><td>Identificação do titular da conta</td><td><span class="tag-legal">Execução de contrato</span></td></tr>
+            <tr><td>Email</td><td>Login, comunicações e suporte</td><td><span class="tag-legal">Execução de contrato</span></td></tr>
+            <tr><td>Senha (criptografada)</td><td>Autenticação segura</td><td><span class="tag-legal">Execução de contrato</span></td></tr>
+            <tr><td>CNPJ / CPF (opcional)</td><td>Emissão de nota fiscal</td><td><span class="tag-legal">Obrigação legal</span></td></tr>
+            <tr><td>CNPJs dos clientes MEI</td><td>Automação da emissão de guias</td><td><span class="tag-legal">Legítimo interesse</span></td></tr>
+            <tr><td>Dados de pagamento</td><td>Processados pelo Stripe — não armazenamos cartões</td><td><span class="tag-legal">Execução de contrato</span></td></tr>
+            <tr><td>Logs de uso</td><td>Controle de limite mensal de CNPJs</td><td><span class="tag-legal">Legítimo interesse</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-h2"><span class="h2-num">03</span> Como protegemos seus dados</div>
+      <ul>
+        <li>Senhas armazenadas com hash criptográfico — nunca em texto puro</li>
+        <li>Tokens de acesso na extensão em memória volátil (session storage) — nunca persistidos em disco</li>
+        <li>Banco de dados protegido com Row Level Security — cada usuário acessa apenas seus próprios dados</li>
+        <li>Comunicação sempre via HTTPS/TLS</li>
+        <li>Pagamentos processados pelo Stripe (certificação PCI DSS nível 1) — não armazenamos dados de cartão</li>
+        <li>Chaves de acesso administrativo nunca expostas publicamente</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">04</span> Com quem compartilhamos seus dados</div>
+      <div class="partners">
+        <div class="partner-item">
+          <div class="partner-name">Stripe</div>
+          <p class="partner-desc">Processador de pagamentos. Recebe email, nome e dados de pagamento para processar assinaturas.</p>
+          <a href="https://stripe.com/privacy" target="_blank">Política de privacidade →</a>
+        </div>
+        <div class="partner-item">
+          <div class="partner-name">Supabase</div>
+          <p class="partner-desc">Infraestrutura de banco de dados e autenticação. Dados armazenados em servidores na região São Paulo.</p>
+          <a href="https://supabase.com/privacy" target="_blank">Política de privacidade →</a>
+        </div>
+      </div>
+      <p>Não vendemos, alugamos ou compartilhamos seus dados com terceiros para fins de marketing.</p>
+
+      <div class="doc-h2"><span class="h2-num">05</span> Por quanto tempo guardamos seus dados</div>
+      <ul>
+        <li><strong>Dados da conta:</strong> enquanto a conta estiver ativa</li>
+        <li><strong>Após cancelamento:</strong> dados excluídos em até 30 dias mediante solicitação</li>
+        <li><strong>Dados fiscais (CNPJ/CPF):</strong> mantidos pelo prazo legal de 5 anos</li>
+        <li><strong>Logs de pagamento:</strong> mantidos pelo prazo legal de 5 anos</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">06</span> Seus direitos como titular (LGPD)</div>
+      <div class="rights-grid">
+        <div class="right-item"><div class="right-check">✓ ATIVO</div><div class="right-name">Acesso</div><p class="right-desc">Solicitar quais dados temos sobre você</p></div>
+        <div class="right-item"><div class="right-check">✓ ATIVO</div><div class="right-name">Correção</div><p class="right-desc">Corrigir dados incorretos ou desatualizados</p></div>
+        <div class="right-item"><div class="right-check">✓ ATIVO</div><div class="right-name">Exclusão</div><p class="right-desc">Solicitar a exclusão dos seus dados pessoais</p></div>
+        <div class="right-item"><div class="right-check">✓ ATIVO</div><div class="right-name">Portabilidade</div><p class="right-desc">Receber seus dados em formato legível</p></div>
+        <div class="right-item"><div class="right-check">✓ ATIVO</div><div class="right-name">Revogação</div><p class="right-desc">Revogar consentimento a qualquer momento</p></div>
+        <div class="right-item"><div class="right-check">✓ ATIVO</div><div class="right-name">Reclamação</div><p class="right-desc">Registrar reclamação na ANPD</p></div>
+      </div>
+      <p>Para exercer qualquer direito, entre em contato pelo WhatsApp disponível no site. Respondemos em até 15 dias úteis.</p>
+
+      <div class="doc-h2"><span class="h2-num">07</span> Cookies</div>
+      <p>O site de vendas não utiliza cookies de rastreamento ou publicidade. Apenas cookies essenciais para funcionamento do Stripe são utilizados durante o processo de pagamento.</p>
+
+      <div class="doc-h2"><span class="h2-num">08</span> Alterações nesta política</div>
+      <p>Podemos atualizar esta política a qualquer momento. Notificaremos por email em caso de mudanças relevantes. O uso continuado do serviço após notificação implica aceite das novas condições.</p>
+
+    </div>
+
+    <!-- ══ TERMOS DE USO ══════════════════════════════════════════════════ -->
+    <div id="termos" class="doc-section">
+
+      <div class="notice notice-gold">
+        <strong>Atenção:</strong> Ao criar uma conta e utilizar o AutoMEItizado, você concorda com estes Termos de Uso. Leia com atenção antes de assinar qualquer plano.
+      </div>
+
+      <div class="doc-h2"><span class="h2-num">01</span> O serviço</div>
+      <p>O AutoMEItizado (PGMEI Automação 2026) é uma extensão para o Google Chrome que automatiza a emissão de guias DAS do Microempreendedor Individual (MEI) através do portal oficial da Receita Federal (PGMEI). O serviço é destinado exclusivamente a contadores e profissionais de contabilidade.</p>
+
+      <div class="doc-h2"><span class="h2-num">02</span> Conta e acesso</div>
+      <ul>
+        <li>Cada conta é de uso exclusivo e pessoal — não é permitido compartilhar credenciais</li>
+        <li>Você é responsável por manter sua senha segura</li>
+        <li>Em caso de uso indevido da conta, notifique-nos imediatamente</li>
+        <li>É proibido criar contas falsas ou tentar burlar os limites do plano</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">03</span> Planos e pagamentos</div>
+      <ul>
+        <li>Os planos são cobrados mensalmente via Stripe</li>
+        <li>O acesso é liberado automaticamente após confirmação do pagamento</li>
+        <li>Em caso de inadimplência, o acesso é suspenso automaticamente</li>
+        <li>Não há reembolso por período não utilizado após a cobrança</li>
+        <li>Os preços podem ser alterados com aviso prévio de 30 dias por email</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">04</span> Limites de uso</div>
+      <div class="info-card">
+        <p style="margin-bottom:12px;">Cada plano tem um limite mensal de CNPJs que podem ser processados. Este limite:</p>
+        <ul>
+          <li>Reseta automaticamente todo dia 1º de cada mês</li>
+          <li>Conta CNPJs únicos — o mesmo CNPJ no mesmo mês conta como 1</li>
+          <li>Não é transferível entre meses</li>
+          <li>Não pode ser burlado apagando e reinserindo CNPJs</li>
+        </ul>
+      </div>
+
+      <div class="doc-h2"><span class="h2-num">05</span> Responsabilidades do usuário</div>
+      <ul>
+        <li>Você é responsável por ter autorização dos clientes MEI cujos CNPJs cadastrar</li>
+        <li>O uso do serviço deve estar em conformidade com a legislação brasileira</li>
+        <li>É proibido usar o serviço para fins ilegais ou prejudiciais a terceiros</li>
+        <li>Você é responsável pela segurança do computador onde a extensão está instalada</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">06</span> Limitação de responsabilidade</div>
+      <ul>
+        <li>O serviço depende do portal PGMEI da Receita Federal — não nos responsabilizamos por indisponibilidades do portal oficial</li>
+        <li>Não garantimos funcionamento ininterrupto — podem ocorrer manutenções programadas</li>
+        <li>Não nos responsabilizamos por multas ou atrasos causados por falhas no portal da Receita Federal</li>
+        <li>Recomendamos sempre verificar as guias geradas antes do vencimento</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">07</span> Cancelamento</div>
+      <ul>
+        <li>Você pode cancelar a assinatura a qualquer momento pelo portal do Stripe</li>
+        <li>O acesso continua até o fim do período pago</li>
+        <li>Após cancelamento, seus dados ficam disponíveis por 30 dias para exportação</li>
+        <li>Reservamo-nos o direito de cancelar contas que violem estes termos</li>
+      </ul>
+
+      <div class="doc-h2"><span class="h2-num">08</span> Propriedade intelectual</div>
+      <p>O código, design e marca do AutoMEItizado são de propriedade exclusiva do desenvolvedor. É proibido copiar, distribuir ou criar produtos derivados sem autorização expressa.</p>
+
+      <div class="doc-h2"><span class="h2-num">09</span> Foro</div>
+      <p>Estes termos são regidos pela legislação brasileira. Eventuais disputas serão resolvidas no foro da comarca do desenvolvedor, com preferência para resolução amigável.</p>
+
+      <div class="doc-h2"><span class="h2-num">10</span> Contato</div>
+      <p>Para dúvidas, suporte ou exercício de direitos LGPD, entre em contato pelo WhatsApp disponível no site. Respondemos em até 2 dias úteis.</p>
+
+    </div>
+  </div>
+
+  <div class="page-footer">AutoMEItizado · PGMEI Automação 2026 · Última atualização: Fevereiro de 2026</div>
+</div>
+
+<script>
+// THEME
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const h=document.documentElement;
+  const d=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeToggle').textContent=d?'🌙':'☀️';
+});
+
+// TABS
+function trocarAba(aba,el){
+  document.querySelectorAll('.doc-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.doc-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(aba).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

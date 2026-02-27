@@ -1,523 +1,1530 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PGMEI Automação — Escolha seu plano</title>
-<!-- VUL-07 CORRIGIDO: Content Security Policy -->
-<meta http-equiv="Content-Security-Policy"
-  content="default-src 'self';
-           script-src 'self' https://js.stripe.com;
-           style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-           font-src https://fonts.gstatic.com;
-           connect-src https://*.supabase.co https://api.stripe.com;
-           frame-src https://js.stripe.com;
-           img-src 'self' data:;"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
- :root {
- --bg: #0a0a0a;
- --bg2: #111111;
- --text: #f8fafc;
- --muted: #64748b;
- --muted2: #94a3b8;
- --border: #1e293b;
- --border2: #334155;
- --accent: #f0a500;
- --accent2: #fbbf24;
- --accent3: #fde047;
- --green: #22c55e;
- --red: #ef4444;
- --purple: #8b5cf6;
- }
- * { margin: 0; padding: 0; box-sizing: border-box; }
- body { background: var(--bg); color: var(--text); font-family: 'Instrument Sans', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
- .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(240,165,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(240,165,0,0.03) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoMEItizado — Escolha seu plano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
 
- .hero { padding: 64px 24px 40px; text-align: center; position: relative; z-index: 1; }
- .hero-badge { display: inline-block; background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.2); border-radius: 20px; padding: 6px 14px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
- .hero h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.03em; }
- .hero h1 em { color: var(--accent); font-style: normal; }
- .hero p { font-size: 1.05rem; color: var(--muted2); max-width: 540px; margin: 0 auto 32px; }
- .hero-features { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
- .hero-feat { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+/* ══════════════════════════════════════════════════
+   LIGHT THEME (original)
+══════════════════════════════════════════════════ */
+:root,
+[data-theme="light"] {
+  --paper: #F0ECE3;
+  --paper2: #E6E1D6;
+  --paper3: #D8D2C5;
+  --ink: #0C0C0A;
+  --ink2: #3A3830;
+  --ink3: #7A7568;
+  --lime: #C8FF00;
+  --lime2: #A8D800;
+  --red: #FF2800;
+  --green: #00A86B;
+  --border: #0C0C0A;
+  --border-light: #C0BAB0;
+  /* form inputs */
+  --input-bg: #ffffff;
+  --input-border: #C0BAB0;
+  --input-focus-shadow: #0C0C0A;
+  /* plan cards */
+  --card-bg: var(--paper);
+  --card-hover: var(--paper2);
+  --card-selected-bg: var(--ink);
+  --card-selected-color: var(--lime);
+  --card-selected-sub: rgba(200,255,0,0.8);
+  --card-selected-dim: rgba(200,255,0,0.6);
+  --card-selected-check-bg: var(--lime);
+  --card-selected-check-color: var(--ink);
+  /* billing tabs */
+  --tab-active-bg: var(--ink);
+  --tab-active-color: var(--lime);
+  --tab-hover: rgba(0,0,0,0.04);
+  --discount-badge-bg: var(--lime);
+  --discount-badge-color: var(--ink);
+  --discount-badge-active-bg: var(--ink);
+  --discount-badge-active-color: var(--lime);
+  /* receipt */
+  --receipt-bg: var(--ink);
+  --receipt-border: transparent;
+  /* section borders */
+  --section-border: var(--ink);
+  /* checkout */
+  --checkout-summary-bg: var(--paper2);
+  --checkout-left-bg: transparent;
+  /* modal */
+  --modal-bg: var(--paper);
+  --modal-shadow: var(--ink);
+  /* buttons */
+  --btn-buy-bg: var(--ink);
+  --btn-buy-color: var(--lime);
+  --btn-buy-hover-bg: #1a1a18;
+  --btn-buy-hover-shadow: var(--lime);
+  --btn-buy-disabled-bg: var(--paper3);
+  --btn-sec-border: var(--border-light);
+  --btn-sec-hover-border: var(--ink);
+  --btn-sec-hover-bg: var(--paper2);
+  /* notices */
+  --notice-gold-bg: rgba(200,160,0,0.06);
+  --notice-gold-border: #B8960A;
+  --notice-gold-color: var(--ink2);
+  --notice-gold-strong: #8A6F00;
+  --notice-purple-bg: rgba(100,80,200,0.06);
+  --notice-purple-border: #7060C8;
+  --notice-purple-color: var(--ink2);
+  --notice-purple-strong: #5048A8;
+  --notice-warn-bg: rgba(255,40,0,0.05);
+  /* links */
+  --link-color: var(--ink);
+  /* doc tabs */
+  --doc-tab-bg: white;
+  --doc-tab-border: var(--border-light);
+  /* popular tag */
+  --popular-tag-bg: var(--ink);
+  --popular-tag-color: var(--lime);
+  --popular-tag-selected-bg: var(--lime);
+  --popular-tag-selected-color: var(--ink);
+  /* custom tag */
+  --custom-tag-bg: var(--ink2);
+  --custom-tag-color: var(--paper);
+  /* footer */
+  --footer-border: var(--ink);
+  /* toggle */
+  --toggle-bg: var(--ink);
+  --toggle-color: var(--lime);
+  --toggle-hover-bg: var(--lime);
+  --toggle-hover-color: var(--ink);
+}
 
- .billing-cycle-section { padding: 0 24px 24px; position: relative; z-index: 1; }
- .billing-cycle-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
- .billing-cycle-btn { padding: 10px 20px; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; text-transform: uppercase; position: relative; }
- .billing-cycle-btn:hover { border-color: var(--border2); color: var(--text); }
- .billing-cycle-btn.active { background: var(--accent); border-color: var(--accent); color: #000; }
- .discount-badge { position: absolute; top: -8px; right: -8px; background: var(--green); color: #000; font-size: 9px; font-weight: 700; padding: 2px 5px; border-radius: 4px; font-family: 'Syne', sans-serif; }
+/* ══════════════════════════════════════════════════
+   DARK THEME (referência doc 2)
+══════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --paper: #0a0a08;
+  --paper2: #121210;
+  --paper3: #1e1e18;
+  --ink: #f0f0e6;
+  --ink2: #c0c0b0;
+  --ink3: #808070;
+  --lime: #C8FF00;
+  --lime2: #A8D800;
+  --red: #FF5F5F;
+  --green: #6FCF97;
+  --border: #404036;
+  --border-light: #5a5a4a;
+  /* form inputs */
+  --input-bg: #1a1a16;
+  --input-border: #404036;
+  --input-focus-shadow: rgba(200,255,0,0.2);
+  /* plan cards */
+  --card-bg: #1a1a16;
+  --card-hover: #24241e;
+  --card-selected-bg: var(--lime);
+  --card-selected-color: #0a0a08;
+  --card-selected-sub: rgba(0,0,0,0.7);
+  --card-selected-dim: rgba(0,0,0,0.6);
+  --card-selected-check-bg: #0a0a08;
+  --card-selected-check-color: var(--lime);
+  /* billing tabs */
+  --tab-active-bg: var(--lime);
+  --tab-active-color: #0a0a08;
+  --tab-hover: rgba(200,255,0,0.05);
+  --discount-badge-bg: var(--lime);
+  --discount-badge-color: #0a0a08;
+  --discount-badge-active-bg: #0a0a08;
+  --discount-badge-active-color: var(--lime);
+  /* receipt */
+  --receipt-bg: #121210;
+  --receipt-border: #404036;
+  /* section borders */
+  --section-border: #404036;
+  /* checkout */
+  --checkout-summary-bg: #1e1e18;
+  --checkout-left-bg: #121210;
+  /* modal */
+  --modal-bg: #121210;
+  --modal-shadow: #000000;
+  /* buttons */
+  --btn-buy-bg: var(--lime);
+  --btn-buy-color: #0a0a08;
+  --btn-buy-hover-bg: #d8ff30;
+  --btn-buy-hover-shadow: #0a0a08;
+  --btn-buy-disabled-bg: #404036;
+  --btn-sec-border: #404036;
+  --btn-sec-hover-border: var(--lime);
+  --btn-sec-hover-bg: rgba(200,255,0,0.05);
+  /* notices */
+  --notice-gold-bg: rgba(200,255,0,0.05);
+  --notice-gold-border: var(--lime);
+  --notice-gold-color: var(--ink2);
+  --notice-gold-strong: var(--lime);
+  --notice-purple-bg: rgba(160,120,255,0.10);
+  --notice-purple-border: #AA88FF;
+  --notice-purple-color: var(--ink2);
+  --notice-purple-strong: #CCAAFF;
+  --notice-warn-bg: rgba(255,95,95,0.1);
+  /* links */
+  --link-color: var(--lime);
+  /* doc tabs */
+  --doc-tab-bg: #1a1a16;
+  --doc-tab-border: #404036;
+  /* popular tag */
+  --popular-tag-bg: var(--lime);
+  --popular-tag-color: #0a0a08;
+  --popular-tag-selected-bg: #0a0a08;
+  --popular-tag-selected-color: var(--lime);
+  /* custom tag */
+  --custom-tag-bg: #2a2a22;
+  --custom-tag-color: var(--ink);
+  /* footer */
+  --footer-border: #404036;
+  /* toggle */
+  --toggle-bg: var(--lime);
+  --toggle-color: #0a0a08;
+  --toggle-hover-bg: var(--ink);
+  --toggle-hover-color: var(--lime);
+}
 
- @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+/* ══════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+══════════════════════════════════════════════════ */
+.theme-toggle {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 42px;
+  height: 42px;
+  background: var(--toggle-bg);
+  color: var(--toggle-color);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.theme-toggle:hover {
+  background: var(--toggle-hover-bg);
+  color: var(--toggle-hover-color);
+  transform: scale(1.08);
+}
 
- .section-label { text-align: center; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; position: relative; z-index: 1; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
- .plans-section { padding: 24px 24px 40px; position: relative; z-index: 1; }
- .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(156px, 1fr)); gap: 12px; max-width: 1200px; margin: 0 auto; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background 0.2s, color 0.2s;
+}
 
- .plan-card { position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 22px 18px 20px; cursor: pointer; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s; text-align: left; overflow: hidden; }
- .plan-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(240,165,0,0.06) 0%, transparent 60%); opacity: 0; transition: opacity 0.2s; }
- .plan-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
- .plan-card:hover::before { opacity: 1; }
- .plan-card.selected { border-color: var(--accent); background: #131a10; box-shadow: 0 0 0 1px var(--accent3), 0 8px 32px rgba(240,165,0,0.15); transform: translateY(-3px); }
- .plan-card.selected::before { opacity: 1; }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
 
- .plan-card.personalizado { border-color: rgba(139,92,246,0.3); }
- .plan-card.personalizado::before { background: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, transparent 60%); }
- .plan-card.personalizado:hover { border-color: var(--purple); }
- .plan-card.personalizado.selected { border-color: var(--purple); background: #120f1a; box-shadow: 0 0 0 1px var(--purple), 0 8px 32px rgba(139,92,246,0.15); }
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
 
- .popular-tag { display: inline-block; background: var(--accent); color: #000; font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 12px; }
- .custom-tag { display: inline-block; background: var(--purple); color: white; font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-bottom: 12px; }
+/* ── TOP BAR ── */
+.topbar {
+  border-bottom: 2px solid var(--section-border);
+  padding: 20px 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar-doc-ref {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-mark {
+  width: 36px; height: 36px;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; font-weight: 600;
+  color: var(--lime);
+  letter-spacing: -1px;
+}
+[data-theme="dark"] .logo-mark {
+  background: var(--lime);
+  color: #0a0a08;
+}
+.logo-text {
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.logo-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.status-stamp {
+  display: flex; align-items: center; gap: 7px;
+  border: 1.5px solid var(--green);
+  padding: 5px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--green);
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+}
+.status-dot {
+  width: 5px; height: 5px;
+  background: var(--green); border-radius: 50%;
+  animation: blink 1.8s ease infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.ver-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--paper2);
+  border: 1px solid var(--border-light);
+  padding: 5px 10px;
+}
 
- .plan-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
- .plan-limit { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.04em; }
- .plan-price { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
- .plan-card.personalizado .plan-price { color: var(--purple); font-size: 1.1rem; }
- .plan-price span { font-size: 0.7rem; font-weight: 400; color: var(--muted); font-family: 'DM Mono', monospace; letter-spacing: 0; }
- .plan-billing { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 4px; }
- .plan-overage { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--purple); margin-top: 4px; }
- .plan-savings { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--green); margin-top: 4px; font-weight: 500; }
+/* ── HERO BAND ── */
+.hero-band {
+  border-bottom: 2px solid var(--section-border);
+  padding: 56px 0 0;
+  overflow: hidden; position: relative;
+}
+.hero-band::before {
+  content: 'DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS ·';
+  position: absolute; top: 12px; left: 0; right: 0;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 13px; letter-spacing: 0.2em;
+  color: var(--border-light);
+  white-space: nowrap; overflow: hidden;
+  opacity: 0.5;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 440px;
+  gap: 0; align-items: end;
+}
+.hero-left {
+  padding-bottom: 40px;
+  border-right: 2px solid var(--section-border);
+  padding-right: 48px;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--lime); color: #0a0a08;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 4px 10px; margin-bottom: 24px;
+}
+[data-theme="light"] .hero-tag { color: var(--ink); }
+.hero-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(5rem, 8vw, 9rem);
+  line-height: 0.92; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 8px;
+}
+.hero-title .accent { color: var(--ink); -webkit-text-stroke: 0; }
+.hero-title .outline { -webkit-text-stroke: 2px var(--ink); color: transparent; }
+.hero-subtitle {
+  font-size: 18px; color: var(--ink2);
+  line-height: 1.6; max-width: 440px;
+  margin-bottom: 40px; font-weight: 400;
+}
+.hero-subtitle strong { font-weight: 700; color: var(--ink); }
+.hero-stats { display: flex; gap: 0; border-top: 1.5px solid var(--border-light); }
+.hero-stat {
+  flex: 1; padding: 16px 0 0;
+  border-right: 1.5px solid var(--border-light);
+  padding-right: 20px; margin-right: 20px;
+}
+.hero-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.hero-stat-num {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 42px; line-height: 1;
+  color: var(--ink); letter-spacing: 0.01em;
+}
+.hero-stat-num.hi { color: var(--green); }
+.hero-stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px;
+}
 
- .plan-check { position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; border: 1.5px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; background: var(--bg); }
- .plan-card.selected .plan-check { background: var(--accent); border-color: var(--accent); color: #000; font-size: 11px; }
- .plan-card.personalizado.selected .plan-check { background: var(--purple); border-color: var(--purple); color: white; }
+/* ── RECEIPT PANEL ── */
+.hero-right { padding-left: 40px; padding-bottom: 40px; }
+.receipt-panel {
+  background: var(--receipt-bg);
+  color: var(--lime); padding: 0; position: relative;
+  border: 1px solid var(--receipt-border);
+}
+.receipt-header {
+  background: var(--lime); padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.receipt-run-badge {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  color: #0a0a08;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.receipt-run-badge .status-dot { background: #0a0a08; }
+.receipt-body {
+  padding: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px; line-height: 1.9;
+  min-height: 220px;
+}
+.t-line { display: flex; gap: 10px; animation: slideIn 0.25s ease both; opacity: 0.9; }
+.t-line.ok .t-st { color: var(--lime); }
+.t-line.proc .t-st { color: #FFCC00; }
+.t-line.err .t-st { color: var(--red); }
+.t-st { flex-shrink: 0; width: 14px; }
+.t-cnpj { color: #888; letter-spacing: 0.03em; }
+.t-msg { color: #555; font-size: 10px; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 0.9; transform: translateX(0); }
+}
+.receipt-progress { border-top: 1px solid #222; padding: 12px 16px; }
+.prog-row {
+  display: flex; justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; color: #555;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px;
+}
+.prog-track { height: 3px; background: #1a1a1a; }
+.prog-fill {
+  height: 100%; background: var(--lime);
+  transition: width 0.5s ease;
+  box-shadow: 0 0 8px rgba(200,255,0,0.5);
+}
 
- .sep { max-width: 1200px; margin: 0 auto 40px; padding: 0 24px; position: relative; z-index: 1; display: flex; align-items: center; gap: 16px; }
- .sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--border2), transparent); }
- .sep span { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+/* ── SECTION RULE ── */
+.section-rule {
+  display: flex; align-items: center; gap: 0;
+  margin: 56px 0 40px;
+  border-top: 2px solid var(--section-border);
+  padding-top: 12px;
+}
+.section-rule-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px; letter-spacing: 0.08em;
+  color: var(--ink); flex: 1;
+}
+.section-rule-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
 
- .form-section { max-width: 480px; margin: 0 auto; padding: 0 20px 80px; position: relative; z-index: 1; }
- .form-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 36px 32px; position: relative; overflow: hidden; }
- .form-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 280px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
- .form-title { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 28px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
- .form-title-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent3), var(--accent)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
- .plano-selecionado { background: rgba(240,165,0,0.07); border: 1px solid rgba(240,165,0,0.25); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted2); }
- .plano-selecionado strong { font-family: 'DM Mono', monospace; color: var(--accent); font-weight: 500; }
- .aviso-email { background: rgba(255,190,58,0.07); border: 1px solid rgba(255,190,58,0.3); border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; font-size: 13px; color: #f5d070; line-height: 1.6; }
- .aviso-personalizado { background: rgba(139,92,246,0.07); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 20px; margin-bottom: 24px; font-size: 13px; color: #c4b5fd; line-height: 1.7; }
- .aviso-personalizado strong { color: var(--purple); }
- .aviso-personalizado .btn-wpp { display: inline-block; margin-top: 14px; width: 100%; padding: 13px; background: #25D366; border: none; border-radius: 10px; color: white; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s; }
- .aviso-personalizado .btn-wpp:hover { background: #1ebe5d; transform: translateY(-1px); }
+/* ── BILLING CYCLE ── */
+.billing-wrap {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 32px;
+  border: 1.5px solid var(--section-border);
+}
+.billing-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 10px 16px;
+  border-right: 1.5px solid var(--section-border);
+  white-space: nowrap;
+  background: var(--paper2);
+}
+.billing-tabs { display: flex; flex: 1; position: relative; }
+.billing-tab-slider {
+  position: absolute; top: 0; bottom: 0;
+  background: var(--tab-active-bg);
+  transition: left 0.2s cubic-bezier(.4,0,.2,1), width 0.2s cubic-bezier(.4,0,.2,1);
+  pointer-events: none; z-index: 0;
+}
+.billing-cycle-btn {
+  flex: 1; padding: 10px 8px;
+  background: transparent; border: none;
+  border-right: 1.5px solid var(--section-border);
+  color: var(--ink3);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em; cursor: pointer;
+  text-transform: uppercase; position: relative; z-index: 1;
+  transition: color 0.15s;
+}
+.billing-cycle-btn:last-child { border-right: none; }
+.billing-cycle-btn.active { color: var(--tab-active-color); }
+.billing-cycle-btn:hover:not(.active) { color: var(--ink); background: var(--tab-hover); }
+.discount-badge {
+  display: inline-block;
+  background: var(--discount-badge-bg);
+  color: var(--discount-badge-color);
+  font-size: 8px; font-weight: 700;
+  padding: 1px 4px; margin-left: 3px;
+  letter-spacing: 0.05em; position: relative; z-index: 1;
+}
+.billing-cycle-btn.active .discount-badge {
+  background: var(--discount-badge-active-bg);
+  color: var(--discount-badge-active-color);
+}
 
- .form-group { margin-bottom: 18px; }
- label { display: block; font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
- .label-row { display: flex; justify-content: space-between; align-items: center; }
- .label-optional { font-size: 10px; color: var(--border2); text-transform: none; letter-spacing: 0; font-style: italic; font-family: 'Instrument Sans', sans-serif; }
- input { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border2); border-radius: 8px; color: var(--text); font-size: 14px; font-family: 'Instrument Sans', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; }
- input::placeholder { color: var(--muted); }
- input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,165,0,0.1); }
- input.erro-campo { border-color: var(--red); }
- input.ok-campo { border-color: var(--green); }
- .doc-tabs { display: flex; gap: 6px; margin-bottom: 8px; }
- .doc-tab { flex: 1; padding: 8px; background: var(--bg); border: 1px solid var(--border2); border-radius: 7px; color: var(--muted); font-size: 11px; font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: 0.08em; cursor: pointer; text-align: center; transition: all 0.15s; text-transform: uppercase; }
- .doc-tab.active { background: var(--accent); border-color: var(--accent); color: #000; }
- hr.divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
- .erro { color: var(--red); font-size: 13px; margin-top: 8px; min-height: 20px; }
- 
+/* ── PLAN GRID ── */
+.plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 2px solid var(--section-border); }
+.plans-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--section-border); border-top: none; }
 
- .btn-comprar { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--accent3), var(--accent2)); border: none; border-radius: 10px; color: #000; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: -0.01em; cursor: pointer; transition: all 0.2s; margin-top: 8px; position: relative; overflow: hidden; }
- .btn-comprar::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%); opacity: 0; transition: opacity 0.2s; }
- .btn-comprar:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(240,165,0,0.35); }
- .btn-comprar:hover:not(:disabled)::after { opacity: 1; }
- .btn-comprar:disabled { background: var(--border2); color: var(--muted); cursor: not-allowed; }
- .btn-sec { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--border2); border-radius: 10px; color: var(--muted2); font-family: 'Instrument Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
- .btn-sec:hover { border-color: var(--accent); color: var(--accent); }
- .link { color: var(--accent); text-decoration: underline; cursor: pointer; font-size: 13px; }
- .link:hover { color: var(--accent2); }
- .seguro { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font-size: 11px; font-family: 'DM Mono', monospace; margin-top: 16px; }
+/* ── PLAN CARD ── */
+.plan-card {
+  position: relative; padding: 20px 18px 18px;
+  cursor: pointer; transition: background 0.12s;
+  border-right: 1.5px solid var(--section-border);
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.plans .plan-card:last-child,
+.plans-row2 .plan-card:last-child { border-right: none; }
+.plan-card:hover { background: var(--card-hover); }
+.plan-card.selected {
+  background: var(--card-selected-bg) !important;
+  color: var(--card-selected-color);
+}
+.plan-card.personalizado.selected { background: var(--card-selected-bg) !important; color: var(--card-selected-color); }
 
- .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
- .modal-overlay.aberto { display: flex; }
- .modal { background: var(--bg2); border: 1px solid var(--border2); border-radius: 16px; padding: 36px; max-width: 400px; width: 90%; position: relative; animation: modalIn 0.25s ease both; }
- @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
- .modal::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 180px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
- .modal h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 8px; letter-spacing: -0.02em; }
- .modal p { color: var(--muted2); font-size: 13px; margin-bottom: 24px; line-height: 1.6; }
- .modal-btns { display: flex; gap: 8px; margin-top: 16px; }
- .modal-btns button { flex: 1; }
- .modal-btns .btn-comprar { margin: 0; }
- .modal-btns .btn-sec { margin: 0; }
+.plan-card::after {
+  content: '';
+  position: absolute; bottom: 0; right: 0;
+  width: 40px; height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 1px,
+    rgba(128,128,128,0.04) 1px, rgba(128,128,128,0.04) 2px,
+    transparent 2px, transparent 4px
+  );
+  pointer-events: none; opacity: 0.6; transition: opacity 0.12s;
+}
+.plan-card.selected::after { opacity: 0; }
 
- .page-footer { text-align: center; padding: 24px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--border2); position: relative; z-index: 1; }
+.plan-check {
+  position: absolute; top: 12px; right: 12px;
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; transition: all 0.15s;
+}
+.plan-card.selected .plan-check {
+  background: var(--card-selected-check-bg);
+  border-color: var(--card-selected-check-bg);
+  color: var(--card-selected-check-color);
+  font-weight: 700;
+}
 
- @media(max-width: 600px) {
- .form-card { padding: 28px 20px; }
- .plans { grid-template-columns: repeat(2, 1fr); }
- .hero h1 { font-size: 2rem; }
- .billing-cycle-container { gap: 6px; }
- .billing-cycle-btn { padding: 8px 14px; font-size: 11px; }
- }
- @media(max-width: 360px) { .plans { grid-template-columns: 1fr; } }
-</style></head><body><div class="grid-bg"></div><div class="modal-overlay" id="modal-senha"><div class="modal"><h3>Recuperar senha</h3><p>Digite seu email e enviaremos um link para criar uma nova senha.</p><div class="form-group"><label>Email</label><input type="email" id="modal-email" placeholder="seuemail@exemplo.com"></div><div id="modal-erro" class="erro"></div><div id="modal-sucesso" style="display:none; color:var(--green); font-size:13px; margin-top:8px; font-family:'DM Mono',monospace;">✓ Email enviado — verifique sua caixa de entrada.</div><div class="modal-btns"><button class="btn-sec">Cancelar</button><button class="btn-comprar" style="margin:0">Enviar link</button></div></div></div><div class="hero"><div class="hero-badge">Versão 2026 · Automatize agora</div><h1>Emita guias DAS<br>para todos os seus<br><em>MEIs em segundos</em></h1><p>Automação direta no navegador — sem planilhas, sem portais lentos. Controle todos os seus clientes em um só lugar.</p><div class="hero-features"><div class="hero-feat">Download automático</div><div class="hero-feat">100% no navegador</div><div class="hero-feat">Gestão de CNPJs</div><div class="hero-feat">Suporte WhatsApp</div></div></div><div class="billing-cycle-section"><div class="billing-cycle-container"><button class="billing-cycle-btn active" data-cycle="monthly">Mensal</button><button class="billing-cycle-btn" data-cycle="quarterly">
- Trimestral <span class="discount-badge">10% OFF</span></button><button class="billing-cycle-btn" data-cycle="semiannual">
- Semestral <span class="discount-badge">20% OFF</span></button><button class="billing-cycle-btn" data-cycle="annual">
- Anual <span class="discount-badge">30% OFF</span></button></div></div><div class="plans-section"><p class="section-label">◆ Escolha seu plano</p><div class="plans" id="plans-container"><!-- monthly: 19,90 | quarterly(3x*0,9): 53,73 | semiannual(6x*0,8): 95,52 | annual(12x*0,7): 167,16 --><div class="plan-card" data-slug="starter"
- data-price-monthly="19,90" data-price-quarterly="53,73" data-price-semiannual="95,52" data-price-annual="167,16"
- data-limit="20"><div class="plan-check"></div><div class="plan-name">Starter</div><div class="plan-limit">até 20 CNPJs/mês</div><div class="plan-price">R$ 19<span>,90</span></div><div class="plan-billing">por mês</div></div><!-- monthly: 39,90 | quarterly: 107,73 | semiannual: 191,52 | annual: 335,16 --><div class="plan-card" data-slug="basic"
- data-price-monthly="39,90" data-price-quarterly="107,73" data-price-semiannual="191,52" data-price-annual="335,16"
- data-limit="50"><div class="plan-check"></div><div class="plan-name">Basic</div><div class="plan-limit">até 50 CNPJs/mês</div><div class="plan-price">R$ 39<span>,90</span></div><div class="plan-billing">por mês</div></div><!-- monthly: 49,90 | quarterly: 134,73 | semiannual: 239,52 | annual: 419,16 --><div class="plan-card" data-slug="pro"
- data-price-monthly="49,90" data-price-quarterly="134,73" data-price-semiannual="239,52" data-price-annual="419,16"
- data-limit="80"><div class="plan-check"></div><div class="popular-tag">★ Popular</div><div class="plan-name">Pro</div><div class="plan-limit">até 80 CNPJs/mês</div><div class="plan-price">R$ 49<span>,90</span></div><div class="plan-billing">por mês</div></div><!-- monthly: 59,90 | quarterly: 161,73 | semiannual: 287,52 | annual: 503,16 --><div class="plan-card" data-slug="advanced"
- data-price-monthly="59,90" data-price-quarterly="161,73" data-price-semiannual="287,52" data-price-annual="503,16"
- data-limit="100"><div class="plan-check"></div><div class="plan-name">Advanced</div><div class="plan-limit">até 100 CNPJs/mês</div><div class="plan-price">R$ 59<span>,90</span></div><div class="plan-billing">por mês</div></div><!-- monthly: 99,90 | quarterly: 269,73 | semiannual: 479,52 | annual: 839,16 --><div class="plan-card" data-slug="business"
- data-price-monthly="99,90" data-price-quarterly="269,73" data-price-semiannual="479,52" data-price-annual="839,16"
- data-limit="200"><div class="plan-check"></div><div class="plan-name">Business</div><div class="plan-limit">até 200 CNPJs/mês</div><div class="plan-price">R$ 99<span>,90</span></div><div class="plan-billing">por mês</div></div><!-- monthly: 199,90 | quarterly: 539,73 | semiannual: 959,52 | annual: 1.679,16 --><div class="plan-card" data-slug="enterprise"
- data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16"
- data-limit="500"><div class="plan-check"></div><div class="plan-name">Enterprise</div><div class="plan-limit">até 500 CNPJs/mês</div><div class="plan-price">R$ 199<span>,90</span></div><div class="plan-billing">por mês</div></div><!-- monthly: 199,90 | quarterly: 539,73 | semiannual: 959,52 | annual: 1.679,16 --><div class="plan-card personalizado" data-slug="personalizado"
- data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16"
- data-limit="9999"><div class="plan-check"></div><div class="custom-tag">✦ Personalizado</div><div class="plan-name">Custom</div><div class="plan-limit">501+ CNPJs/mês</div><div class="plan-price" id="custom-price">R$ 199<span>,90</span></div><div class="plan-billing" id="custom-billing">fixo/mês</div><div class="plan-overage" id="custom-overage">+ R$0,25 por CNPJ acima de 500</div></div></div></div></div><div class="sep"><span>Seus dados</span></div><div class="form-section"><div class="form-card"><div class="form-title"><div class="form-title-icon">📋</div>
- Complete seu cadastro
- </div><div id="plano-escolhido" style="display:none" class="plano-selecionado"><span>Plano selecionado</span><strong><span id="plano-nome-display">—</span> · R$ <span id="plano-preco-display">—</span>/<span id="plano-ciclo-display">mês</span></strong></div><!-- Aviso plano personalizado --><div id="aviso-personalizado" class="aviso-personalizado" style="display:none"><strong>✦ Plano Personalizado — 501+ CNPJs</strong><br><br>
- Este plano é configurado sob medida para seu volume.<br><br>
- 💰 <span id="custom-aviso-preco"><strong>R$199,90/mês</strong> base + <strong>R$0,25 por CNPJ</strong> acima de 500</span><br>
- 📅 Descontos: 10% trimestral · 20% semestral · 30% anual<br><br>
- Entre em contato pelo WhatsApp para configurar seu plano:
- <a class="btn-wpp" href="https://wa.me/5500000000000?text=Olá!%20Quero%20contratar%20o%20Plano%20Personalizado%20do%20PGMEI%20Automação%20(501%2B%20CNPJs)" target="_blank">
- 💬 Falar no WhatsApp
- </a></div><div id="aviso-email-existente" class="aviso-email" style="display:none">
- ⚠ Este email já possui uma conta.<br><span class="link" data-action="abrir-modal">Esqueceu sua senha?</span>
- &nbsp;·&nbsp;
- <span class="link" data-action="retornar-portal">Gerenciar assinatura</span></div><div id="form-campos"><div class="form-group"><label>Nome completo</label><input type="text" id="input-nome" placeholder="Seu nome completo"></div><div class="form-group"><label>Email — seu login na extensão</label><input type="email" id="input-email" placeholder="seuemail@exemplo.com"></div><div style="background:rgba(240,165,0,0.07);border:1px solid rgba(240,165,0,0.25);border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:13px;color:#f5d070;line-height:1.6;">
- 🔐 <strong>Sem senha por enquanto!</strong><br>
- Após o pagamento, você receberá um <strong>e-mail automático</strong> com um link para criar sua senha e acessar a extensão.
-</div><div class="form-group"><div class="label-row"><label style="margin:0">Documento para Nota Fiscal</label><span class="label-optional">opcional</span></div><div class="doc-tabs" style="margin-top:8px"><div class="doc-tab active" id="tab-cnpj">CNPJ</div><div class="doc-tab" id="tab-cpf">CPF</div></div><input type="text" id="input-doc" placeholder="Deixe em branco se não quiser" maxlength="18"></div><hr class="divider"><div id="erro-form" class="erro"></div><input type="text" id="hp-field" name="website" style="display:none !important" tabindex="-1" autocomplete="off"><div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:12px;"><input type="checkbox" id="aceite-termos" style="width:auto; margin-top:3px;"><label for="aceite-termos" style="font-size:13px; color:#94a3b8; cursor:pointer;">
- Li e concordo com os
- <a href="/termos.html" target="_blank" style="color:#8b5cf6;">Termos de Uso</a>
- e a
- <a href="/termos.html" target="_blank" style="color:#8b5cf6;">Política de Privacidade</a></label></div><button class="btn-comprar" id="btn-comprar">Assinar agora</button><div style="text-align:center; margin-top:14px;"><span class="link" data-action="abrir-modal">Esqueci minha senha</span></div><div class="seguro">🔒 Pagamento via Stripe &nbsp;·&nbsp; Cancele quando quiser</div></div></div></div><div class="page-footer">PGMEI Automação 2026 &nbsp;·&nbsp; Todos os direitos reservados</div><!-- VULN-008: Stripe.js carregado sem SRI. O Stripe atualmente não publica
-     hashes SRI oficiais para js.stripe.com/v3/. Quando estiverem disponíveis,
-     adicionar: integrity="sha384-HASH_AQUI" crossorigin="anonymous"
-     Monitorar: https://stripe.com/docs/security/guide -->
-<script src="https://js.stripe.com/v3/" crossorigin="anonymous"></script><script>
-// VUL-04 CORRIGIDO: trocar pk_test_ pela pk_live_ de produção
-// Substitua pela chave publicável de produção: Stripe Dashboard → Developers → API Keys
-const STRIPE_PUBLIC_KEY = 'pk_live_SUBSTITUA_PELA_CHAVE_PUBLICAVEL_PRODUCAO';
+.plan-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-light);
+  transition: color 0.12s, border-color 0.12s;
+}
+.plan-card.selected .plan-code {
+  color: var(--card-selected-sub);
+  border-color: var(--card-selected-dim);
+}
+
+.popular-tag {
+  display: inline-block;
+  background: var(--popular-tag-bg);
+  color: var(--popular-tag-color);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 6px; margin-bottom: 6px;
+  box-shadow: 0 0 0 1px var(--lime);
+}
+.plan-card.selected .popular-tag {
+  background: var(--popular-tag-selected-bg);
+  color: var(--popular-tag-selected-color);
+  box-shadow: none;
+}
+
+.custom-tag {
+  display: inline-block;
+  background: var(--custom-tag-bg);
+  color: var(--custom-tag-color);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 6px; margin-bottom: 6px;
+}
+.plan-card.selected .custom-tag {
+  background: var(--card-selected-check-bg);
+  color: var(--card-selected-check-color);
+}
+
+.plan-name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px; color: var(--ink);
+  letter-spacing: 0.04em; line-height: 1;
+  margin-bottom: 4px; transition: color 0.12s;
+}
+.plan-card.selected .plan-name { color: var(--card-selected-color); }
+
+.plan-limit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  margin-bottom: 14px; letter-spacing: 0.04em; transition: color 0.12s;
+}
+.plan-card.selected .plan-limit { color: var(--card-selected-sub); }
+
+.plan-price {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 38px; color: var(--ink);
+  letter-spacing: -0.01em; line-height: 1; transition: color 0.12s;
+}
+.plan-card.selected .plan-price { color: var(--card-selected-color); }
+.plan-card.personalizado .plan-price { font-size: 30px; }
+.plan-price span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px; font-weight: 400;
+  color: var(--ink3); letter-spacing: 0;
+}
+.plan-card.selected .plan-price span { color: var(--card-selected-dim); }
+
+.plan-billing {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--ink3);
+  margin-top: 4px; letter-spacing: 0.04em; transition: color 0.12s;
+}
+.plan-card.selected .plan-billing { color: var(--card-selected-sub); }
+
+.plan-overage {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; color: var(--ink3); margin-top: 3px;
+}
+.plan-card.selected .plan-overage { color: var(--card-selected-dim); }
+
+.plan-savings {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; color: var(--green);
+  margin-top: 4px; font-weight: 500;
+}
+.plan-card.selected .plan-savings { color: var(--card-selected-color); }
+
+.plan-per-cnpj {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; color: var(--ink3);
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px dashed var(--border-light);
+  transition: color 0.12s, border-color 0.12s;
+}
+.plan-card.selected .plan-per-cnpj {
+  color: var(--card-selected-dim);
+  border-color: var(--card-selected-dim);
+}
+
+/* ── CHECKOUT SECTION ── */
+.checkout-grid {
+  display: grid; grid-template-columns: 1fr 380px;
+  gap: 0; margin-bottom: 80px;
+  border: 2px solid var(--section-border);
+}
+.checkout-left {
+  padding: 40px;
+  border-right: 2px solid var(--section-border);
+  background: var(--checkout-left-bg);
+}
+.checkout-heading {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 32px; letter-spacing: 0.06em;
+  color: var(--ink); margin-bottom: 32px; padding-bottom: 16px;
+  border-bottom: 1.5px solid var(--border-light);
+}
+.form-group { margin-bottom: 20px; }
+label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink2);
+  margin-bottom: 8px; font-weight: 500;
+}
+.label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.label-row label { margin-bottom: 0; }
+.label-optional {
+  font-size: 10px; color: var(--ink3);
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+input {
+  width: 100%; padding: 12px 14px;
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: 0; color: var(--ink);
+  font-size: 14px; font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+input::placeholder { color: var(--ink3); font-weight: 400; }
+input:focus {
+  outline: none;
+  border-color: var(--lime);
+  box-shadow: 3px 3px 0 var(--input-focus-shadow);
+}
+input.erro-campo { border-color: var(--red); }
+input.ok-campo { border-color: var(--green); }
+
+.doc-tabs {
+  display: flex; gap: 0; margin-bottom: 10px;
+  border: 1.5px solid var(--input-border);
+}
+.doc-tab {
+  flex: 1; padding: 9px;
+  background: var(--doc-tab-bg);
+  border: none; border-right: 1.5px solid var(--doc-tab-border);
+  color: var(--ink3); font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+  letter-spacing: 0.1em; cursor: pointer;
+  text-align: center; transition: all 0.1s; text-transform: uppercase;
+}
+.doc-tab:last-child { border-right: none; }
+.doc-tab.active { background: var(--ink); color: var(--lime); }
+[data-theme="dark"] .doc-tab.active { background: var(--lime); color: #0a0a08; }
+
+hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 24px 0; }
+.erro {
+  color: var(--red); font-size: 12px; margin-top: 8px; min-height: 20px;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.04em;
+}
+
+/* ── NOTICE BOXES ── */
+.notice { padding: 14px 16px; font-size: 13px; line-height: 1.65; border-left: 3px solid; }
+.notice-gold {
+  background: var(--notice-gold-bg);
+  border-color: var(--notice-gold-border);
+  color: var(--notice-gold-color);
+}
+.notice-gold strong { color: var(--notice-gold-strong); }
+.notice-purple {
+  background: var(--notice-purple-bg);
+  border-color: var(--notice-purple-border);
+  color: var(--notice-purple-color);
+}
+.notice-purple strong { color: var(--notice-purple-strong); }
+.notice-warn {
+  background: var(--notice-warn-bg);
+  border-color: var(--red);
+  color: var(--ink2);
+}
+.aviso-email .link { color: var(--link-color); font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+/* ── ORDER SUMMARY ── */
+.order-summary {
+  padding: 40px 32px; display: flex;
+  flex-direction: column;
+  background: var(--checkout-summary-bg);
+}
+.order-summary-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 26px; letter-spacing: 0.06em;
+  color: var(--ink); margin-bottom: 24px; padding-bottom: 14px;
+  border-bottom: 1.5px solid var(--border-light);
+}
+.plano-selecionado {
+  font-size: 13px; color: var(--ink2);
+  padding: 12px 0;
+  border-bottom: 1.5px solid var(--border-light);
+  margin-bottom: 16px;
+}
+.plano-selecionado strong {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--ink); font-weight: 600; font-size: 12px; margin-top: 4px;
+}
+[data-theme="dark"] .plano-selecionado strong { color: var(--lime); }
+.order-features {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; color: var(--ink2);
+  line-height: 2.1; letter-spacing: 0.03em; flex: 1;
+}
+.order-features .ok { color: var(--green); margin-right: 6px; }
+
+/* ── BUTTONS ── */
+.btn-comprar {
+  width: 100%; padding: 16px;
+  background: var(--btn-buy-bg);
+  border: none; color: var(--btn-buy-color);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 22px; letter-spacing: 0.12em;
+  cursor: pointer; transition: all 0.12s;
+  margin-top: 10px; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-comprar::after {
+  content: '→'; font-family: 'Barlow', sans-serif;
+  font-size: 20px; transition: transform 0.2s;
+}
+.btn-comprar:hover:not(:disabled) {
+  background: var(--btn-buy-hover-bg);
+  box-shadow: 4px 4px 0 var(--btn-buy-hover-shadow);
+  transform: translate(-2px, -2px);
+}
+.btn-comprar:hover::after { transform: translateX(4px); }
+.btn-comprar:disabled {
+  background: var(--btn-buy-disabled-bg);
+  color: var(--ink3); cursor: not-allowed;
+}
+.btn-comprar:disabled::after { display: none; }
+
+.btn-wpp {
+  display: block; margin-top: 14px; width: 100%; padding: 13px;
+  background: #25D366; border: none; color: white;
+  font-family: 'Bebas Neue', cursive; font-size: 18px;
+  letter-spacing: 0.1em; cursor: pointer;
+  text-align: center; text-decoration: none; transition: all 0.12s;
+}
+.btn-wpp:hover { background: #1ebe5d; box-shadow: 3px 3px 0 #000; transform: translate(-1px,-1px); }
+
+.btn-sec {
+  width: 100%; padding: 12px;
+  background: transparent;
+  border: 1.5px solid var(--btn-sec-border);
+  color: var(--ink2);
+  font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.12s; margin-top: 8px;
+}
+.btn-sec:hover {
+  border-color: var(--btn-sec-hover-border);
+  color: var(--ink);
+  background: var(--btn-sec-hover-bg);
+}
+[data-theme="dark"] .btn-sec:hover { color: var(--lime); }
+
+.link { color: var(--link-color); text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500; }
+
+.seguro {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  color: var(--ink3); font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 16px; letter-spacing: 0.04em;
+}
+
+/* ── CHECKBOX ── */
+.aceite-wrap { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.aceite-wrap input[type="checkbox"] {
+  width: 15px; height: 15px; margin-top: 3px; flex-shrink: 0;
+  accent-color: var(--lime); border-radius: 0;
+}
+.aceite-wrap label {
+  font-size: 13px; color: var(--ink2); cursor: pointer;
+  text-transform: none; letter-spacing: 0;
+  font-family: 'Barlow', sans-serif; font-weight: 400; line-height: 1.6;
+}
+.aceite-wrap a { color: var(--link-color); font-weight: 600; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85); z-index: 200;
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.aberto { display: flex; }
+.modal {
+  background: var(--modal-bg);
+  border: 2px solid var(--section-border);
+  padding: 36px; max-width: 420px; width: 90%;
+  position: relative; animation: modalIn 0.2s ease both;
+  box-shadow: 8px 8px 0 var(--modal-shadow);
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.97) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px; letter-spacing: 0.06em;
+  color: var(--ink); margin-bottom: 8px;
+}
+.modal p { color: var(--ink2); font-size: 14px; margin-bottom: 24px; line-height: 1.65; }
+.modal-btns { display: flex; gap: 8px; margin-top: 16px; }
+.modal-btns button { flex: 1; margin: 0 !important; }
+.modal .btn-comprar { font-size: 16px; padding: 12px; }
+.modal .btn-comprar::after { font-size: 16px; }
+
+/* ── FOOTER ── */
+.page-footer {
+  text-align: center; padding: 28px 0 40px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink3);
+  border-top: 2px solid var(--footer-border);
+}
+
+/* ── ENTRY ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-band { animation: fadeUp 0.45s ease both; }
+.section-rule { animation: fadeUp 0.45s 0.1s ease both; opacity: 0; animation-fill-mode: both; }
+.plans, .plans-row2 { animation: fadeUp 0.45s 0.15s ease both; opacity: 0; animation-fill-mode: both; }
+.checkout-grid { animation: fadeUp 0.45s 0.2s ease both; opacity: 0; animation-fill-mode: both; }
+
+/* ── RESPONSIVE ── */
+@media(max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-left { border-right: none; border-bottom: 2px solid var(--section-border); padding-right: 0; margin-bottom: 0; }
+  .hero-right { padding-left: 0; padding-top: 32px; }
+  .plans { grid-template-columns: repeat(2, 1fr); }
+  .plans-row2 { grid-template-columns: repeat(2, 1fr); }
+  .checkout-grid { grid-template-columns: 1fr; }
+  .checkout-left { border-right: none; border-bottom: 2px solid var(--section-border); }
+}
+@media(max-width: 640px) {
+  .page { padding: 0 20px; }
+  .hero-title { font-size: 5rem; }
+  .billing-wrap { flex-direction: column; align-items: stretch; }
+  .billing-label { border-right: none; border-bottom: 1.5px solid var(--section-border); }
+  .billing-cycle-btn { font-size: 10px; padding: 10px 4px; }
+  .plans { grid-template-columns: repeat(2, 1fr); }
+  .plans-row2 { grid-template-columns: 1fr 1fr; }
+  .checkout-left { padding: 24px 20px; }
+  .order-summary { padding: 24px 20px; }
+  .theme-toggle { bottom: 16px; right: 16px; }
+}
+@media(max-width: 380px) {
+  .plans, .plans-row2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" id="themeToggle" title="Alternar tema" aria-label="Alternar modo claro/escuro">☀️</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-senha">
+  <div class="modal">
+    <h3>Recuperar senha</h3>
+    <p>Digite seu email e enviaremos um link para criar uma nova senha.</p>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="modal-email" placeholder="seuemail@exemplo.com">
+    </div>
+    <div id="modal-erro" class="erro"></div>
+    <div id="modal-sucesso" style="display:none; color:var(--green); font-size:12px; margin-top:8px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em;">✓ Email enviado — verifique sua caixa de entrada.</div>
+    <div class="modal-btns">
+      <button class="btn-sec" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-comprar" onclick="enviarRecuperacao()">Enviar link</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark">PG</div>
+      <div>
+        <div class="logo-text">AutoMEItizado</div>
+        <div class="logo-sub">Extensão para Chrome</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="status-stamp"><div class="status-dot"></div>Sistema ativo</div>
+      <div class="ver-badge">v2026</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag">Automação de MEI · Chrome Extension</div>
+        <h1 class="hero-title">
+          <span class="accent">EMITA</span><br>
+          <span class="outline">TODOS</span><br>
+          <span class="accent">OS DAS</span>
+        </h1>
+        <p class="hero-subtitle" style="margin-top:16px;">
+          Sem planilhas. Sem portais lentos.<br>
+          <strong>Todos os seus clientes MEI em segundos,</strong> direto no navegador.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num hi" id="stat-cnpjs">180+</div>
+            <div class="hero-stat-label">CNPJs/hora</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">&nbsp;20</div>
+            <div class="hero-stat-label">Segundos por emissão</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">CNPJs suportados</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="receipt-panel">
+          <div class="receipt-header">
+            <div class="receipt-run-badge">
+              <div class="status-dot"></div>
+              AutoMEItizado.js · executando
+            </div>
+            <div class="receipt-run-badge" style="font-size:9px; opacity:0.5;">LOTE ATUAL</div>
+          </div>
+          <div class="receipt-body" id="terminal-output"></div>
+          <div class="receipt-progress">
+            <div class="prog-row">
+              <span>Processando lote</span>
+              <span id="progress-count">0 / 0</span>
+            </div>
+            <div class="prog-track">
+              <div class="prog-fill" id="progress-fill" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BILLING CYCLE -->
+  <div class="section-rule">
+    <div class="section-rule-label">Escolha seu plano</div>
+    <div class="section-rule-num">Selecione o ciclo de cobrança</div>
+  </div>
+
+  <div class="billing-wrap">
+    <div class="billing-label">Ciclo</div>
+    <div class="billing-tabs" id="billing-tabs">
+      <div class="billing-tab-slider" id="tab-slider"></div>
+      <button class="billing-cycle-btn active" data-cycle="monthly" onclick="selecionarCiclo(this)">Mensal</button>
+      <button class="billing-cycle-btn" data-cycle="quarterly" onclick="selecionarCiclo(this)">Trimestral <span class="discount-badge">−10%</span></button>
+      <button class="billing-cycle-btn" data-cycle="semiannual" onclick="selecionarCiclo(this)">Semestral <span class="discount-badge">−20%</span></button>
+      <button class="billing-cycle-btn" data-cycle="annual" onclick="selecionarCiclo(this)">Anual <span class="discount-badge">−30%</span></button>
+    </div>
+  </div>
+
+  <!-- PLANS -->
+  <div class="plans" id="plans-container">
+    <div class="plan-card" data-slug="starter"
+      data-price-monthly="19,90" data-price-quarterly="53,73" data-price-semiannual="95,52" data-price-annual="167,16"
+      data-limit="20" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-001 · STARTER</div>
+      <div class="plan-name">Starter</div>
+      <div class="plan-limit">até 20 CNPJs/mês</div>
+      <div class="plan-price">R$ 19<span>,90</span></div>
+      <div class="plan-billing">por mês</div>
+    </div>
+    <div class="plan-card" data-slug="basic"
+      data-price-monthly="39,90" data-price-quarterly="107,73" data-price-semiannual="191,52" data-price-annual="335,16"
+      data-limit="50" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-002 · BASIC</div>
+      <div class="plan-name">Basic</div>
+      <div class="plan-limit">até 50 CNPJs/mês</div>
+      <div class="plan-price">R$ 39<span>,90</span></div>
+      <div class="plan-billing">por mês</div>
+    </div>
+    <div class="plan-card" data-slug="pro"
+      data-price-monthly="49,90" data-price-quarterly="134,73" data-price-semiannual="239,52" data-price-annual="419,16"
+      data-limit="80" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-003 · PRO</div>
+      <div class="popular-tag">★ Mais popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-limit">até 80 CNPJs/mês</div>
+      <div class="plan-price">R$ 49<span>,90</span></div>
+      <div class="plan-billing">por mês</div>
+    </div>
+    <div class="plan-card" data-slug="advanced"
+      data-price-monthly="59,90" data-price-quarterly="161,73" data-price-semiannual="287,52" data-price-annual="503,16"
+      data-limit="100" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-004 · ADVANCED</div>
+      <div class="plan-name">Advanced</div>
+      <div class="plan-limit">até 100 CNPJs/mês</div>
+      <div class="plan-price">R$ 59<span>,90</span></div>
+      <div class="plan-billing">por mês</div>
+    </div>
+  </div>
+
+  <div class="plans-row2">
+    <div class="plan-card" data-slug="business"
+      data-price-monthly="99,90" data-price-quarterly="269,73" data-price-semiannual="479,52" data-price-annual="839,16"
+      data-limit="200" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-005 · BUSINESS</div>
+      <div class="plan-name">Business</div>
+      <div class="plan-limit">até 200 CNPJs/mês</div>
+      <div class="plan-price">R$ 99<span>,90</span></div>
+      <div class="plan-billing">por mês</div>
+    </div>
+    <div class="plan-card" data-slug="enterprise"
+      data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16"
+      data-limit="500" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-006 · ENTERPRISE</div>
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-limit">até 500 CNPJs/mês</div>
+      <div class="plan-price">R$ 199<span>,90</span></div>
+      <div class="plan-billing">por mês</div>
+    </div>
+    <div class="plan-card personalizado" data-slug="personalizado"
+      data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16"
+      data-limit="9999" onclick="selecionarPlano(this)">
+      <div class="plan-check"></div>
+      <div class="plan-code">COD-007 · CUSTOM</div>
+      <div class="custom-tag">✦ Sob medida</div>
+      <div class="plan-name">Custom</div>
+      <div class="plan-limit">501+ CNPJs/mês</div>
+      <div class="plan-price" id="custom-price">R$ 199<span>,90</span></div>
+      <div class="plan-billing" id="custom-billing">fixo/mês</div>
+      <div class="plan-overage" id="custom-overage">+ R$0,25 por CNPJ acima de 500</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="section-rule" style="margin-top: 56px;">
+    <div class="section-rule-label">Complete o cadastro</div>
+    <div class="section-rule-num">Dados para emissão da nota fiscal</div>
+  </div>
+
+  <div class="checkout-grid">
+    <div class="checkout-left">
+      <div class="checkout-heading">Seus dados</div>
+
+      <div id="aviso-personalizado" class="notice notice-purple" style="display:none; margin-bottom:24px;">
+        <strong>✦ Plano Personalizado — 501+ CNPJs</strong><br><br>
+        Este plano é configurado sob medida para seu volume.<br><br>
+        💰 <span id="custom-aviso-preco"><strong>R$199,90/mês</strong> base + <strong>R$0,25/CNPJ</strong> acima de 500</span><br>
+        📅 Descontos: 10% trimestral · 20% semestral · 30% anual<br><br>
+        Entre em contato pelo WhatsApp:
+        <a class="btn-wpp" href="https://wa.me/5500000000000?text=Olá!%20Quero%20contratar%20o%20Plano%20Personalizado%20do%20AutoMEItizado%20(501%2B%20CNPJs)" target="_blank">
+          💬 Falar no WhatsApp
+        </a>
+      </div>
+
+      <div id="aviso-email-existente" class="notice notice-warn aviso-email" style="display:none; margin-bottom:18px;">
+        ⚠ Este email já possui uma conta.<br>
+        <span class="link" onclick="abrirModal()">Esqueceu sua senha?</span>
+        &nbsp;·&nbsp;
+        <span class="link" onclick="retornarParaPortal()">Gerenciar assinatura</span>
+      </div>
+
+      <div id="form-campos">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" id="input-nome" placeholder="Seu nome completo">
+        </div>
+        <div class="form-group">
+          <label>Email — seu login na extensão</label>
+          <input type="email" id="input-email" placeholder="seuemail@exemplo.com" oninput="esconderAvisoEmail()">
+        </div>
+
+        <div class="notice notice-gold" style="margin-bottom:20px; font-size:13px;">
+          🔐 <strong>Sem senha por enquanto.</strong>
+          Após o pagamento, você receberá um e-mail com um link para criar sua senha e acessar a extensão.
+        </div>
+
+        <div class="form-group">
+          <div class="label-row">
+            <label>Documento para Nota Fiscal</label>
+            <span class="label-optional">opcional</span>
+          </div>
+          <div class="doc-tabs">
+            <div class="doc-tab active" id="tab-cnpj" onclick="trocarDoc('cnpj')">CNPJ</div>
+            <div class="doc-tab" id="tab-cpf" onclick="trocarDoc('cpf')">CPF</div>
+          </div>
+          <input type="text" id="input-doc" placeholder="Deixe em branco se não quiser" maxlength="18">
+        </div>
+
+        <hr class="divider">
+
+        <div id="erro-form" class="erro"></div>
+        <input type="text" id="hp-field" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
+
+        <div class="aceite-wrap">
+          <input type="checkbox" id="aceite-termos">
+          <label for="aceite-termos">
+            Li e concordo com os
+            <a href="/termos.html" target="_blank">Termos de Uso</a>
+            e a
+            <a href="/termos.html" target="_blank">Política de Privacidade</a>
+          </label>
+        </div>
+
+        <button class="btn-comprar" id="btn-comprar" onclick="iniciarCompra()">Assinar agora</button>
+
+        <div style="text-align:center; margin-top:14px;">
+          <span class="link" onclick="abrirModal()">Esqueci minha senha</span>
+        </div>
+
+        <div class="seguro">🔒 Pagamento via Stripe &nbsp;·&nbsp; Cancele quando quiser</div>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <div class="order-summary-title">Resumo do pedido</div>
+      <div id="plano-escolhido" style="display:none" class="plano-selecionado">
+        <span>Plano selecionado</span>
+        <strong><span id="plano-nome-display">—</span> · R$ <span id="plano-preco-display">—</span>/<span id="plano-ciclo-display">mês</span></strong>
+      </div>
+      <div class="order-features">
+        <span class="ok">✓</span>Acesso imediato após confirmação<br>
+        <span class="ok">✓</span>Extensão para Google Chrome<br>
+        <span class="ok">✓</span>Suporte via WhatsApp<br>
+        <span class="ok">✓</span>Cancele quando quiser<br>
+        <span class="ok">✓</span>Emissão automatizada de DAS
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">AutoMEItizado 2026 &nbsp;·&nbsp; Todos os direitos reservados</div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+/* ── THEME TOGGLE ── */
+const html = document.documentElement;
+const toggleBtn = document.getElementById('themeToggle');
+
+function applyTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  toggleBtn.title = theme === 'dark' ? 'Modo claro' : 'Modo escuro';
+  try { localStorage.setItem('theme', theme); } catch(e) {}
+}
+
+(function() {
+  let saved = 'dark';
+  try { saved = localStorage.getItem('theme') || 'dark'; } catch(e) {}
+  applyTheme(saved);
+})();
+
+toggleBtn.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+  requestAnimationFrame(updateTabSlider);
+});
+
+/* ── STRIPE / SUPABASE ── */
+const STRIPE_PUBLIC_KEY = 'pk_test_51T1V8JDlcKI1dmuMLLBXRiPhRLHV6CBNmz45wOM4ISvmuQgaU6Lmp2a8xwVDisgxkj9CfawxgIQ5Crb8oCwhQYAB00YY06BWr5';
 const SUPABASE_URL = 'https://kzhoezukwpllgcxzkkbr.supabase.co';
-// VULN-001 CORRIGIDO: Regenerar esta chave no Supabase Dashboard (Settings → API)
-// com prazo de expiração de 1-2 anos e atualizar aqui + popup.js + background.js.
-// A chave atual expira em 2087 — validade inaceitável.
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6aG9lenVrd3BsbGdjeHpra2JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MzM5NTAsImV4cCI6MjA4NzIwOTk1MH0.AkahuDsRBgXKKAnbt7bN-eeGA-i6pC3kfhcvk-8p5VY'; // Project Settings → API → anon public
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6aG9lenVrd3BsbGdjeHpra2JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MzM5NTAsImV4cCI6MjA4NzIwOTk1MH0.AkahuDsRBgXKKAnbt7bN-eeGA-i6pC3kfhcvk-8p5VY';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
 let planoSelecionado = null;
 let cicloSelecionado = 'monthly';
 let tipoDoc = 'cnpj';
 
-// ── PRICE IDS ──────────────────────────────────────────────
-// Substitua os placeholders pelos IDs reais do Stripe após criar os preços
 const PRICE_IDS = {
- starter: {
- monthly: 'price_1T1VCcDlcKI1dmuMYgSnIDTp',
- quarterly: 'price_1T3LC1DlcKI1dmuM9AddZfwA',
- semiannual: 'price_1T3LC1DlcKI1dmuMwSIPqElk',
- annual: 'price_1T3LC1DlcKI1dmuMBBH6bhtX'
- },
- basic: {
- monthly: 'price_1T1VDEDlcKI1dmuMF37skYlk',
- quarterly: 'price_1T3LCkDlcKI1dmuM1VPpI9VX',
- semiannual: 'price_1T3LCkDlcKI1dmuMnrGq2xnW',
- annual: 'price_1T3LCkDlcKI1dmuMhnliCQ6t'
- },
- pro: {
- monthly: 'price_1T1VDYDlcKI1dmuMC1e6SFbf',
- quarterly: 'price_1T3LDUDlcKI1dmuMXCm8xkpj',
- semiannual: 'price_1T3LDUDlcKI1dmuMGxdxvUcM',
- annual: 'price_1T3LDUDlcKI1dmuMg78FWJR8'
- },
- advanced: {
- monthly: 'price_1T1VDsDlcKI1dmuMOUN9SPtl',
- quarterly: 'price_1T3LE6DlcKI1dmuMUJcYxAHN',
- semiannual: 'price_1T3LE6DlcKI1dmuMGs4bcraB',
- annual: 'price_1T3LE6DlcKI1dmuMrzlFsbgO'
- },
- business: {
- monthly: 'price_1T1VF2DlcKI1dmuMBqzA5rWu',
- quarterly: 'price_1T3LEgDlcKI1dmuMdC7itqYY',
- semiannual: 'price_1T3LEgDlcKI1dmuMbxeNmzjN',
- annual: 'price_1T3LEgDlcKI1dmuMdLFE8m2t'
- },
- enterprise: {
- monthly: 'price_1T3S35DlcKI1dmuMH0YxaHID',
- quarterly: 'price_1T3LG2DlcKI1dmuMHCHaBnF3',
- semiannual: 'price_1T3LG2DlcKI1dmuMl913tuoP',
- annual: 'price_1T3LG2DlcKI1dmuM524O7B0f'
- }
+  starter: { monthly: 'price_1T1VCcDlcKI1dmuMYgSnIDTp', quarterly: 'price_1T3LC1DlcKI1dmuM9AddZfwA', semiannual: 'price_1T3LC1DlcKI1dmuMwSIPqElk', annual: 'price_1T3LC1DlcKI1dmuMBBH6bhtX' },
+  basic: { monthly: 'price_1T1VDEDlcKI1dmuMF37skYlk', quarterly: 'price_1T3LCkDlcKI1dmuM1VPpI9VX', semiannual: 'price_1T3LCkDlcKI1dmuMnrGq2xnW', annual: 'price_1T3LCkDlcKI1dmuMhnliCQ6t' },
+  pro: { monthly: 'price_1T1VDYDlcKI1dmuMC1e6SFbf', quarterly: 'price_1T3LDUDlcKI1dmuMXCm8xkpj', semiannual: 'price_1T3LDUDlcKI1dmuMGxdxvUcM', annual: 'price_1T3LDUDlcKI1dmuMg78FWJR8' },
+  advanced: { monthly: 'price_1T1VDsDlcKI1dmuMOUN9SPtl', quarterly: 'price_1T3LE6DlcKI1dmuMUJcYxAHN', semiannual: 'price_1T3LE6DlcKI1dmuMGs4bcraB', annual: 'price_1T3LE6DlcKI1dmuMrzlFsbgO' },
+  business: { monthly: 'price_1T1VF2DlcKI1dmuMBqzA5rWu', quarterly: 'price_1T3LEgDlcKI1dmuMdC7itqYY', semiannual: 'price_1T3LEgDlcKI1dmuMbxeNmzjN', annual: 'price_1T3LEgDlcKI1dmuMdLFE8m2t' },
+  enterprise: { monthly: 'price_1T3S35DlcKI1dmuMH0YxaHID', quarterly: 'price_1T3LG2DlcKI1dmuMHCHaBnF3', semiannual: 'price_1T3LG2DlcKI1dmuMl913tuoP', annual: 'price_1T3LG2DlcKI1dmuM524O7B0f' }
 };
 
 const DISCOUNT_TEXT = {
- monthly: { billing: 'por mês', saving: null },
- quarterly: { billing: 'a cada 3 meses', saving: 'Economize 10%' },
- semiannual: { billing: 'a cada 6 meses', saving: 'Economize 20%' },
- annual: { billing: 'por ano', saving: 'Economize 30%' }
+  monthly: { billing: 'por mês' },
+  quarterly: { billing: 'a cada 3 meses' },
+  semiannual: { billing: 'a cada 6 meses' },
+  annual: { billing: 'por ano' }
 };
 
+function parseBRL(str) { return parseFloat(str.replace(/\./g, '').replace(',', '.')); }
+
+function calcularEconomia(card, ciclo) {
+  if (ciclo === 'monthly') return null;
+  const monthlyPrice = parseBRL(card.dataset.priceMonthly);
+  const keyMap = { quarterly: 'priceQuarterly', semiannual: 'priceSemiannual', annual: 'priceAnnual' };
+  const months = { quarterly: 3, semiannual: 6, annual: 12 };
+  const paidPrice = parseBRL(card.dataset[keyMap[ciclo]]);
+  const saved = monthlyPrice * months[ciclo] - paidPrice;
+  return 'Economize R$\u00a0' + saved.toFixed(2).replace('.', ',');
+}
+
+function calcularPorCNPJ(card, ciclo) {
+  const limit = parseInt(card.dataset.limit);
+  if (!limit || limit >= 9999) return null;
+  const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
+  const months = { monthly: 1, quarterly: 3, semiannual: 6, annual: 12 };
+  const totalPago = parseBRL(card.dataset[keyMap[ciclo]]);
+  return 'R$\u00a0' + (totalPago / limit / months[ciclo]).toFixed(2).replace('.', ',') + ' por CNPJ/mês';
+}
+
 const CUSTOM_PRICING = {
- monthly: { base: '199<span>,90</span>', billing: 'fixo/mês', overage: '+ R$0,25 por CNPJ acima de 500', aviso: '<strong>R$199,90/mês</strong> base + <strong>R$0,25/CNPJ</strong> acima de 500' },
- quarterly: { base: '539<span>,73</span>', billing: 'fixo a cada 3 meses', overage: '+ R$0,675 por CNPJ acima de 500', aviso: '<strong>R$539,73/trimestre</strong> base (R$179,91/mês) + <strong>R$0,675/CNPJ</strong> acima de 500 por trimestre (R$0,225/mês)' },
- semiannual: { base: '959<span>,52</span>', billing: 'fixo a cada 6 meses', overage: '+ R$1,20 por CNPJ acima de 500', aviso: '<strong>R$959,52/semestre</strong> base (R$159,92/mês) + <strong>R$1,20/CNPJ</strong> acima de 500 por semestre (R$0,20/mês)' },
- annual: { base: '1.679<span>,16</span>', billing: 'fixo por ano', overage: '+ R$2,10 por CNPJ acima de 500', aviso: '<strong>R$1.679,16/ano</strong> base (R$139,93/mês) + <strong>R$2,10/CNPJ</strong> acima de 500 por ano (R$0,175/mês)' }
+  monthly: { base: '199<span>,90</span>', billing: 'fixo/mês', overage: '+ R$0,25 por CNPJ acima de 500', aviso: '<strong>R$199,90/mês</strong> base + <strong>R$0,25/CNPJ</strong> acima de 500' },
+  quarterly: { base: '539<span>,73</span>', billing: 'fixo a cada 3 meses', overage: '+ R$0,675 por CNPJ acima de 500', aviso: '<strong>R$539,73/trimestre</strong> base (R$179,91/mês) + <strong>R$0,675/CNPJ</strong> acima de 500 por trimestre' },
+  semiannual: { base: '959<span>,52</span>', billing: 'fixo a cada 6 meses', overage: '+ R$1,20 por CNPJ acima de 500', aviso: '<strong>R$959,52/semestre</strong> base (R$159,92/mês) + <strong>R$1,20/CNPJ</strong> acima de 500 por semestre' },
+  annual: { base: '1.679<span>,16</span>', billing: 'fixo por ano', overage: '+ R$2,10 por CNPJ acima de 500', aviso: '<strong>R$1.679,16/ano</strong> base (R$139,93/mês) + <strong>R$2,10/CNPJ</strong> acima de 500 por ano' }
 };
 
 function atualizarCardCustom() {
- const cp = CUSTOM_PRICING[cicloSelecionado];
- const card = document.querySelector('.plan-card.personalizado');
- if (!card) return;
- document.getElementById('custom-price').innerHTML = `R$ ${cp.base}`;
- document.getElementById('custom-billing').textContent = cp.billing;
- document.getElementById('custom-overage').textContent = cp.overage;
- const savingsEl = card.querySelector('.plan-savings');
- if (DISCOUNT_TEXT[cicloSelecionado].saving) {
- if (!savingsEl) {
- const div = document.createElement('div');
- div.className = 'plan-savings';
- div.textContent = DISCOUNT_TEXT[cicloSelecionado].saving + ' na base';
- card.appendChild(div);
- } else { savingsEl.style.display='block'; savingsEl.textContent = DISCOUNT_TEXT[cicloSelecionado].saving + ' na base'; }
- } else {
- if (savingsEl) savingsEl.style.display='none';
- }
- // Atualiza aviso se estiver visível
- const avisoPreco = document.getElementById('custom-aviso-preco');
- if (avisoPreco) avisoPreco.innerHTML = `💰 ${cp.aviso}`;
+  const cp = CUSTOM_PRICING[cicloSelecionado];
+  const card = document.querySelector('.plan-card.personalizado');
+  if (!card) return;
+  document.getElementById('custom-price').innerHTML = `R$ ${cp.base}`;
+  document.getElementById('custom-billing').textContent = cp.billing;
+  document.getElementById('custom-overage').textContent = cp.overage;
+  const savingsEl = card.querySelector('.plan-savings');
+  const saving = calcularEconomia(card, cicloSelecionado);
+  if (saving) {
+    if (!savingsEl) { const d = document.createElement('div'); d.className = 'plan-savings'; d.textContent = saving + ' na base'; card.appendChild(d); }
+    else { savingsEl.style.display='block'; savingsEl.textContent = saving + ' na base'; }
+  } else { if (savingsEl) savingsEl.style.display='none'; }
+  const avisoPreco = document.getElementById('custom-aviso-preco');
+  if (avisoPreco) avisoPreco.innerHTML = `💰 ${cp.aviso}`;
 }
 
 function selecionarCiclo(btn) {
- document.querySelectorAll('.billing-cycle-btn').forEach(b => b.classList.remove('active'));
- btn.classList.add('active');
- cicloSelecionado = btn.dataset.cycle;
-
- document.querySelectorAll('.plan-card').forEach(card => {
- if (card.dataset.slug === 'personalizado') return;
- const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
- const price = card.dataset[keyMap[cicloSelecionado]];
- const priceEl = card.querySelector('.plan-price');
- const billingEl = card.querySelector('.plan-billing');
- const savingsEl = card.querySelector('.plan-savings');
- const [reais, centavos] = price.split(',');
- priceEl.innerHTML = `R$ ${reais}<span>,${centavos}</span>`;
- billingEl.textContent = DISCOUNT_TEXT[cicloSelecionado].billing;
- if (DISCOUNT_TEXT[cicloSelecionado].saving) {
- if (!savingsEl) {
- const div = document.createElement('div');
- div.className = 'plan-savings';
- div.textContent = DISCOUNT_TEXT[cicloSelecionado].saving;
- card.appendChild(div);
- } else { savingsEl.style.display='block'; savingsEl.textContent = DISCOUNT_TEXT[cicloSelecionado].saving; }
- } else {
- if (savingsEl) savingsEl.style.display='none';
- }
- });
-
- atualizarCardCustom();
-
- if (planoSelecionado && planoSelecionado.slug !== 'personalizado') {
- const card = document.querySelector(`.plan-card[data-slug="${planoSelecionado.slug}"]`);
- if (card) selecionarPlano(card);
- }
+  document.querySelectorAll('.billing-cycle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  cicloSelecionado = btn.dataset.cycle;
+  document.querySelectorAll('.plan-card').forEach(card => {
+    if (card.dataset.slug === 'personalizado') return;
+    const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
+    const price = card.dataset[keyMap[cicloSelecionado]];
+    const [reais, centavos] = price.split(',');
+    card.querySelector('.plan-price').innerHTML = `R$ ${reais}<span>,${centavos}</span>`;
+    card.querySelector('.plan-billing').textContent = DISCOUNT_TEXT[cicloSelecionado].billing;
+    const savingsEl = card.querySelector('.plan-savings');
+    const saving = calcularEconomia(card, cicloSelecionado);
+    if (saving) {
+      if (!savingsEl) { const d = document.createElement('div'); d.className='plan-savings'; d.textContent=saving; card.appendChild(d); }
+      else { savingsEl.style.display='block'; savingsEl.textContent = saving; }
+    } else { if (savingsEl) savingsEl.style.display='none'; }
+    let perCnpjEl = card.querySelector('.plan-per-cnpj');
+    const perCnpj = calcularPorCNPJ(card, cicloSelecionado);
+    if (perCnpj) {
+      if (!perCnpjEl) { const d = document.createElement('div'); d.className='plan-per-cnpj'; d.textContent=perCnpj; card.appendChild(d); }
+      else { perCnpjEl.textContent = perCnpj; }
+    }
+  });
+  atualizarCardCustom();
+  if (planoSelecionado && planoSelecionado.slug !== 'personalizado') {
+    const card = document.querySelector(`.plan-card[data-slug="${planoSelecionado.slug}"]`);
+    if (card) selecionarPlano(card);
+  }
+  requestAnimationFrame(updateTabSlider);
 }
 
 function selecionarPlano(el) {
- document.querySelectorAll('.plan-card').forEach(c => {
- c.classList.remove('selected');
- c.querySelector('.plan-check').textContent = '';
- });
- el.classList.add('selected');
- el.querySelector('.plan-check').textContent = '✓';
-
- const slug = el.dataset.slug;
-
- // Plano personalizado — mostra aviso especial
- if (slug === 'personalizado') {
- atualizarCardCustom();
- const cp = CUSTOM_PRICING[cicloSelecionado];
- document.getElementById('custom-aviso-preco').innerHTML = cp.aviso;
- document.getElementById('aviso-personalizado').style.display = 'block';
- document.getElementById('plano-escolhido').style.display = 'none';
- document.getElementById('btn-comprar').style.display = 'none';
- planoSelecionado = { slug: 'personalizado', name: 'Custom', cycle: cicloSelecionado };
- document.getElementById('erro-form').textContent = '';
- return;
- }
-
- // Planos normais
- document.getElementById('aviso-personalizado').style.display = 'none';
- document.getElementById('btn-comprar').style.display = 'block';
-
- const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
- const price = el.dataset[keyMap[cicloSelecionado]];
- const [reais, centavos] = price.split(',');
-
- planoSelecionado = {
- slug: slug,
- priceId: PRICE_IDS[slug][cicloSelecionado],
- price: price,
- limit: el.dataset.limit,
- name: el.querySelector('.plan-name').textContent,
- cycle: cicloSelecionado
- };
-
- document.getElementById('plano-escolhido').style.display = 'flex';
- document.getElementById('plano-nome-display').textContent = planoSelecionado.name;
- document.getElementById('plano-preco-display').textContent = price;
-
- const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
- const cicloText = cicloTexts[cicloSelecionado];
- document.getElementById('plano-ciclo-display').textContent = cicloText;
- document.getElementById('erro-form').textContent = '';
-
- document.getElementById('btn-comprar').textContent = cicloSelecionado === 'monthly'
- ? `Assinar ${planoSelecionado.name} — R$ ${price}/mês`
- : `Assinar ${planoSelecionado.name} — R$ ${price}/${cicloText}`;
+  document.querySelectorAll('.plan-card').forEach(c => { c.classList.remove('selected'); c.querySelector('.plan-check').textContent = ''; });
+  el.classList.add('selected');
+  el.querySelector('.plan-check').textContent = '✓';
+  const slug = el.dataset.slug;
+  if (slug === 'personalizado') {
+    atualizarCardCustom();
+    document.getElementById('custom-aviso-preco').innerHTML = CUSTOM_PRICING[cicloSelecionado].aviso;
+    document.getElementById('aviso-personalizado').style.display = 'block';
+    document.getElementById('plano-escolhido').style.display = 'none';
+    document.getElementById('btn-comprar').style.display = 'none';
+    planoSelecionado = { slug: 'personalizado', name: 'Custom', cycle: cicloSelecionado };
+    document.getElementById('erro-form').textContent = '';
+    return;
+  }
+  document.getElementById('aviso-personalizado').style.display = 'none';
+  document.getElementById('btn-comprar').style.display = 'block';
+  const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
+  const price = el.dataset[keyMap[cicloSelecionado]];
+  planoSelecionado = {
+    slug, priceId: PRICE_IDS[slug][cicloSelecionado],
+    price, limit: el.dataset.limit,
+    name: el.querySelector('.plan-name').textContent,
+    cycle: cicloSelecionado
+  };
+  document.getElementById('plano-escolhido').style.display = 'flex';
+  document.getElementById('plano-nome-display').textContent = planoSelecionado.name;
+  document.getElementById('plano-preco-display').textContent = price;
+  const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
+  document.getElementById('plano-ciclo-display').textContent = cicloTexts[cicloSelecionado];
+  document.getElementById('erro-form').textContent = '';
+  document.getElementById('btn-comprar').textContent = cicloSelecionado === 'monthly'
+    ? `Assinar ${planoSelecionado.name} — R$ ${price}/mês`
+    : `Assinar ${planoSelecionado.name} — R$ ${price}/${cicloTexts[cicloSelecionado]}`;
 }
 
 function trocarDoc(tipo) {
- tipoDoc = tipo;
- document.getElementById('tab-cnpj').classList.toggle('active', tipo === 'cnpj');
- document.getElementById('tab-cpf').classList.toggle('active', tipo === 'cpf');
- document.getElementById('input-doc').maxLength = tipo === 'cnpj' ? 18 : 14;
- document.getElementById('input-doc').value = '';
+  tipoDoc = tipo;
+  document.getElementById('tab-cnpj').classList.toggle('active', tipo === 'cnpj');
+  document.getElementById('tab-cpf').classList.toggle('active', tipo === 'cpf');
+  document.getElementById('input-doc').maxLength = tipo === 'cnpj' ? 18 : 14;
+  document.getElementById('input-doc').value = '';
 }
-
- 
 
 function mostrarErro(msg) { document.getElementById('erro-form').textContent = msg; }
 function esconderAvisoEmail() { document.getElementById('aviso-email-existente').style.display = 'none'; }
-// VUL-04/14 CORRIGIDO: substituir pela URL do Customer Portal de PRODUÇÃO do Stripe.
-// A URL 'test_...' abaixo é do ambiente de testes — clientes reais não conseguem
-// acessar suas assinaturas por ela. Substitua pela URL do painel Stripe de produção:
-// Stripe Dashboard → Billing → Customer Portal → Launch customer portal → copiar link
-function retornarParaPortal() { window.open('https://billing.stripe.com/p/login/SUBSTITUA_PELA_URL_PRODUCAO', '_blank'); }
+function retornarParaPortal() { window.open('https://billing.stripe.com/p/login/test_4gMbJ17v06vG84k46D7IY00', '_blank'); }
+
 function abrirModal() {
- const email = document.getElementById('input-email').value.trim();
- if (email) document.getElementById('modal-email').value = email;
- document.getElementById('modal-senha').classList.add('aberto');
- document.getElementById('modal-erro').textContent = '';
- document.getElementById('modal-sucesso').style.display = 'none';
+  const email = document.getElementById('input-email').value.trim();
+  if (email) document.getElementById('modal-email').value = email;
+  document.getElementById('modal-senha').classList.add('aberto');
+  document.getElementById('modal-erro').textContent = '';
+  document.getElementById('modal-sucesso').style.display = 'none';
 }
 function fecharModal() { document.getElementById('modal-senha').classList.remove('aberto'); }
 
 async function enviarRecuperacao() {
- const email = document.getElementById('modal-email').value.trim();
- const erroEl = document.getElementById('modal-erro');
- erroEl.textContent = '';
- if (!email) { erroEl.textContent = 'Digite seu email.'; return; }
- try {
- const res = await fetch(`${SUPABASE_URL}/functions/v1/recover-password`, {
- method: 'POST',
- headers: {
- 'Content-Type': 'application/json',
- 'apikey': SUPABASE_ANON_KEY,
- 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
- },
- body: JSON.stringify({ email })
- });
- const data = await res.json();
- if (data.error) erroEl.textContent = '✕ ' + data.error;
- else { document.getElementById('modal-sucesso').style.display = 'block'; setTimeout(fecharModal, 3000); }
- } catch { erroEl.textContent = 'Erro de conexão. Tente novamente.'; }
+  const email = document.getElementById('modal-email').value.trim();
+  const erroEl = document.getElementById('modal-erro');
+  erroEl.textContent = '';
+  if (!email) { erroEl.textContent = 'Digite seu email.'; return; }
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/recover-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    if (data.error) erroEl.textContent = '✕ ' + data.error;
+    else { document.getElementById('modal-sucesso').style.display = 'block'; setTimeout(fecharModal, 3000); }
+  } catch { erroEl.textContent = 'Erro de conexão. Tente novamente.'; }
 }
 
 function validarEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
-// VUL-09 / V3-05 CORRIGIDO: validação com dígitos verificadores (Módulo 11),
-// não apenas comprimento. Portado do validate.ts do backend.
-function cnpjValido(cnpj) {
-  if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
-  const calc = (str, p) => { let soma=0,peso=p; for(let i=0;i<str.length-1;i++){soma+=+str[i]*peso--;if(peso<2)peso=9;} const r=soma%11; return r<2?0:11-r; };
-  return +cnpj[12]===calc(cnpj.slice(0,12)+'00',5) && +cnpj[13]===calc(cnpj.slice(0,13)+'0',6);
-}
-function cpfValido(cpf) {
-  if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
-  const calc = (str, p) => { let soma=0; for(let i=0;i<str.length;i++){soma+=+str[i]*(p-i);} const r=(soma*10)%11; return (r===10||r===11)?0:r; };
-  return +cpf[9]===calc(cpf.slice(0,9),10) && +cpf[10]===calc(cpf.slice(0,10),11);
-}
-
 async function iniciarCompra() {
- mostrarErro('');
- if (document.getElementById('hp-field').value) return;
- if (!document.getElementById('aceite-termos').checked) {
- mostrarErro('⚠️ Você precisa aceitar os Termos de Uso para continuar.'); return;
- }
- const nome = document.getElementById('input-nome').value.trim();
- const email = document.getElementById('input-email').value.trim();
- const doc = document.getElementById('input-doc').value.trim().replace(/\D/g, '');
-
- if (!planoSelecionado) { mostrarErro('⚠ Selecione um plano acima.'); return; }
- if (!nome) { mostrarErro('⚠ Preencha seu nome.'); return; }
- if (!validarEmail(email)) { mostrarErro('⚠ Email inválido.'); return; }
+  mostrarErro('');
+  if (document.getElementById('hp-field').value) return;
+  if (!document.getElementById('aceite-termos').checked) { mostrarErro('⚠️ Você precisa aceitar os Termos de Uso para continuar.'); return; }
+  const nome = document.getElementById('input-nome').value.trim();
+  const email = document.getElementById('input-email').value.trim();
+  const doc = document.getElementById('input-doc').value.trim().replace(/\D/g, '');
+  if (!planoSelecionado) { mostrarErro('⚠ Selecione um plano acima.'); return; }
+  if (!nome) { mostrarErro('⚠ Preencha seu nome.'); return; }
+  if (!validarEmail(email)) { mostrarErro('⚠ Email inválido.'); return; }
   if (doc.length > 0) {
-    if (tipoDoc === 'cnpj' && (doc.length !== 14 || !cnpjValido(doc))) { mostrarErro('⚠ CNPJ inválido. Verifique os dígitos ou deixe em branco.'); return; }
-    if (tipoDoc === 'cpf'  && (doc.length !== 11 || !cpfValido(doc)))  { mostrarErro('⚠ CPF inválido. Verifique os dígitos ou deixe em branco.'); return; }
-
-
-
- }
-
- const btn = document.getElementById('btn-comprar');
- btn.disabled = true; btn.textContent = '⏳ Processando...';
-
- try {
- const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
- method: 'POST',
- headers: {
- 'Content-Type': 'application/json',
- 'apikey': SUPABASE_ANON_KEY,
- 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
- },
- body: JSON.stringify({
- email, nome,
- documento: doc || null,
- tipo_documento: doc ? tipoDoc : null,
- price_id: planoSelecionado.priceId,
- plan_slug: planoSelecionado.slug,
- billing_cycle: planoSelecionado.cycle
- })
- });
- const resultado = await res.json();
-
- if (resultado.error) {
- if (resultado.error.toLowerCase().includes('already')) {
- document.getElementById('aviso-email-existente').style.display = 'block';
- document.getElementById('input-email').classList.add('erro-campo');
- btn.disabled = false;
- const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
- btn.textContent = cicloSelecionado === 'monthly'
- ? `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/mês`
- : `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/${cicloTexts[cicloSelecionado]}`;
- return;
- }
- throw new Error(resultado.error);
- }
- await stripe.redirectToCheckout({ sessionId: resultado.sessionId });
-
- } catch (err) {
- mostrarErro('✕ ' + (err.message || 'Erro ao processar. Tente novamente.'));
- btn.disabled = false;
- const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
- btn.textContent = planoSelecionado && cicloSelecionado === 'monthly'
- ? `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/mês`
- : `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/${cicloTexts[cicloSelecionado]}`;
- }
+    if (tipoDoc === 'cnpj' && doc.length !== 14) { mostrarErro('⚠ CNPJ inválido. Corrija ou deixe em branco.'); return; }
+    if (tipoDoc === 'cpf' && doc.length !== 11) { mostrarErro('⚠ CPF inválido. Corrija ou deixe em branco.'); return; }
+  }
+  const btn = document.getElementById('btn-comprar');
+  btn.disabled = true; btn.textContent = 'Processando...';
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+      body: JSON.stringify({ email, nome, documento: doc || null, tipo_documento: doc ? tipoDoc : null, price_id: planoSelecionado.priceId, plan_slug: planoSelecionado.slug, billing_cycle: planoSelecionado.cycle })
+    });
+    const resultado = await res.json();
+    const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
+    if (resultado.error) {
+      if (resultado.error.toLowerCase().includes('already')) {
+        document.getElementById('aviso-email-existente').style.display = 'block';
+        document.getElementById('input-email').classList.add('erro-campo');
+        btn.disabled = false;
+        btn.textContent = cicloSelecionado === 'monthly' ? `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/mês` : `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/${cicloTexts[cicloSelecionado]}`;
+        return;
+      }
+      throw new Error(resultado.error);
+    }
+    await stripe.redirectToCheckout({ sessionId: resultado.sessionId });
+  } catch (err) {
+    mostrarErro('✕ ' + (err.message || 'Erro ao processar. Tente novamente.'));
+    btn.disabled = false;
+    const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
+    btn.textContent = planoSelecionado && cicloSelecionado === 'monthly'
+      ? `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/mês`
+      : `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/${cicloTexts[cicloSelecionado]}`;
+  }
 }
 
-document.getElementById('modal-senha').addEventListener('click', function(e) {
- if (e.target === this) fecharModal();
-});
+document.getElementById('modal-senha').addEventListener('click', function(e) { if (e.target === this) fecharModal(); });
 
-// ── VULN-009 CORRIGIDO: substituir todos os handlers inline (onclick/oninput)
-// por addEventListener, compatível com CSP sem 'unsafe-inline' em script-src.
-// Os atributos onclick foram removidos dos elementos HTML acima e registrados aqui.
-document.querySelectorAll('.billing-cycle-btn').forEach(btn => {
-  btn.addEventListener('click', () => selecionarCiclo(btn));
-});
+/* ── TAB SLIDER ── */
+function updateTabSlider() {
+  const tabs = document.getElementById('billing-tabs');
+  const active = tabs.querySelector('.billing-cycle-btn.active');
+  const slider = document.getElementById('tab-slider');
+  if (!active || !slider) return;
+  const tabRect = tabs.getBoundingClientRect();
+  const activeRect = active.getBoundingClientRect();
+  slider.style.left = (activeRect.left - tabRect.left) + 'px';
+  slider.style.width = activeRect.width + 'px';
+}
+setTimeout(updateTabSlider, 60);
+window.addEventListener('resize', updateTabSlider);
+
+/* ── TERMINAL ANIMATION ── */
+const cnpjPool = [
+  '12.345.678/0001-90', '98.765.432/0001-10', '11.222.333/0001-81',
+  '55.666.777/0001-05', '33.444.555/0001-29', '77.888.999/0001-44',
+  '22.111.000/0001-62', '44.333.222/0001-73', '66.555.444/0001-57',
+  '88.777.666/0001-18', '10.203.040/0001-99', '50.607.080/0001-31'
+];
+const msgs = ['DAS emitido', 'DAS emitido', 'DAS emitido', 'DAS gerado', 'DAS emitido'];
+let termIdx = 0, termTotal = cnpjPool.length, termDone = 0;
+const termOutput = document.getElementById('terminal-output');
+const progFill = document.getElementById('progress-fill');
+const progCount = document.getElementById('progress-count');
+
+function addLine(type, cnpj, msg) {
+  const icons = { ok: '✓', proc: '▶', err: '✕' };
+  const div = document.createElement('div');
+  div.className = `t-line ${type}`;
+  div.innerHTML = `<span class="t-st">${icons[type]}</span><span class="t-cnpj">${cnpj}</span><span class="t-msg"> ${msg}</span>`;
+  termOutput.appendChild(div);
+  while (termOutput.children.length > 7) termOutput.removeChild(termOutput.firstChild);
+}
+
+function runTerm() {
+  if (termIdx >= termTotal) { termIdx = 0; termDone = 0; setTimeout(runTerm, 2000); return; }
+  const cnpj = cnpjPool[termIdx];
+  addLine('proc', cnpj, '— processando...');
+  setTimeout(() => {
+    if (termOutput.lastChild) termOutput.removeChild(termOutput.lastChild);
+    const ok = Math.random() > 0.07;
+    addLine(ok ? 'ok' : 'err', cnpj, ok ? `— ${msgs[termIdx % msgs.length]}` : '— tentando novamente');
+    if (ok) termDone++;
+    termIdx++;
+    const pct = Math.round((termIdx / termTotal) * 100);
+    progFill.style.width = pct + '%';
+    progCount.textContent = `${termDone} / ${termTotal}`;
+    document.getElementById('stat-cnpjs').textContent = Math.max(180, termDone * 30) + '+';
+  }, 350 + Math.random() * 550);
+  setTimeout(runTerm, 900 + Math.random() * 1100);
+}
+setTimeout(runTerm, 600);
+
+/* ── INIT ── */
 document.querySelectorAll('.plan-card').forEach(card => {
-  card.addEventListener('click', () => selecionarPlano(card));
+  if (card.dataset.slug === 'personalizado') return;
+  const perCnpj = calcularPorCNPJ(card, 'monthly');
+  if (perCnpj) {
+    const div = document.createElement('div');
+    div.className = 'plan-per-cnpj';
+    div.textContent = perCnpj;
+    card.appendChild(div);
+  }
 });
-document.getElementById('tab-cnpj').addEventListener('click', () => trocarDoc('cnpj'));
-document.getElementById('tab-cpf').addEventListener('click',  () => trocarDoc('cpf'));
-document.getElementById('btn-comprar').addEventListener('click', iniciarCompra);
-document.querySelector('.modal-btns .btn-sec').addEventListener('click', fecharModal);
-document.querySelector('.modal-btns .btn-comprar').addEventListener('click', enviarRecuperacao);
-document.querySelectorAll('[data-action="abrir-modal"]').forEach(el => {
-  el.addEventListener('click', abrirModal);
-});
-document.querySelectorAll('[data-action="retornar-portal"]').forEach(el => {
-  el.addEventListener('click', retornarParaPortal);
-});
-document.getElementById('input-email').addEventListener('input', esconderAvisoEmail);
-</script></body></html>
+</script>
+</body>
+</html>
