@@ -4,931 +4,223 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MeiQueResolve</title>
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='32' y1='8' x2='32' y2='4' stroke='%2300FF00' stroke-width='2'/%3E%3Ccircle cx='32' cy='4' r='2' fill='%2300FF00'/%3E%3Crect x='20' y='8' width='24' height='16' rx='4' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3Ccircle cx='26' cy='14' r='2' fill='%23FFFFFF'/%3E%3Ccircle cx='38' cy='14' r='2' fill='%23FFFFFF'/%3E%3Crect x='16' y='24' width='32' height='24' rx='4' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3Crect x='22' y='30' width='20' height='12' rx='2' fill='%23000000' stroke='%2300FF00' stroke-width='1'/%3E%3Ctext x='32' y='38' font-size='5.2' text-anchor='middle' fill='%2300FF00' font-family='monospace'>MeiQueResolve</text%3E%3Crect x='24' y='48' width='4' height='8' rx='2' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3Crect x='36' y='48' width='4' height='8' rx='2' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3C/svg%3E">
-<link rel="alternate icon" href="/favicon.ico">
-
-<meta name="apple-mobile-web-app-title" content="MeiQueResolve">
-<meta name="application-name" content="MeiQueResolve">
-
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='32' y1='8' x2='32' y2='4' stroke='%2300FF00' stroke-width='2'/%3E%3Ccircle cx='32' cy='4' r='2' fill='%2300FF00'/%3E%3Crect x='20' y='8' width='24' height='16' rx='4' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3Ccircle cx='26' cy='14' r='2' fill='%23FFFFFF'/%3E%3Ccircle cx='38' cy='14' r='2' fill='%23FFFFFF'/%3E%3Crect x='16' y='24' width='32' height='24' rx='4' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3Crect x='22' y='30' width='20' height='12' rx='2' fill='%23000000' stroke='%2300FF00' stroke-width='1'/%3E%3Ctext x='32' y='38' font-size='5.2' text-anchor='middle' fill='%2300FF00' font-family='monospace'>MeiQueResolve%3C/text%3E%3Crect x='24' y='48' width='4' height='8' rx='2' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3Crect x='36' y='48' width='4' height='8' rx='2' fill='%23008000' stroke='%2300FF00' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+:root,[data-theme="light"]{--paper:#F0ECE3;--paper2:#E6E1D6;--paper3:#D8D2C5;--ink:#0C0C0A;--ink2:#3A3830;--ink3:#7A7568;--lime:#C8FF00;--lime2:#A8D800;--red:#FF2800;--green:#00A86B;--border:#0C0C0A;--border-light:#C0BAB0;--input-bg:#ffffff;--input-border:#C0BAB0;--input-focus-shadow:#0C0C0A;--card-bg:var(--paper);--card-hover:var(--paper2);--card-selected-bg:var(--ink);--card-selected-color:var(--lime);--card-selected-sub:rgba(200,255,0,0.8);--card-selected-dim:rgba(200,255,0,0.6);--card-selected-check-bg:var(--lime);--card-selected-check-color:var(--ink);--tab-active-bg:var(--ink);--tab-active-color:var(--lime);--tab-hover:rgba(0,0,0,0.04);--discount-badge-bg:var(--lime);--discount-badge-color:var(--ink);--discount-badge-active-bg:var(--ink);--discount-badge-active-color:var(--lime);--receipt-bg:var(--ink);--receipt-border:transparent;--section-border:var(--ink);--checkout-summary-bg:var(--paper2);--checkout-left-bg:transparent;--modal-bg:var(--paper);--modal-shadow:var(--ink);--btn-buy-bg:var(--ink);--btn-buy-color:var(--lime);--btn-buy-hover-bg:#1a1a18;--btn-buy-hover-shadow:var(--lime);--btn-buy-disabled-bg:var(--paper3);--btn-sec-border:var(--border-light);--btn-sec-hover-border:var(--ink);--btn-sec-hover-bg:var(--paper2);--notice-gold-bg:rgba(200,160,0,0.06);--notice-gold-border:#B8960A;--notice-gold-color:var(--ink2);--notice-gold-strong:#8A6F00;--notice-purple-bg:rgba(100,80,200,0.06);--notice-purple-border:#7060C8;--notice-purple-color:var(--ink2);--notice-purple-strong:#5048A8;--notice-warn-bg:rgba(255,40,0,0.05);--link-color:var(--ink);--doc-tab-bg:white;--doc-tab-border:var(--border-light);--popular-tag-bg:var(--ink);--popular-tag-color:var(--lime);--popular-tag-selected-bg:var(--lime);--popular-tag-selected-color:var(--ink);--custom-tag-bg:var(--ink2);--custom-tag-color:var(--paper);--footer-border:var(--ink);--toggle-bg:var(--ink);--toggle-color:var(--lime);--toggle-hover-bg:var(--lime);--toggle-hover-color:var(--ink);--nav-bg:var(--paper);--nav-border:var(--ink);--nav-link:var(--ink2);--nav-dl-dot:#0a0a08}
+[data-theme="dark"]{--paper:#0a0a08;--paper2:#121210;--paper3:#1e1e18;--ink:#f0f0e6;--ink2:#c0c0b0;--ink3:#808070;--lime:#C8FF00;--lime2:#A8D800;--red:#FF5F5F;--green:#6FCF97;--border:#404036;--border-light:#5a5a4a;--input-bg:#1a1a16;--input-border:#404036;--input-focus-shadow:rgba(200,255,0,0.2);--card-bg:#1a1a16;--card-hover:#24241e;--card-selected-bg:var(--lime);--card-selected-color:#0a0a08;--card-selected-sub:rgba(0,0,0,0.7);--card-selected-dim:rgba(0,0,0,0.6);--card-selected-check-bg:#0a0a08;--card-selected-check-color:var(--lime);--tab-active-bg:var(--lime);--tab-active-color:#0a0a08;--tab-hover:rgba(200,255,0,0.05);--discount-badge-bg:var(--lime);--discount-badge-color:#0a0a08;--discount-badge-active-bg:#0a0a08;--discount-badge-active-color:var(--lime);--receipt-bg:#121210;--receipt-border:#404036;--section-border:#404036;--checkout-summary-bg:#1e1e18;--checkout-left-bg:#121210;--modal-bg:#121210;--modal-shadow:#000000;--btn-buy-bg:var(--lime);--btn-buy-color:#0a0a08;--btn-buy-hover-bg:#d8ff30;--btn-buy-hover-shadow:#0a0a08;--btn-buy-disabled-bg:#404036;--btn-sec-border:#404036;--btn-sec-hover-border:var(--lime);--btn-sec-hover-bg:rgba(200,255,0,0.05);--notice-gold-bg:rgba(200,255,0,0.05);--notice-gold-border:var(--lime);--notice-gold-color:var(--ink2);--notice-gold-strong:var(--lime);--notice-purple-bg:rgba(160,120,255,0.10);--notice-purple-border:#AA88FF;--notice-purple-color:var(--ink2);--notice-purple-strong:#CCAAFF;--notice-warn-bg:rgba(255,95,95,0.1);--link-color:var(--lime);--doc-tab-bg:#1a1a16;--doc-tab-border:#404036;--popular-tag-bg:var(--lime);--popular-tag-color:#0a0a08;--popular-tag-selected-bg:#0a0a08;--popular-tag-selected-color:var(--lime);--custom-tag-bg:#2a2a22;--custom-tag-color:var(--ink);--footer-border:#404036;--toggle-bg:var(--lime);--toggle-color:#0a0a08;--toggle-hover-bg:var(--ink);--toggle-hover-color:var(--lime);--nav-bg:#0a0a08;--nav-border:#404036;--nav-link:#808070;--nav-dl-dot:#0a0a08}
 
-/* ══════════════════════════════════════════════════
-   LIGHT THEME (original)
-══════════════════════════════════════════════════ */
-:root,
-[data-theme="light"] {
-  --paper: #F0ECE3;
-  --paper2: #E6E1D6;
-  --paper3: #D8D2C5;
-  --ink: #0C0C0A;
-  --ink2: #3A3830;
-  --ink3: #7A7568;
-  --lime: #C8FF00;
-  --lime2: #A8D800;
-  --red: #FF2800;
-  --green: #00A86B;
-  --border: #0C0C0A;
-  --border-light: #C0BAB0;
-  /* form inputs */
-  --input-bg: #ffffff;
-  --input-border: #C0BAB0;
-  --input-focus-shadow: #0C0C0A;
-  /* plan cards */
-  --card-bg: var(--paper);
-  --card-hover: var(--paper2);
-  --card-selected-bg: var(--ink);
-  --card-selected-color: var(--lime);
-  --card-selected-sub: rgba(200,255,0,0.8);
-  --card-selected-dim: rgba(200,255,0,0.6);
-  --card-selected-check-bg: var(--lime);
-  --card-selected-check-color: var(--ink);
-  /* billing tabs */
-  --tab-active-bg: var(--ink);
-  --tab-active-color: var(--lime);
-  --tab-hover: rgba(0,0,0,0.04);
-  --discount-badge-bg: var(--lime);
-  --discount-badge-color: var(--ink);
-  --discount-badge-active-bg: var(--ink);
-  --discount-badge-active-color: var(--lime);
-  /* receipt */
-  --receipt-bg: var(--ink);
-  --receipt-border: transparent;
-  /* section borders */
-  --section-border: var(--ink);
-  /* checkout */
-  --checkout-summary-bg: var(--paper2);
-  --checkout-left-bg: transparent;
-  /* modal */
-  --modal-bg: var(--paper);
-  --modal-shadow: var(--ink);
-  /* buttons */
-  --btn-buy-bg: var(--ink);
-  --btn-buy-color: var(--lime);
-  --btn-buy-hover-bg: #1a1a18;
-  --btn-buy-hover-shadow: var(--lime);
-  --btn-buy-disabled-bg: var(--paper3);
-  --btn-sec-border: var(--border-light);
-  --btn-sec-hover-border: var(--ink);
-  --btn-sec-hover-bg: var(--paper2);
-  /* notices */
-  --notice-gold-bg: rgba(200,160,0,0.06);
-  --notice-gold-border: #B8960A;
-  --notice-gold-color: var(--ink2);
-  --notice-gold-strong: #8A6F00;
-  --notice-purple-bg: rgba(100,80,200,0.06);
-  --notice-purple-border: #7060C8;
-  --notice-purple-color: var(--ink2);
-  --notice-purple-strong: #5048A8;
-  --notice-warn-bg: rgba(255,40,0,0.05);
-  /* links */
-  --link-color: var(--ink);
-  /* doc tabs */
-  --doc-tab-bg: white;
-  --doc-tab-border: var(--border-light);
-  /* popular tag */
-  --popular-tag-bg: var(--ink);
-  --popular-tag-color: var(--lime);
-  --popular-tag-selected-bg: var(--lime);
-  --popular-tag-selected-color: var(--ink);
-  /* custom tag */
-  --custom-tag-bg: var(--ink2);
-  --custom-tag-color: var(--paper);
-  /* footer */
-  --footer-border: var(--ink);
-  /* toggle */
-  --toggle-bg: var(--ink);
-  --toggle-color: var(--lime);
-  --toggle-hover-bg: var(--lime);
-  --toggle-hover-color: var(--ink);
-}
+.theme-toggle{position:fixed;bottom:28px;right:28px;z-index:9999;width:42px;height:42px;background:var(--toggle-bg);color:var(--toggle-color);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s,color .2s,border-color .2s,transform .15s;font-family:'IBM Plex Mono',monospace}
+.theme-toggle:hover{background:var(--toggle-hover-bg);color:var(--toggle-hover-color);transform:scale(1.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .2s,color .2s}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.55}
+.page{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 40px}
 
-/* ══════════════════════════════════════════════════
-   DARK THEME (referência doc 2)
-══════════════════════════════════════════════════ */
-[data-theme="dark"] {
-  --paper: #0a0a08;
-  --paper2: #121210;
-  --paper3: #1e1e18;
-  --ink: #f0f0e6;
-  --ink2: #c0c0b0;
-  --ink3: #808070;
-  --lime: #C8FF00;
-  --lime2: #A8D800;
-  --red: #FF5F5F;
-  --green: #6FCF97;
-  --border: #404036;
-  --border-light: #5a5a4a;
-  /* form inputs */
-  --input-bg: #1a1a16;
-  --input-border: #404036;
-  --input-focus-shadow: rgba(200,255,0,0.2);
-  /* plan cards */
-  --card-bg: #1a1a16;
-  --card-hover: #24241e;
-  --card-selected-bg: var(--lime);
-  --card-selected-color: #0a0a08;
-  --card-selected-sub: rgba(0,0,0,0.7);
-  --card-selected-dim: rgba(0,0,0,0.6);
-  --card-selected-check-bg: #0a0a08;
-  --card-selected-check-color: var(--lime);
-  /* billing tabs */
-  --tab-active-bg: var(--lime);
-  --tab-active-color: #0a0a08;
-  --tab-hover: rgba(200,255,0,0.05);
-  --discount-badge-bg: var(--lime);
-  --discount-badge-color: #0a0a08;
-  --discount-badge-active-bg: #0a0a08;
-  --discount-badge-active-color: var(--lime);
-  /* receipt */
-  --receipt-bg: #121210;
-  --receipt-border: #404036;
-  /* section borders */
-  --section-border: #404036;
-  /* checkout */
-  --checkout-summary-bg: #1e1e18;
-  --checkout-left-bg: #121210;
-  /* modal */
-  --modal-bg: #121210;
-  --modal-shadow: #000000;
-  /* buttons */
-  --btn-buy-bg: var(--lime);
-  --btn-buy-color: #0a0a08;
-  --btn-buy-hover-bg: #d8ff30;
-  --btn-buy-hover-shadow: #0a0a08;
-  --btn-buy-disabled-bg: #404036;
-  --btn-sec-border: #404036;
-  --btn-sec-hover-border: var(--lime);
-  --btn-sec-hover-bg: rgba(200,255,0,0.05);
-  /* notices */
-  --notice-gold-bg: rgba(200,255,0,0.05);
-  --notice-gold-border: var(--lime);
-  --notice-gold-color: var(--ink2);
-  --notice-gold-strong: var(--lime);
-  --notice-purple-bg: rgba(160,120,255,0.10);
-  --notice-purple-border: #AA88FF;
-  --notice-purple-color: var(--ink2);
-  --notice-purple-strong: #CCAAFF;
-  --notice-warn-bg: rgba(255,95,95,0.1);
-  /* links */
-  --link-color: var(--lime);
-  /* doc tabs */
-  --doc-tab-bg: #1a1a16;
-  --doc-tab-border: #404036;
-  /* popular tag */
-  --popular-tag-bg: var(--lime);
-  --popular-tag-color: #0a0a08;
-  --popular-tag-selected-bg: #0a0a08;
-  --popular-tag-selected-color: var(--lime);
-  /* custom tag */
-  --custom-tag-bg: #2a2a22;
-  --custom-tag-color: var(--ink);
-  /* footer */
-  --footer-border: #404036;
-  /* toggle */
-  --toggle-bg: var(--lime);
-  --toggle-color: #0a0a08;
-  --toggle-hover-bg: var(--ink);
-  --toggle-hover-color: var(--lime);
-}
+/* ══ NAV ══ */
+.site-nav{background:var(--nav-bg);border-bottom:1.5px solid var(--nav-border);position:sticky;top:0;z-index:100;transition:background .2s,border-color .2s}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:50px}
+.nav-brand{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.16em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-link{display:flex;align-items:center;gap:7px;padding:0 18px;height:50px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--nav-link);text-decoration:none;border-right:1.5px solid var(--nav-border);transition:color .15s,background .15s;white-space:nowrap}
+.nav-link:first-child{border-left:1.5px solid var(--nav-border)}
+.nav-link:hover{color:var(--lime);background:rgba(200,255,0,.04)}
+.nav-link svg{width:13px;height:13px;flex-shrink:0;opacity:.7;transition:opacity .15s}
+.nav-link:hover svg{opacity:1}
+.nav-dl{background:var(--lime);color:#0a0a08 !important;border-color:var(--lime) !important;font-weight:700;padding:0 22px;position:relative;overflow:hidden}
+[data-theme="light"] .nav-dl{background:var(--ink);color:var(--lime) !important;border-color:var(--ink) !important}
+.nav-dl::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-101%);transition:transform .25s ease}
+.nav-dl:hover{background:#d8ff30 !important;color:#0a0a08 !important;border-color:#d8ff30 !important}
+[data-theme="light"] .nav-dl:hover{background:#1a1a18 !important;color:var(--lime) !important;border-color:#1a1a18 !important}
+.nav-dl:hover::before{transform:translateX(0)}
+.nav-dl svg{opacity:1 !important}
+.nav-dl-pulse{width:5px;height:5px;background:var(--nav-dl-dot);border-radius:50%;animation:blink 1.8s ease infinite;flex-shrink:0}
+[data-theme="light"] .nav-dl-pulse{background:var(--lime)}
 
-/* ══════════════════════════════════════════════════
-   THEME TOGGLE BUTTON
-══════════════════════════════════════════════════ */
-.theme-toggle {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 9999;
-  width: 42px;
-  height: 42px;
-  background: var(--toggle-bg);
-  color: var(--toggle-color);
-  border: 2px solid var(--border);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
-  font-family: 'IBM Plex Mono', monospace;
-}
-.theme-toggle:hover {
-  background: var(--toggle-hover-bg);
-  color: var(--toggle-hover-color);
-  transform: scale(1.08);
-}
+/* ══ TOPBAR ══ */
+.topbar{border-bottom:2px solid var(--section-border);padding:20px 0;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:36px;height:36px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--lime);letter-spacing:-1px}
+[data-theme="dark"] .logo-mark{background:var(--lime);color:#0a0a08}
+.logo-text{font-family:'Barlow',sans-serif;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.logo-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.status-stamp{display:flex;align-items:center;gap:7px;border:1.5px solid var(--green);padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.status-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:blink 1.8s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.ver-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;background:var(--paper2);border:1px solid var(--border-light);padding:5px 10px}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ══ HERO ══ */
+.hero-band{border-bottom:2px solid var(--section-border);padding:56px 0 0;overflow:hidden;position:relative;animation:fadeUp .45s ease both}
+.hero-band::before{content:'DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS ·';position:absolute;top:12px;left:0;right:0;font-family:'Bebas Neue',cursive;font-size:13px;letter-spacing:.2em;color:var(--border-light);white-space:nowrap;overflow:hidden;opacity:.5}
+.hero-inner{display:grid;grid-template-columns:1fr 440px;gap:0;align-items:end}
+.hero-left{padding-bottom:40px;border-right:2px solid var(--section-border);padding-right:48px}
+.hero-tag{display:inline-block;background:var(--lime);color:#0a0a08;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;margin-bottom:24px}
+[data-theme="light"] .hero-tag{color:var(--ink)}
+.hero-title{font-family:'Bebas Neue',cursive;font-size:clamp(5rem,8vw,9rem);line-height:.92;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.hero-title .outline{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero-subtitle{font-size:18px;color:var(--ink2);line-height:1.6;max-width:440px;margin-bottom:32px;font-weight:400;margin-top:16px}
+.hero-subtitle strong{font-weight:700;color:var(--ink)}
 
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: 'Barlow', sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  transition: background 0.2s, color 0.2s;
-}
+.hero-dl-btn{display:inline-flex;align-items:center;gap:12px;background:var(--lime);color:#0a0a08;text-decoration:none;font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:.12em;padding:15px 30px 15px 24px;margin-bottom:12px;position:relative;overflow:hidden;transition:transform .15s,box-shadow .15s,background .15s;border:2px solid transparent}
+[data-theme="light"] .hero-dl-btn{background:var(--ink);color:var(--lime)}
+.hero-dl-btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);transform:translateX(-101%);transition:transform .25s ease}
+.hero-dl-btn:hover{background:#d8ff30;transform:translate(-3px,-3px);box-shadow:5px 5px 0 #0a0a08}
+[data-theme="light"] .hero-dl-btn:hover{background:#1a1a18;box-shadow:5px 5px 0 var(--lime)}
+.hero-dl-btn:hover::after{transform:translateX(0)}
+.hero-dl-btn svg{width:22px;height:22px;flex-shrink:0}
+.hero-dl-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:36px}
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-}
+.hero-stats{display:flex;gap:0;border-top:1.5px solid var(--border-light)}
+.hero-stat{flex:1;padding:16px 0 0;border-right:1.5px solid var(--border-light);padding-right:20px;margin-right:20px}
+.hero-stat:last-child{border-right:none;padding-right:0;margin-right:0}
+.hero-stat-num{font-family:'Bebas Neue',cursive;font-size:42px;line-height:1;color:var(--ink);letter-spacing:.01em}
+.hero-stat-num.hi{color:var(--green)}
+.hero-stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
 
-.page {
-  position: relative;
-  z-index: 1;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
+/* ══ RECEIPT PANEL ══ */
+.hero-right{padding-left:40px;padding-bottom:40px}
+.receipt-panel{background:var(--receipt-bg);color:var(--lime);padding:0;position:relative;border:1px solid var(--receipt-border)}
+.receipt-header{background:var(--lime);padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
+.receipt-run-badge{display:flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#0a0a08;letter-spacing:.1em;text-transform:uppercase}
+.receipt-run-badge .status-dot{background:#0a0a08}
+.receipt-body{padding:16px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.9;min-height:220px}
+.t-line{display:flex;gap:10px;animation:slideIn .25s ease both;opacity:.9}
+.t-line.ok .t-st{color:var(--lime)}.t-line.proc .t-st{color:#FFCC00}.t-line.err .t-st{color:var(--red)}
+.t-st{flex-shrink:0;width:14px}.t-cnpj{color:#888;letter-spacing:.03em}.t-msg{color:#555;font-size:10px}
+@keyframes slideIn{from{opacity:0;transform:translateX(-6px)}to{opacity:.9;transform:translateX(0)}}
+.receipt-progress{border-top:1px solid #222;padding:12px 16px}
+.prog-row{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#555;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
+.prog-track{height:3px;background:#1a1a1a}
+.prog-fill{height:100%;background:var(--lime);transition:width .5s ease;box-shadow:0 0 8px rgba(200,255,0,.5)}
 
-/* ── TOP BAR ── */
-.topbar {
-  border-bottom: 2px solid var(--section-border);
-  padding: 20px 0;
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.topbar-doc-ref {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  color: var(--ink3);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.logo { display: flex; align-items: center; gap: 12px; }
-.logo-mark {
-  width: 36px; height: 36px;
-  background: var(--ink);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px; font-weight: 600;
-  color: var(--lime);
-  letter-spacing: -1px;
-}
-[data-theme="dark"] .logo-mark {
-  background: var(--lime);
-  color: #0a0a08;
-}
-.logo-text {
-  font-family: 'Barlow', sans-serif;
-  font-size: 15px; font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-}
-.logo-sub {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
-.topbar-right { display: flex; align-items: center; gap: 16px; }
-.status-stamp {
-  display: flex; align-items: center; gap: 7px;
-  border: 1.5px solid var(--green);
-  padding: 5px 12px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--green);
-  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
-}
-.status-dot {
-  width: 5px; height: 5px;
-  background: var(--green); border-radius: 50%;
-  animation: blink 1.8s ease infinite;
-}
-@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-.ver-badge {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  letter-spacing: 0.1em; text-transform: uppercase;
-  background: var(--paper2);
-  border: 1px solid var(--border-light);
-  padding: 5px 10px;
-}
+/* ══ SECTION RULE ══ */
+.section-rule{display:flex;align-items:center;gap:0;margin:56px 0 40px;border-top:2px solid var(--section-border);padding-top:12px;animation:fadeUp .45s .1s ease both;opacity:0;animation-fill-mode:both}
+.section-rule-label{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:.08em;color:var(--ink);flex:1}
+.section-rule-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.12em;text-transform:uppercase}
 
-/* ── HERO BAND ── */
-.hero-band {
-  border-bottom: 2px solid var(--section-border);
-  padding: 56px 0 0;
-  overflow: hidden; position: relative;
-}
-.hero-band::before {
-  content: 'DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS ·';
-  position: absolute; top: 12px; left: 0; right: 0;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 13px; letter-spacing: 0.2em;
-  color: var(--border-light);
-  white-space: nowrap; overflow: hidden;
-  opacity: 0.5;
-}
-.hero-inner {
-  display: grid; grid-template-columns: 1fr 440px;
-  gap: 0; align-items: end;
-}
-.hero-left {
-  padding-bottom: 40px;
-  border-right: 2px solid var(--section-border);
-  padding-right: 48px;
-}
-.hero-tag {
-  display: inline-block;
-  background: var(--lime); color: #0a0a08;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 4px 10px; margin-bottom: 24px;
-}
-[data-theme="light"] .hero-tag { color: var(--ink); }
-.hero-title {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(5rem, 8vw, 9rem);
-  line-height: 0.92; letter-spacing: -0.02em;
-  color: var(--ink); margin-bottom: 8px;
-}
-.hero-title .accent { color: var(--ink); -webkit-text-stroke: 0; }
-.hero-title .outline { -webkit-text-stroke: 2px var(--ink); color: transparent; }
-.hero-subtitle {
-  font-size: 18px; color: var(--ink2);
-  line-height: 1.6; max-width: 440px;
-  margin-bottom: 40px; font-weight: 400;
-}
-.hero-subtitle strong { font-weight: 700; color: var(--ink); }
-.hero-stats { display: flex; gap: 0; border-top: 1.5px solid var(--border-light); }
-.hero-stat {
-  flex: 1; padding: 16px 0 0;
-  border-right: 1.5px solid var(--border-light);
-  padding-right: 20px; margin-right: 20px;
-}
-.hero-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
-.hero-stat-num {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 42px; line-height: 1;
-  color: var(--ink); letter-spacing: 0.01em;
-}
-.hero-stat-num.hi { color: var(--green); }
-.hero-stat-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px;
-}
+/* ══ BILLING ══ */
+.billing-wrap{display:flex;align-items:center;gap:0;margin-bottom:32px;border:1.5px solid var(--section-border)}
+.billing-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;border-right:1.5px solid var(--section-border);white-space:nowrap;background:var(--paper2)}
+.billing-tabs{display:flex;flex:1;position:relative}
+.billing-tab-slider{position:absolute;top:0;bottom:0;background:var(--tab-active-bg);transition:left .2s cubic-bezier(.4,0,.2,1),width .2s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:0}
+.billing-cycle-btn{flex:1;padding:10px 8px;background:transparent;border:none;border-right:1.5px solid var(--section-border);color:var(--ink3);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;cursor:pointer;text-transform:uppercase;position:relative;z-index:1;transition:color .15s}
+.billing-cycle-btn:last-child{border-right:none}
+.billing-cycle-btn.active{color:var(--tab-active-color)}
+.billing-cycle-btn:hover:not(.active){color:var(--ink);background:var(--tab-hover)}
+.discount-badge{display:inline-block;background:var(--discount-badge-bg);color:var(--discount-badge-color);font-size:8px;font-weight:700;padding:1px 4px;margin-left:3px;letter-spacing:.05em;position:relative;z-index:1}
+.billing-cycle-btn.active .discount-badge{background:var(--discount-badge-active-bg);color:var(--discount-badge-active-color)}
 
-/* ── RECEIPT PANEL ── */
-.hero-right { padding-left: 40px; padding-bottom: 40px; }
-.receipt-panel {
-  background: var(--receipt-bg);
-  color: var(--lime); padding: 0; position: relative;
-  border: 1px solid var(--receipt-border);
-}
-.receipt-header {
-  background: var(--lime); padding: 10px 16px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.receipt-run-badge {
-  display: flex; align-items: center; gap: 5px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; font-weight: 600;
-  color: #0a0a08;
-  letter-spacing: 0.1em; text-transform: uppercase;
-}
-.receipt-run-badge .status-dot { background: #0a0a08; }
-.receipt-body {
-  padding: 16px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px; line-height: 1.9;
-  min-height: 220px;
-}
-.t-line { display: flex; gap: 10px; animation: slideIn 0.25s ease both; opacity: 0.9; }
-.t-line.ok .t-st { color: var(--lime); }
-.t-line.proc .t-st { color: #FFCC00; }
-.t-line.err .t-st { color: var(--red); }
-.t-st { flex-shrink: 0; width: 14px; }
-.t-cnpj { color: #888; letter-spacing: 0.03em; }
-.t-msg { color: #555; font-size: 10px; }
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(-6px); }
-  to { opacity: 0.9; transform: translateX(0); }
-}
-.receipt-progress { border-top: 1px solid #222; padding: 12px 16px; }
-.prog-row {
-  display: flex; justify-content: space-between;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; color: #555;
-  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px;
-}
-.prog-track { height: 3px; background: #1a1a1a; }
-.prog-fill {
-  height: 100%; background: var(--lime);
-  transition: width 0.5s ease;
-  box-shadow: 0 0 8px rgba(200,255,0,0.5);
-}
+/* ══ PLANS ══ */
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--section-border);animation:fadeUp .45s .15s ease both;opacity:0;animation-fill-mode:both}
+.plans-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--section-border);border-top:none;animation:fadeUp .45s .15s ease both;opacity:0;animation-fill-mode:both}
+.plan-card{position:relative;padding:20px 18px 18px;cursor:pointer;transition:background .12s;border-right:1.5px solid var(--section-border);overflow:hidden;background:var(--card-bg)}
+.plans .plan-card:last-child,.plans-row2 .plan-card:last-child{border-right:none}
+.plan-card:hover{background:var(--card-hover)}
+.plan-card.selected{background:var(--card-selected-bg) !important;color:var(--card-selected-color)}
+.plan-card::after{content:'';position:absolute;bottom:0;right:0;width:40px;height:100%;background:repeating-linear-gradient(90deg,transparent 0px,transparent 1px,rgba(128,128,128,.04) 1px,rgba(128,128,128,.04) 2px,transparent 2px,transparent 4px);pointer-events:none;opacity:.6;transition:opacity .12s}
+.plan-card.selected::after{opacity:0}
+.plan-check{position:absolute;top:12px;right:12px;width:18px;height:18px;border:1.5px solid var(--border-light);display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s}
+.plan-card.selected .plan-check{background:var(--card-selected-check-bg);border-color:var(--card-selected-check-bg);color:var(--card-selected-check-color);font-weight:700}
+.plan-code{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--border-light);transition:color .12s,border-color .12s}
+.plan-card.selected .plan-code{color:var(--card-selected-sub);border-color:var(--card-selected-dim)}
+.popular-tag{display:inline-block;background:var(--popular-tag-bg);color:var(--popular-tag-color);font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;margin-bottom:6px;box-shadow:0 0 0 1px var(--lime)}
+.plan-card.selected .popular-tag{background:var(--popular-tag-selected-bg);color:var(--popular-tag-selected-color);box-shadow:none}
+.custom-tag{display:inline-block;background:var(--custom-tag-bg);color:var(--custom-tag-color);font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;margin-bottom:6px}
+.plan-card.selected .custom-tag{background:var(--card-selected-check-bg);color:var(--card-selected-check-color)}
+.plan-name{font-family:'Bebas Neue',cursive;font-size:30px;color:var(--ink);letter-spacing:.04em;line-height:1;margin-bottom:4px;transition:color .12s}
+.plan-card.selected .plan-name{color:var(--card-selected-color)}
+.plan-limit{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);margin-bottom:14px;letter-spacing:.04em;transition:color .12s}
+.plan-card.selected .plan-limit{color:var(--card-selected-sub)}
+.plan-price{font-family:'Bebas Neue',cursive;font-size:38px;color:var(--ink);letter-spacing:-.01em;line-height:1;transition:color .12s}
+.plan-card.selected .plan-price{color:var(--card-selected-color)}
+.plan-card.personalizado .plan-price{font-size:30px}
+.plan-price span{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:400;color:var(--ink3);letter-spacing:0}
+.plan-card.selected .plan-price span{color:var(--card-selected-dim)}
+.plan-billing{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);margin-top:4px;letter-spacing:.04em;transition:color .12s}
+.plan-card.selected .plan-billing{color:var(--card-selected-sub)}
+.plan-overage{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink3);margin-top:3px}
+.plan-card.selected .plan-overage{color:var(--card-selected-dim)}
+.plan-savings{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);margin-top:4px;font-weight:500}
+.plan-card.selected .plan-savings{color:var(--card-selected-color)}
+.plan-per-cnpj{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink3);margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-light);transition:color .12s,border-color .12s}
+.plan-card.selected .plan-per-cnpj{color:var(--card-selected-dim);border-color:var(--card-selected-dim)}
 
-/* ── SECTION RULE ── */
-.section-rule {
-  display: flex; align-items: center; gap: 0;
-  margin: 56px 0 40px;
-  border-top: 2px solid var(--section-border);
-  padding-top: 12px;
-}
-.section-rule-label {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 28px; letter-spacing: 0.08em;
-  color: var(--ink); flex: 1;
-}
-.section-rule-num {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  letter-spacing: 0.12em; text-transform: uppercase;
-}
+/* ══ CHECKOUT ══ */
+.checkout-grid{display:grid;grid-template-columns:1fr 380px;gap:0;margin-bottom:80px;border:2px solid var(--section-border);animation:fadeUp .45s .2s ease both;opacity:0;animation-fill-mode:both}
+.checkout-left{padding:40px;border-right:2px solid var(--section-border);background:var(--checkout-left-bg)}
+.checkout-heading{font-family:'Bebas Neue',cursive;font-size:32px;letter-spacing:.06em;color:var(--ink);margin-bottom:32px;padding-bottom:16px;border-bottom:1.5px solid var(--border-light)}
+.form-group{margin-bottom:20px}
+label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:8px;font-weight:500}
+.label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.label-row label{margin-bottom:0}
+.label-optional{font-size:10px;color:var(--ink3);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+input{width:100%;padding:12px 14px;background:var(--input-bg);border:1.5px solid var(--input-border);border-radius:0;color:var(--ink);font-size:14px;font-family:'Barlow',sans-serif;font-weight:500;transition:border-color .12s,box-shadow .12s}
+input::placeholder{color:var(--ink3);font-weight:400}
+input:focus{outline:none;border-color:var(--lime);box-shadow:3px 3px 0 var(--input-focus-shadow)}
+input.erro-campo{border-color:var(--red)}
+input.ok-campo{border-color:var(--green)}
+.doc-tabs{display:flex;gap:0;margin-bottom:10px;border:1.5px solid var(--input-border)}
+.doc-tab{flex:1;padding:9px;background:var(--doc-tab-bg);border:none;border-right:1.5px solid var(--doc-tab-border);color:var(--ink3);font-size:11px;font-family:'IBM Plex Mono',monospace;font-weight:600;letter-spacing:.1em;cursor:pointer;text-align:center;transition:all .1s;text-transform:uppercase}
+.doc-tab:last-child{border-right:none}
+.doc-tab.active{background:var(--ink);color:var(--lime)}
+[data-theme="dark"] .doc-tab.active{background:var(--lime);color:#0a0a08}
+hr.divider{border:none;border-top:1.5px solid var(--border-light);margin:24px 0}
+.erro{color:var(--red);font-size:12px;margin-top:8px;min-height:20px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
+.notice{padding:14px 16px;font-size:13px;line-height:1.65;border-left:3px solid}
+.notice-gold{background:var(--notice-gold-bg);border-color:var(--notice-gold-border);color:var(--notice-gold-color)}
+.notice-gold strong{color:var(--notice-gold-strong)}
+.notice-purple{background:var(--notice-purple-bg);border-color:var(--notice-purple-border);color:var(--notice-purple-color)}
+.notice-purple strong{color:var(--notice-purple-strong)}
+.notice-warn{background:var(--notice-warn-bg);border-color:var(--red);color:var(--ink2)}
+.aviso-email .link{color:var(--link-color);font-weight:600;text-decoration:underline;cursor:pointer}
+.order-summary{padding:40px 32px;display:flex;flex-direction:column;background:var(--checkout-summary-bg)}
+.order-summary-title{font-family:'Bebas Neue',cursive;font-size:26px;letter-spacing:.06em;color:var(--ink);margin-bottom:24px;padding-bottom:14px;border-bottom:1.5px solid var(--border-light)}
+.plano-selecionado{font-size:13px;color:var(--ink2);padding:12px 0;border-bottom:1.5px solid var(--border-light);margin-bottom:16px}
+.plano-selecionado strong{display:block;font-family:'IBM Plex Mono',monospace;color:var(--ink);font-weight:600;font-size:12px;margin-top:4px}
+[data-theme="dark"] .plano-selecionado strong{color:var(--lime)}
+.order-features{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink2);line-height:2.1;letter-spacing:.03em;flex:1}
+.order-features .ok{color:var(--green);margin-right:6px}
+.btn-comprar{width:100%;padding:16px;background:var(--btn-buy-bg);border:none;color:var(--btn-buy-color);font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:.12em;cursor:pointer;transition:all .12s;margin-top:10px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-comprar::after{content:'→';font-family:'Barlow',sans-serif;font-size:20px;transition:transform .2s}
+.btn-comprar:hover:not(:disabled){background:var(--btn-buy-hover-bg);box-shadow:4px 4px 0 var(--btn-buy-hover-shadow);transform:translate(-2px,-2px)}
+.btn-comprar:hover::after{transform:translateX(4px)}
+.btn-comprar:disabled{background:var(--btn-buy-disabled-bg);color:var(--ink3);cursor:not-allowed}
+.btn-comprar:disabled::after{display:none}
+.btn-wpp{display:block;margin-top:14px;width:100%;padding:13px;background:#25D366;border:none;color:white;font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:.1em;cursor:pointer;text-align:center;text-decoration:none;transition:all .12s}
+.btn-wpp:hover{background:#1ebe5d;box-shadow:3px 3px 0 #000;transform:translate(-1px,-1px)}
+.btn-sec{width:100%;padding:12px;background:transparent;border:1.5px solid var(--btn-sec-border);color:var(--ink2);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .12s;margin-top:8px}
+.btn-sec:hover{border-color:var(--btn-sec-hover-border);color:var(--ink);background:var(--btn-sec-hover-bg)}
+[data-theme="dark"] .btn-sec:hover{color:var(--lime)}
+.link{color:var(--link-color);text-decoration:underline;cursor:pointer;font-size:13px;font-weight:500}
+.seguro{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--ink3);font-size:11px;font-family:'IBM Plex Mono',monospace;margin-top:16px;letter-spacing:.04em}
+.aceite-wrap{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.aceite-wrap input[type="checkbox"]{width:15px;height:15px;margin-top:3px;flex-shrink:0;accent-color:var(--lime);border-radius:0}
+.aceite-wrap label{font-size:13px;color:var(--ink2);cursor:pointer;text-transform:none;letter-spacing:0;font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6}
+.aceite-wrap a{color:var(--link-color);font-weight:600}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.aberto{display:flex}
+.modal{background:var(--modal-bg);border:2px solid var(--section-border);padding:36px;max-width:420px;width:90%;position:relative;animation:modalIn .2s ease both;box-shadow:8px 8px 0 var(--modal-shadow)}
+@keyframes modalIn{from{opacity:0;transform:scale(.97) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal h3{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:.06em;color:var(--ink);margin-bottom:8px}
+.modal p{color:var(--ink2);font-size:14px;margin-bottom:24px;line-height:1.65}
+.modal-btns{display:flex;gap:8px;margin-top:16px}
+.modal-btns button{flex:1;margin:0 !important}
+.modal .btn-comprar{font-size:16px;padding:12px}
+.modal .btn-comprar::after{font-size:16px}
+.page-footer{text-align:center;padding:28px 0 40px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);border-top:2px solid var(--footer-border)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── BILLING CYCLE ── */
-.billing-wrap {
-  display: flex; align-items: center; gap: 0;
-  margin-bottom: 32px;
-  border: 1.5px solid var(--section-border);
-}
-.billing-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 10px 16px;
-  border-right: 1.5px solid var(--section-border);
-  white-space: nowrap;
-  background: var(--paper2);
-}
-.billing-tabs { display: flex; flex: 1; position: relative; }
-.billing-tab-slider {
-  position: absolute; top: 0; bottom: 0;
-  background: var(--tab-active-bg);
-  transition: left 0.2s cubic-bezier(.4,0,.2,1), width 0.2s cubic-bezier(.4,0,.2,1);
-  pointer-events: none; z-index: 0;
-}
-.billing-cycle-btn {
-  flex: 1; padding: 10px 8px;
-  background: transparent; border: none;
-  border-right: 1.5px solid var(--section-border);
-  color: var(--ink3);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.06em; cursor: pointer;
-  text-transform: uppercase; position: relative; z-index: 1;
-  transition: color 0.15s;
-}
-.billing-cycle-btn:last-child { border-right: none; }
-.billing-cycle-btn.active { color: var(--tab-active-color); }
-.billing-cycle-btn:hover:not(.active) { color: var(--ink); background: var(--tab-hover); }
-.discount-badge {
-  display: inline-block;
-  background: var(--discount-badge-bg);
-  color: var(--discount-badge-color);
-  font-size: 8px; font-weight: 700;
-  padding: 1px 4px; margin-left: 3px;
-  letter-spacing: 0.05em; position: relative; z-index: 1;
-}
-.billing-cycle-btn.active .discount-badge {
-  background: var(--discount-badge-active-bg);
-  color: var(--discount-badge-active-color);
-}
-
-/* ── PLAN GRID ── */
-.plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 2px solid var(--section-border); }
-.plans-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid var(--section-border); border-top: none; }
-
-/* ── PLAN CARD ── */
-.plan-card {
-  position: relative; padding: 20px 18px 18px;
-  cursor: pointer; transition: background 0.12s;
-  border-right: 1.5px solid var(--section-border);
-  overflow: hidden;
-  background: var(--card-bg);
-}
-.plans .plan-card:last-child,
-.plans-row2 .plan-card:last-child { border-right: none; }
-.plan-card:hover { background: var(--card-hover); }
-.plan-card.selected {
-  background: var(--card-selected-bg) !important;
-  color: var(--card-selected-color);
-}
-.plan-card.personalizado.selected { background: var(--card-selected-bg) !important; color: var(--card-selected-color); }
-
-.plan-card::after {
-  content: '';
-  position: absolute; bottom: 0; right: 0;
-  width: 40px; height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0px, transparent 1px,
-    rgba(128,128,128,0.04) 1px, rgba(128,128,128,0.04) 2px,
-    transparent 2px, transparent 4px
-  );
-  pointer-events: none; opacity: 0.6; transition: opacity 0.12s;
-}
-.plan-card.selected::after { opacity: 0; }
-
-.plan-check {
-  position: absolute; top: 12px; right: 12px;
-  width: 18px; height: 18px;
-  border: 1.5px solid var(--border-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 9px; transition: all 0.15s;
-}
-.plan-card.selected .plan-check {
-  background: var(--card-selected-check-bg);
-  border-color: var(--card-selected-check-bg);
-  color: var(--card-selected-check-color);
-  font-weight: 700;
-}
-
-.plan-code {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink3); margin-bottom: 10px; padding-bottom: 8px;
-  border-bottom: 1px dashed var(--border-light);
-  transition: color 0.12s, border-color 0.12s;
-}
-.plan-card.selected .plan-code {
-  color: var(--card-selected-sub);
-  border-color: var(--card-selected-dim);
-}
-
-.popular-tag {
-  display: inline-block;
-  background: var(--popular-tag-bg);
-  color: var(--popular-tag-color);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 2px 6px; margin-bottom: 6px;
-  box-shadow: 0 0 0 1px var(--lime);
-}
-.plan-card.selected .popular-tag {
-  background: var(--popular-tag-selected-bg);
-  color: var(--popular-tag-selected-color);
-  box-shadow: none;
-}
-
-.custom-tag {
-  display: inline-block;
-  background: var(--custom-tag-bg);
-  color: var(--custom-tag-color);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 2px 6px; margin-bottom: 6px;
-}
-.plan-card.selected .custom-tag {
-  background: var(--card-selected-check-bg);
-  color: var(--card-selected-check-color);
-}
-
-.plan-name {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 30px; color: var(--ink);
-  letter-spacing: 0.04em; line-height: 1;
-  margin-bottom: 4px; transition: color 0.12s;
-}
-.plan-card.selected .plan-name { color: var(--card-selected-color); }
-
-.plan-limit {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  margin-bottom: 14px; letter-spacing: 0.04em; transition: color 0.12s;
-}
-.plan-card.selected .plan-limit { color: var(--card-selected-sub); }
-
-.plan-price {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 38px; color: var(--ink);
-  letter-spacing: -0.01em; line-height: 1; transition: color 0.12s;
-}
-.plan-card.selected .plan-price { color: var(--card-selected-color); }
-.plan-card.personalizado .plan-price { font-size: 30px; }
-.plan-price span {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px; font-weight: 400;
-  color: var(--ink3); letter-spacing: 0;
-}
-.plan-card.selected .plan-price span { color: var(--card-selected-dim); }
-
-.plan-billing {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--ink3);
-  margin-top: 4px; letter-spacing: 0.04em; transition: color 0.12s;
-}
-.plan-card.selected .plan-billing { color: var(--card-selected-sub); }
-
-.plan-overage {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; color: var(--ink3); margin-top: 3px;
-}
-.plan-card.selected .plan-overage { color: var(--card-selected-dim); }
-
-.plan-savings {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--green);
-  margin-top: 4px; font-weight: 500;
-}
-.plan-card.selected .plan-savings { color: var(--card-selected-color); }
-
-.plan-per-cnpj {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; color: var(--ink3);
-  margin-top: 8px; padding-top: 8px;
-  border-top: 1px dashed var(--border-light);
-  transition: color 0.12s, border-color 0.12s;
-}
-.plan-card.selected .plan-per-cnpj {
-  color: var(--card-selected-dim);
-  border-color: var(--card-selected-dim);
-}
-
-/* ── CHECKOUT SECTION ── */
-.checkout-grid {
-  display: grid; grid-template-columns: 1fr 380px;
-  gap: 0; margin-bottom: 80px;
-  border: 2px solid var(--section-border);
-}
-.checkout-left {
-  padding: 40px;
-  border-right: 2px solid var(--section-border);
-  background: var(--checkout-left-bg);
-}
-.checkout-heading {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 32px; letter-spacing: 0.06em;
-  color: var(--ink); margin-bottom: 32px; padding-bottom: 16px;
-  border-bottom: 1.5px solid var(--border-light);
-}
-.form-group { margin-bottom: 20px; }
-label {
-  display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--ink2);
-  margin-bottom: 8px; font-weight: 500;
-}
-.label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.label-row label { margin-bottom: 0; }
-.label-optional {
-  font-size: 10px; color: var(--ink3);
-  font-family: 'IBM Plex Mono', monospace;
-  text-transform: uppercase; letter-spacing: 0.1em;
-}
-input {
-  width: 100%; padding: 12px 14px;
-  background: var(--input-bg);
-  border: 1.5px solid var(--input-border);
-  border-radius: 0; color: var(--ink);
-  font-size: 14px; font-family: 'Barlow', sans-serif;
-  font-weight: 500;
-  transition: border-color 0.12s, box-shadow 0.12s;
-}
-input::placeholder { color: var(--ink3); font-weight: 400; }
-input:focus {
-  outline: none;
-  border-color: var(--lime);
-  box-shadow: 3px 3px 0 var(--input-focus-shadow);
-}
-input.erro-campo { border-color: var(--red); }
-input.ok-campo { border-color: var(--green); }
-
-.doc-tabs {
-  display: flex; gap: 0; margin-bottom: 10px;
-  border: 1.5px solid var(--input-border);
-}
-.doc-tab {
-  flex: 1; padding: 9px;
-  background: var(--doc-tab-bg);
-  border: none; border-right: 1.5px solid var(--doc-tab-border);
-  color: var(--ink3); font-size: 11px;
-  font-family: 'IBM Plex Mono', monospace; font-weight: 600;
-  letter-spacing: 0.1em; cursor: pointer;
-  text-align: center; transition: all 0.1s; text-transform: uppercase;
-}
-.doc-tab:last-child { border-right: none; }
-.doc-tab.active { background: var(--ink); color: var(--lime); }
-[data-theme="dark"] .doc-tab.active { background: var(--lime); color: #0a0a08; }
-
-hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 24px 0; }
-.erro {
-  color: var(--red); font-size: 12px; margin-top: 8px; min-height: 20px;
-  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.04em;
-}
-
-/* ── NOTICE BOXES ── */
-.notice { padding: 14px 16px; font-size: 13px; line-height: 1.65; border-left: 3px solid; }
-.notice-gold {
-  background: var(--notice-gold-bg);
-  border-color: var(--notice-gold-border);
-  color: var(--notice-gold-color);
-}
-.notice-gold strong { color: var(--notice-gold-strong); }
-.notice-purple {
-  background: var(--notice-purple-bg);
-  border-color: var(--notice-purple-border);
-  color: var(--notice-purple-color);
-}
-.notice-purple strong { color: var(--notice-purple-strong); }
-.notice-warn {
-  background: var(--notice-warn-bg);
-  border-color: var(--red);
-  color: var(--ink2);
-}
-.aviso-email .link { color: var(--link-color); font-weight: 600; text-decoration: underline; cursor: pointer; }
-
-/* ── ORDER SUMMARY ── */
-.order-summary {
-  padding: 40px 32px; display: flex;
-  flex-direction: column;
-  background: var(--checkout-summary-bg);
-}
-.order-summary-title {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 26px; letter-spacing: 0.06em;
-  color: var(--ink); margin-bottom: 24px; padding-bottom: 14px;
-  border-bottom: 1.5px solid var(--border-light);
-}
-.plano-selecionado {
-  font-size: 13px; color: var(--ink2);
-  padding: 12px 0;
-  border-bottom: 1.5px solid var(--border-light);
-  margin-bottom: 16px;
-}
-.plano-selecionado strong {
-  display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--ink); font-weight: 600; font-size: 12px; margin-top: 4px;
-}
-[data-theme="dark"] .plano-selecionado strong { color: var(--lime); }
-.order-features {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; color: var(--ink2);
-  line-height: 2.1; letter-spacing: 0.03em; flex: 1;
-}
-.order-features .ok { color: var(--green); margin-right: 6px; }
-
-/* ── BUTTONS ── */
-.btn-comprar {
-  width: 100%; padding: 16px;
-  background: var(--btn-buy-bg);
-  border: none; color: var(--btn-buy-color);
-  font-family: 'Bebas Neue', cursive;
-  font-size: 22px; letter-spacing: 0.12em;
-  cursor: pointer; transition: all 0.12s;
-  margin-top: 10px; position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-.btn-comprar::after {
-  content: '→'; font-family: 'Barlow', sans-serif;
-  font-size: 20px; transition: transform 0.2s;
-}
-.btn-comprar:hover:not(:disabled) {
-  background: var(--btn-buy-hover-bg);
-  box-shadow: 4px 4px 0 var(--btn-buy-hover-shadow);
-  transform: translate(-2px, -2px);
-}
-.btn-comprar:hover::after { transform: translateX(4px); }
-.btn-comprar:disabled {
-  background: var(--btn-buy-disabled-bg);
-  color: var(--ink3); cursor: not-allowed;
-}
-.btn-comprar:disabled::after { display: none; }
-
-.btn-wpp {
-  display: block; margin-top: 14px; width: 100%; padding: 13px;
-  background: #25D366; border: none; color: white;
-  font-family: 'Bebas Neue', cursive; font-size: 18px;
-  letter-spacing: 0.1em; cursor: pointer;
-  text-align: center; text-decoration: none; transition: all 0.12s;
-}
-.btn-wpp:hover { background: #1ebe5d; box-shadow: 3px 3px 0 #000; transform: translate(-1px,-1px); }
-
-.btn-sec {
-  width: 100%; padding: 12px;
-  background: transparent;
-  border: 1.5px solid var(--btn-sec-border);
-  color: var(--ink2);
-  font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: all 0.12s; margin-top: 8px;
-}
-.btn-sec:hover {
-  border-color: var(--btn-sec-hover-border);
-  color: var(--ink);
-  background: var(--btn-sec-hover-bg);
-}
-[data-theme="dark"] .btn-sec:hover { color: var(--lime); }
-
-.link { color: var(--link-color); text-decoration: underline; cursor: pointer; font-size: 13px; font-weight: 500; }
-
-.seguro {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  color: var(--ink3); font-size: 11px;
-  font-family: 'IBM Plex Mono', monospace;
-  margin-top: 16px; letter-spacing: 0.04em;
-}
-
-/* ── CHECKBOX ── */
-.aceite-wrap { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
-.aceite-wrap input[type="checkbox"] {
-  width: 15px; height: 15px; margin-top: 3px; flex-shrink: 0;
-  accent-color: var(--lime); border-radius: 0;
-}
-.aceite-wrap label {
-  font-size: 13px; color: var(--ink2); cursor: pointer;
-  text-transform: none; letter-spacing: 0;
-  font-family: 'Barlow', sans-serif; font-weight: 400; line-height: 1.6;
-}
-.aceite-wrap a { color: var(--link-color); font-weight: 600; }
-
-/* ── MODAL ── */
-.modal-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.85); z-index: 200;
-  align-items: center; justify-content: center;
-  backdrop-filter: blur(4px);
-}
-.modal-overlay.aberto { display: flex; }
-.modal {
-  background: var(--modal-bg);
-  border: 2px solid var(--section-border);
-  padding: 36px; max-width: 420px; width: 90%;
-  position: relative; animation: modalIn 0.2s ease both;
-  box-shadow: 8px 8px 0 var(--modal-shadow);
-}
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.97) translateY(6px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-.modal h3 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 28px; letter-spacing: 0.06em;
-  color: var(--ink); margin-bottom: 8px;
-}
-.modal p { color: var(--ink2); font-size: 14px; margin-bottom: 24px; line-height: 1.65; }
-.modal-btns { display: flex; gap: 8px; margin-top: 16px; }
-.modal-btns button { flex: 1; margin: 0 !important; }
-.modal .btn-comprar { font-size: 16px; padding: 12px; }
-.modal .btn-comprar::after { font-size: 16px; }
-
-/* ── FOOTER ── */
-.page-footer {
-  text-align: center; padding: 28px 0 40px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink3);
-  border-top: 2px solid var(--footer-border);
-}
-
-/* ── ENTRY ANIMATION ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-band { animation: fadeUp 0.45s ease both; }
-.section-rule { animation: fadeUp 0.45s 0.1s ease both; opacity: 0; animation-fill-mode: both; }
-.plans, .plans-row2 { animation: fadeUp 0.45s 0.15s ease both; opacity: 0; animation-fill-mode: both; }
-.checkout-grid { animation: fadeUp 0.45s 0.2s ease both; opacity: 0; animation-fill-mode: both; }
-
-/* ── RESPONSIVE ── */
-@media(max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-left { border-right: none; border-bottom: 2px solid var(--section-border); padding-right: 0; margin-bottom: 0; }
-  .hero-right { padding-left: 0; padding-top: 32px; }
-  .plans { grid-template-columns: repeat(2, 1fr); }
-  .plans-row2 { grid-template-columns: repeat(2, 1fr); }
-  .checkout-grid { grid-template-columns: 1fr; }
-  .checkout-left { border-right: none; border-bottom: 2px solid var(--section-border); }
-}
-@media(max-width: 640px) {
-  .page { padding: 0 20px; }
-  .hero-title { font-size: 5rem; }
-  .billing-wrap { flex-direction: column; align-items: stretch; }
-  .billing-label { border-right: none; border-bottom: 1.5px solid var(--section-border); }
-  .billing-cycle-btn { font-size: 10px; padding: 10px 4px; }
-  .plans { grid-template-columns: repeat(2, 1fr); }
-  .plans-row2 { grid-template-columns: 1fr 1fr; }
-  .checkout-left { padding: 24px 20px; }
-  .order-summary { padding: 24px 20px; }
-  .theme-toggle { bottom: 16px; right: 16px; }
-}
-@media(max-width: 380px) {
-  .plans, .plans-row2 { grid-template-columns: 1fr; }
-}
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:2px solid var(--section-border);padding-right:0}.hero-right{padding-left:0;padding-top:32px}.plans{grid-template-columns:repeat(2,1fr)}.plans-row2{grid-template-columns:repeat(2,1fr)}.checkout-grid{grid-template-columns:1fr}.checkout-left{border-right:none;border-bottom:2px solid var(--section-border)}}
+@media(max-width:768px){.nav-inner{padding:0 20px}.nav-link{padding:0 12px;font-size:9px;gap:5px}.nav-dl{padding:0 16px}}
+@media(max-width:640px){.page{padding:0 20px}.hero-title{font-size:5rem}.billing-wrap{flex-direction:column;align-items:stretch}.billing-label{border-right:none;border-bottom:1.5px solid var(--section-border)}.billing-cycle-btn{font-size:10px;padding:10px 4px}.plans{grid-template-columns:repeat(2,1fr)}.plans-row2{grid-template-columns:1fr 1fr}.checkout-left{padding:24px 20px}.order-summary{padding:24px 20px}.theme-toggle{bottom:16px;right:16px}.nav-label{display:none}.nav-dl .nav-label{display:inline}}
+@media(max-width:380px){.plans,.plans-row2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- THEME TOGGLE -->
 <button class="theme-toggle" id="themeToggle" title="Alternar tema" aria-label="Alternar modo claro/escuro">☀️</button>
 
 <!-- MODAL -->
@@ -941,13 +233,46 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <input type="email" id="modal-email" placeholder="seuemail@exemplo.com">
     </div>
     <div id="modal-erro" class="erro"></div>
-    <div id="modal-sucesso" style="display:none; color:var(--green); font-size:12px; margin-top:8px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em;">✓ Email enviado — verifique sua caixa de entrada.</div>
+    <div id="modal-sucesso" style="display:none;color:var(--green);font-size:12px;margin-top:8px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;">✓ Email enviado — verifique sua caixa de entrada.</div>
     <div class="modal-btns">
       <button class="btn-sec" onclick="fecharModal()">Cancelar</button>
       <button class="btn-comprar" onclick="enviarRecuperacao()">Enviar link</button>
     </div>
   </div>
 </div>
+
+<!-- ══ NAVIGATION ══ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-brand">MeiQueResolve</span>
+    <div class="nav-links">
+      <a href="https://meiqueresolve.com/" class="nav-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 6.8L8 2l6 4.8V14H10.5v-3.5h-5V14H2V6.8z"/>
+        </svg>
+        <span class="nav-label">Início</span>
+      </a>
+      <a href="https://meiqueresolve.com/termos.html" class="nav-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="1.5" width="10" height="13" rx="1.5"/>
+          <line x1="5.5" y1="5.5" x2="10.5" y2="5.5"/>
+          <line x1="5.5" y1="8" x2="10.5" y2="8"/>
+          <line x1="5.5" y1="10.5" x2="8.5" y2="10.5"/>
+        </svg>
+        <span class="nav-label">Termos</span>
+      </a>
+      <a href="https://linktr.ee/downloaddotidocontador" class="nav-link nav-dl" target="_blank" rel="noopener">
+        <div class="nav-dl-pulse"></div>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2v9"/>
+          <path d="M5 8l3 3 3-3"/>
+          <path d="M3 13h10"/>
+        </svg>
+        <span class="nav-label">Baixar Extensão</span>
+      </a>
+    </div>
+  </div>
+</nav>
 
 <div class="page">
 
@@ -976,10 +301,19 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
           <span class="outline">TODOS</span><br>
           <span class="accent">OS DAS</span>
         </h1>
-        <p class="hero-subtitle" style="margin-top:16px;">
+        <p class="hero-subtitle">
           Sem planilhas. Sem portais lentos.<br>
           <strong>Todos os seus clientes MEI em segundos,</strong> direto no navegador.
         </p>
+
+        <a href="https://linktr.ee/downloaddotidocontador" class="hero-dl-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v13M7 12l5 5 5-5"/><line x1="4" y1="20" x2="20" y2="20"/>
+          </svg>
+          Baixar Extensão para Chrome
+        </a>
+        <div class="hero-dl-sub">Compatível com Google Chrome · Instalação gratuita</div>
+
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="hero-stat-num hi" id="stat-cnpjs">180+</div>
@@ -1002,7 +336,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
               <div class="status-dot"></div>
               MeiQueResolve.js · executando
             </div>
-            <div class="receipt-run-badge" style="font-size:9px; opacity:0.5;">DADOS SIMULADOS</div>
+            <div class="receipt-run-badge" style="font-size:9px;opacity:.5">DADOS SIMULADOS</div>
           </div>
           <div class="receipt-body" id="terminal-output"></div>
           <div class="receipt-progress">
@@ -1024,7 +358,6 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
     <div class="section-rule-label">Escolha seu plano</div>
     <div class="section-rule-num">Selecione o ciclo de cobrança</div>
   </div>
-
   <div class="billing-wrap">
     <div class="billing-label">Ciclo</div>
     <div class="billing-tabs" id="billing-tabs">
@@ -1038,9 +371,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
 
   <!-- PLANS -->
   <div class="plans" id="plans-container">
-    <div class="plan-card" data-slug="starter"
-      data-price-monthly="19,90" data-price-quarterly="53,73" data-price-semiannual="95,52" data-price-annual="167,16"
-      data-limit="20" onclick="selecionarPlano(this)">
+    <div class="plan-card" data-slug="starter" data-price-monthly="19,90" data-price-quarterly="53,73" data-price-semiannual="95,52" data-price-annual="167,16" data-limit="20" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-001 · STARTER</div>
       <div class="plan-name">Starter</div>
@@ -1048,9 +379,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-price">R$ 19<span>,90</span></div>
       <div class="plan-billing">por mês</div>
     </div>
-    <div class="plan-card" data-slug="basic"
-      data-price-monthly="39,90" data-price-quarterly="107,73" data-price-semiannual="191,52" data-price-annual="335,16"
-      data-limit="50" onclick="selecionarPlano(this)">
+    <div class="plan-card" data-slug="basic" data-price-monthly="39,90" data-price-quarterly="107,73" data-price-semiannual="191,52" data-price-annual="335,16" data-limit="50" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-002 · BASIC</div>
       <div class="plan-name">Basic</div>
@@ -1058,9 +387,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-price">R$ 39<span>,90</span></div>
       <div class="plan-billing">por mês</div>
     </div>
-    <div class="plan-card" data-slug="pro"
-      data-price-monthly="49,90" data-price-quarterly="134,73" data-price-semiannual="239,52" data-price-annual="419,16"
-      data-limit="70" onclick="selecionarPlano(this)">
+    <div class="plan-card" data-slug="pro" data-price-monthly="49,90" data-price-quarterly="134,73" data-price-semiannual="239,52" data-price-annual="419,16" data-limit="70" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-003 · PRO</div>
       <div class="popular-tag">★ Mais popular</div>
@@ -1069,9 +396,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-price">R$ 49<span>,90</span></div>
       <div class="plan-billing">por mês</div>
     </div>
-    <div class="plan-card" data-slug="advanced"
-      data-price-monthly="59,90" data-price-quarterly="161,73" data-price-semiannual="287,52" data-price-annual="503,16"
-      data-limit="100" onclick="selecionarPlano(this)">
+    <div class="plan-card" data-slug="advanced" data-price-monthly="59,90" data-price-quarterly="161,73" data-price-semiannual="287,52" data-price-annual="503,16" data-limit="100" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-004 · ADVANCED</div>
       <div class="plan-name">Advanced</div>
@@ -1080,11 +405,8 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-billing">por mês</div>
     </div>
   </div>
-
   <div class="plans-row2">
-    <div class="plan-card" data-slug="business"
-      data-price-monthly="99,90" data-price-quarterly="269,73" data-price-semiannual="479,52" data-price-annual="839,16"
-      data-limit="200" onclick="selecionarPlano(this)">
+    <div class="plan-card" data-slug="business" data-price-monthly="99,90" data-price-quarterly="269,73" data-price-semiannual="479,52" data-price-annual="839,16" data-limit="200" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-005 · BUSINESS</div>
       <div class="plan-name">Business</div>
@@ -1092,9 +414,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-price">R$ 99<span>,90</span></div>
       <div class="plan-billing">por mês</div>
     </div>
-    <div class="plan-card" data-slug="enterprise"
-      data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16"
-      data-limit="500" onclick="selecionarPlano(this)">
+    <div class="plan-card" data-slug="enterprise" data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16" data-limit="500" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-006 · ENTERPRISE</div>
       <div class="plan-name">Enterprise</div>
@@ -1102,9 +422,7 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
       <div class="plan-price">R$ 199<span>,90</span></div>
       <div class="plan-billing">por mês</div>
     </div>
-    <div class="plan-card personalizado" data-slug="personalizado"
-      data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16"
-      data-limit="9999" onclick="selecionarPlano(this)">
+    <div class="plan-card personalizado" data-slug="personalizado" data-price-monthly="199,90" data-price-quarterly="539,73" data-price-semiannual="959,52" data-price-annual="1.679,16" data-limit="9999" onclick="selecionarPlano(this)">
       <div class="plan-check"></div>
       <div class="plan-code">COD-007 · CUSTOM</div>
       <div class="custom-tag">✦ Sob medida</div>
@@ -1117,32 +435,25 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
   </div>
 
   <!-- FORM -->
-  <div class="section-rule" style="margin-top: 56px;">
+  <div class="section-rule" style="margin-top:56px">
     <div class="section-rule-label">Complete o cadastro</div>
     <div class="section-rule-num">Dados para emissão da nota fiscal</div>
   </div>
-
   <div class="checkout-grid">
     <div class="checkout-left">
       <div class="checkout-heading">Seus dados</div>
-
-      <div id="aviso-personalizado" class="notice notice-purple" style="display:none; margin-bottom:24px;">
+      <div id="aviso-personalizado" class="notice notice-purple" style="display:none;margin-bottom:24px">
         <strong>✦ Plano Personalizado — 501+ CNPJs</strong><br><br>
         Este plano é configurado sob medida para seu volume.<br><br>
         💰 <span id="custom-aviso-preco"><strong>R$199,90/mês</strong> base + <strong>R$0,30/CNPJ</strong> acima de 500</span><br>
         Entre em contato pelo WhatsApp:
-        <a class="btn-wpp" href="https://wa.me/5543999042115?text=Olá!%20Quero%20contratar%20o%20Plano%20Personalizado%20do%20MeiQueResolve%20(501%2B%20CNPJs)" target="_blank">
-          💬 Falar no WhatsApp
-        </a>
+        <a class="btn-wpp" href="https://wa.me/5543999042115?text=Olá!%20Quero%20contratar%20o%20Plano%20Personalizado%20do%20MeiQueResolve%20(501%2B%20CNPJs)" target="_blank">💬 Falar no WhatsApp</a>
       </div>
-
-      <div id="aviso-email-existente" class="notice notice-warn aviso-email" style="display:none; margin-bottom:18px;">
+      <div id="aviso-email-existente" class="notice notice-warn aviso-email" style="display:none;margin-bottom:18px">
         ⚠ Este email já possui uma conta.<br>
-        <span class="link" onclick="abrirModal()">Esqueceu sua senha?</span>
-        &nbsp;·&nbsp;
+        <span class="link" onclick="abrirModal()">Esqueceu sua senha?</span> &nbsp;·&nbsp;
         <span class="link" onclick="retornarParaPortal()">Gerenciar assinatura</span>
       </div>
-
       <div id="form-campos">
         <div class="form-group">
           <label>Nome completo</label>
@@ -1152,12 +463,9 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
           <label>Email — seu login na extensão</label>
           <input type="email" id="input-email" placeholder="seuemail@exemplo.com" oninput="esconderAvisoEmail()">
         </div>
-
-        <div class="notice notice-gold" style="margin-bottom:20px; font-size:13px;">
-          🔐 <strong>Sem senha por enquanto.</strong>
-          Após o pagamento, você receberá um e-mail com um link para criar sua senha e acessar a extensão.
+        <div class="notice notice-gold" style="margin-bottom:20px;font-size:13px">
+          🔐 <strong>Sem senha por enquanto.</strong> Após o pagamento, você receberá um e-mail com um link para criar sua senha e acessar a extensão.
         </div>
-
         <div class="form-group">
           <div class="label-row">
             <label>Documento para Nota Fiscal</label>
@@ -1169,32 +477,18 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
           </div>
           <input type="text" id="input-doc" placeholder="Deixe em branco se não quiser" maxlength="18">
         </div>
-
         <hr class="divider">
-
         <div id="erro-form" class="erro"></div>
         <input type="text" id="hp-field" name="website" style="display:none !important" tabindex="-1" autocomplete="off">
-
         <div class="aceite-wrap">
           <input type="checkbox" id="aceite-termos">
-          <label for="aceite-termos">
-            Li e concordo com os
-            <a href="/termos.html" target="_blank">Termos de Uso</a>
-            e a
-            <a href="/termos.html" target="_blank">Política de Privacidade</a>
-          </label>
+          <label for="aceite-termos">Li e concordo com os <a href="/termos.html" target="_blank">Termos de Uso</a> e a <a href="/termos.html" target="_blank">Política de Privacidade</a></label>
         </div>
-
         <button class="btn-comprar" id="btn-comprar" onclick="iniciarCompra()">Assinar agora</button>
-
-        <div style="text-align:center; margin-top:14px;">
-          <span class="link" onclick="abrirModal()">Esqueci minha senha</span>
-        </div>
-
+        <div style="text-align:center;margin-top:14px"><span class="link" onclick="abrirModal()">Esqueci minha senha</span></div>
         <div class="seguro">🔒 Pagamento via Stripe &nbsp;·&nbsp; Cancele quando quiser</div>
       </div>
     </div>
-
     <div class="order-summary">
       <div class="order-summary-title">Resumo do pedido</div>
       <div id="plano-escolhido" style="display:none" class="plano-selecionado">
@@ -1216,321 +510,48 @@ hr.divider { border: none; border-top: 1.5px solid var(--border-light); margin: 
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-/* ── THEME TOGGLE ── */
-const html = document.documentElement;
-const toggleBtn = document.getElementById('themeToggle');
+const html=document.documentElement,toggleBtn=document.getElementById('themeToggle');
+function applyTheme(t){html.setAttribute('data-theme',t);toggleBtn.textContent=t==='dark'?'☀️':'🌙';toggleBtn.title=t==='dark'?'Modo claro':'Modo escuro';try{localStorage.setItem('theme',t)}catch(e){}}
+(function(){let s='dark';try{s=localStorage.getItem('theme')||'dark'}catch(e){}applyTheme(s)})();
+toggleBtn.addEventListener('click',()=>{applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');requestAnimationFrame(updateTabSlider)});
 
-function applyTheme(theme) {
-  html.setAttribute('data-theme', theme);
-  toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-  toggleBtn.title = theme === 'dark' ? 'Modo claro' : 'Modo escuro';
-  try { localStorage.setItem('theme', theme); } catch(e) {}
-}
+const STRIPE_PUBLIC_KEY='pk_live_51T1V85RYUOU0rVEyeGwp5gH2oun0XOJ5N3yvT6fcOkHq8gjzypGzEJHMuHf7NmZYpJZdTGKgtAQYJYMZUCLavU5V00OELwFrY3';
+const SUPABASE_URL='https://kzhoezukwpllgcxzkkbr.supabase.co';
+const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6aG9lenVrd3BsbGdjeHpra2JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MzM5NTAsImV4cCI6MjA4NzIwOTk1MH0.AkahuDsRBgXKKAnbt7bN-eeGA-i6pC3kfhcvk-8p5VY';
+const stripe=Stripe(STRIPE_PUBLIC_KEY);
+let planoSelecionado=null,cicloSelecionado='monthly',tipoDoc='cnpj';
+const PRICE_IDS={starter:{monthly:'price_1T4jZ3RYUOU0rVEyz3BCCuFa',quarterly:'price_1T4jZ3RYUOU0rVEyLHLGmhsp',semiannual:'price_1T4jZ3RYUOU0rVEyOjBSvSsD',annual:'price_1T4jZ2RYUOU0rVEytdzz35tf'},basic:{monthly:'price_1T4jZ3RYUOU0rVEyj4AvRskw',quarterly:'price_1T4jZ3RYUOU0rVEyYvPjPCgZ',semiannual:'price_1T4jZ2RYUOU0rVEyJnKhPV3U',annual:'price_1T4jZ3RYUOU0rVEyDx5Nx99v'},pro:{monthly:'price_1T4jZ2RYUOU0rVEy0354QOdR',quarterly:'price_1T4jZ2RYUOU0rVEyaHIRPk7c',semiannual:'price_1T4jZ2RYUOU0rVEyAl8utbQc',annual:'price_1T4jZ0RYUOU0rVEyYrExCpDb'},advanced:{monthly:'price_1T4jZ6RYUOU0rVEy2pxqWgNO',quarterly:'price_1T4jZ4RYUOU0rVEyciQCZEtw',semiannual:'price_1T4jZ5RYUOU0rVEyf3W6NeZG',annual:'price_1T4jZ5RYUOU0rVEyt9HwMSEM'},business:{monthly:'price_1T4jZ5RYUOU0rVEyGwTNtO1T',quarterly:'price_1T4jZ5RYUOU0rVEyq3QYYvIM',semiannual:'price_1T4jZ4RYUOU0rVEytyPYkFiJ',annual:'price_1T4jZ4RYUOU0rVEyZ90HwZR1'},enterprise:{monthly:'price_1T4jZ4RYUOU0rVEyPuWClDU6',quarterly:'price_1T4jZ5RYUOU0rVEyjsRrzUGy',semiannual:'price_1T4jZ5RYUOU0rVEyT66xbKnE',annual:'price_1T4jZ5RYUOU0rVEy3g15Cp1m'}};
+const DISCOUNT_TEXT={monthly:{billing:'por mês'},quarterly:{billing:'a cada 3 meses'},semiannual:{billing:'a cada 6 meses'},annual:{billing:'por ano'}};
+function parseBRL(s){return parseFloat(s.replace(/\./g,'').replace(',','.'))}
+function calcularEconomia(card,ciclo){if(ciclo==='monthly')return null;const mp=parseBRL(card.dataset.priceMonthly),km={quarterly:'priceQuarterly',semiannual:'priceSemiannual',annual:'priceAnnual'},mo={quarterly:3,semiannual:6,annual:12};return'Economize R$\u00a0'+(mp*mo[ciclo]-parseBRL(card.dataset[km[ciclo]])).toFixed(2).replace('.',',')}
+function calcularPorCNPJ(card,ciclo){const l=parseInt(card.dataset.limit);if(!l||l>=9999)return null;const km={monthly:'priceMonthly',quarterly:'priceQuarterly',semiannual:'priceSemiannual',annual:'priceAnnual'},mo={monthly:1,quarterly:3,semiannual:6,annual:12};return'R$\u00a0'+(parseBRL(card.dataset[km[ciclo]])/l/mo[ciclo]).toFixed(2).replace('.','.')+' por CNPJ/mês'}
+const CUSTOM_PRICING={monthly:{base:'199<span>,90</span>',billing:'fixo/mês',overage:'+ R$0,30 por CNPJ acima de 500',aviso:'<strong>R$199,90/mês</strong> base + <strong>R$0,30/CNPJ</strong> acima de 500'},quarterly:{base:'539<span>,73</span>',billing:'fixo a cada 3 meses',overage:'+ R$0,81 por CNPJ acima de 500',aviso:'<strong>R$539,73/trimestre</strong> base (R$179,91/mês) + <strong>R$0,81/CNPJ</strong> acima de 500 por trimestre'},semiannual:{base:'959<span>,52</span>',billing:'fixo a cada 6 meses',overage:'+ R$1,44 por CNPJ acima de 500',aviso:'<strong>R$959,52/semestre</strong> base (R$159,92/mês) + <strong>R$1,44/CNPJ</strong> acima de 500 por semestre'},annual:{base:'1.679<span>,16</span>',billing:'fixo por ano',overage:'+ R$2,52 por CNPJ acima de 500',aviso:'<strong>R$1.679,16/ano</strong> base (R$139,93/mês) + <strong>R$2,52/CNPJ</strong> acima de 500 por ano'}};
+function atualizarCardCustom(){const cp=CUSTOM_PRICING[cicloSelecionado],card=document.querySelector('.plan-card.personalizado');if(!card)return;document.getElementById('custom-price').innerHTML='R$ '+cp.base;document.getElementById('custom-billing').textContent=cp.billing;document.getElementById('custom-overage').textContent=cp.overage;const se=card.querySelector('.plan-savings'),s=calcularEconomia(card,cicloSelecionado);if(s){if(!se){const d=document.createElement('div');d.className='plan-savings';d.textContent=s+' na base';card.appendChild(d)}else{se.style.display='block';se.textContent=s+' na base'}}else if(se)se.style.display='none';const ap=document.getElementById('custom-aviso-preco');if(ap)ap.innerHTML='💰 '+cp.aviso}
+function selecionarCiclo(btn){document.querySelectorAll('.billing-cycle-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');cicloSelecionado=btn.dataset.cycle;document.querySelectorAll('.plan-card').forEach(card=>{if(card.dataset.slug==='personalizado')return;const km={monthly:'priceMonthly',quarterly:'priceQuarterly',semiannual:'priceSemiannual',annual:'priceAnnual'},price=card.dataset[km[cicloSelecionado]],[r,c]=price.split(',');card.querySelector('.plan-price').innerHTML='R$ '+r+'<span>,'+c+'</span>';card.querySelector('.plan-billing').textContent=DISCOUNT_TEXT[cicloSelecionado].billing;const se=card.querySelector('.plan-savings'),s=calcularEconomia(card,cicloSelecionado);if(s){if(!se){const d=document.createElement('div');d.className='plan-savings';d.textContent=s;card.appendChild(d)}else{se.style.display='block';se.textContent=s}}else if(se)se.style.display='none';let pe=card.querySelector('.plan-per-cnpj');const pc=calcularPorCNPJ(card,cicloSelecionado);if(pc){if(!pe){const d=document.createElement('div');d.className='plan-per-cnpj';d.textContent=pc;card.appendChild(d)}else pe.textContent=pc}});atualizarCardCustom();if(planoSelecionado&&planoSelecionado.slug!=='personalizado'){const c=document.querySelector('.plan-card[data-slug="'+planoSelecionado.slug+'"]');if(c)selecionarPlano(c)}requestAnimationFrame(updateTabSlider)}
+function selecionarPlano(el){document.querySelectorAll('.plan-card').forEach(c=>{c.classList.remove('selected');c.querySelector('.plan-check').textContent=''});el.classList.add('selected');el.querySelector('.plan-check').textContent='✓';const slug=el.dataset.slug;if(slug==='personalizado'){atualizarCardCustom();document.getElementById('custom-aviso-preco').innerHTML=CUSTOM_PRICING[cicloSelecionado].aviso;document.getElementById('aviso-personalizado').style.display='block';document.getElementById('plano-escolhido').style.display='none';document.getElementById('btn-comprar').style.display='none';planoSelecionado={slug:'personalizado',name:'Custom',cycle:cicloSelecionado};document.getElementById('erro-form').textContent='';return}document.getElementById('aviso-personalizado').style.display='none';document.getElementById('btn-comprar').style.display='block';const km={monthly:'priceMonthly',quarterly:'priceQuarterly',semiannual:'priceSemiannual',annual:'priceAnnual'},price=el.dataset[km[cicloSelecionado]];planoSelecionado={slug,priceId:PRICE_IDS[slug][cicloSelecionado],price,limit:el.dataset.limit,name:el.querySelector('.plan-name').textContent,cycle:cicloSelecionado};document.getElementById('plano-escolhido').style.display='flex';document.getElementById('plano-nome-display').textContent=planoSelecionado.name;document.getElementById('plano-preco-display').textContent=price;const ct={monthly:'mês',quarterly:'3 meses',semiannual:'6 meses',annual:'ano'};document.getElementById('plano-ciclo-display').textContent=ct[cicloSelecionado];document.getElementById('erro-form').textContent='';document.getElementById('btn-comprar').textContent=cicloSelecionado==='monthly'?'Assinar '+planoSelecionado.name+' — R$ '+price+'/mês':'Assinar '+planoSelecionado.name+' — R$ '+price+'/'+ct[cicloSelecionado]}
+function trocarDoc(tipo){tipoDoc=tipo;document.getElementById('tab-cnpj').classList.toggle('active',tipo==='cnpj');document.getElementById('tab-cpf').classList.toggle('active',tipo==='cpf');document.getElementById('input-doc').maxLength=tipo==='cnpj'?18:14;document.getElementById('input-doc').value=''}
+function mostrarErro(m){document.getElementById('erro-form').textContent=m}
+function esconderAvisoEmail(){document.getElementById('aviso-email-existente').style.display='none'}
+function retornarParaPortal(){window.open('https://billing.stripe.com/p/login/eVqaEZgP5gVF59G7Nn6g800','_blank')}
+function abrirModal(){const e=document.getElementById('input-email').value.trim();if(e)document.getElementById('modal-email').value=e;document.getElementById('modal-senha').classList.add('aberto');document.getElementById('modal-erro').textContent='';document.getElementById('modal-sucesso').style.display='none'}
+function fecharModal(){document.getElementById('modal-senha').classList.remove('aberto')}
+async function enviarRecuperacao(){const email=document.getElementById('modal-email').value.trim(),erroEl=document.getElementById('modal-erro');erroEl.textContent='';if(!email){erroEl.textContent='Digite seu email.';return}try{const res=await fetch(SUPABASE_URL+'/functions/v1/recover-password',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY},body:JSON.stringify({email})}),data=await res.json();if(data.error)erroEl.textContent='✕ '+data.error;else{document.getElementById('modal-sucesso').style.display='block';setTimeout(fecharModal,3000)}}catch{erroEl.textContent='Erro de conexão. Tente novamente.'}}
+function validarEmail(e){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+async function iniciarCompra(){mostrarErro('');if(document.getElementById('hp-field').value)return;if(!document.getElementById('aceite-termos').checked){mostrarErro('⚠️ Você precisa aceitar os Termos de Uso para continuar.');return}const nome=document.getElementById('input-nome').value.trim(),email=document.getElementById('input-email').value.trim(),doc=document.getElementById('input-doc').value.trim().replace(/\D/g,'');if(!planoSelecionado){mostrarErro('⚠ Selecione um plano acima.');return}if(!nome){mostrarErro('⚠ Preencha seu nome.');return}if(!validarEmail(email)){mostrarErro('⚠ Email inválido.');return}if(doc.length>0){if(tipoDoc==='cnpj'&&doc.length!==14){mostrarErro('⚠ CNPJ inválido. Corrija ou deixe em branco.');return}if(tipoDoc==='cpf'&&doc.length!==11){mostrarErro('⚠ CPF inválido. Corrija ou deixe em branco.');return}}const btn=document.getElementById('btn-comprar');btn.disabled=true;btn.textContent='Processando...';try{const res=await fetch(SUPABASE_URL+'/functions/v1/create-checkout',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY},body:JSON.stringify({email,nome,documento:doc||null,tipo_documento:doc?tipoDoc:null,price_id:planoSelecionado.priceId,plan_slug:planoSelecionado.slug,billing_cycle:planoSelecionado.cycle})}),resultado=await res.json(),ct={monthly:'mês',quarterly:'3 meses',semiannual:'6 meses',annual:'ano'};if(resultado.error){if(resultado.error.toLowerCase().includes('already')){document.getElementById('aviso-email-existente').style.display='block';document.getElementById('input-email').classList.add('erro-campo');btn.disabled=false;btn.textContent=cicloSelecionado==='monthly'?'Assinar '+planoSelecionado.name+' — R$ '+planoSelecionado.price+'/mês':'Assinar '+planoSelecionado.name+' — R$ '+planoSelecionado.price+'/'+ct[cicloSelecionado];return}throw new Error(resultado.error)}await stripe.redirectToCheckout({sessionId:resultado.sessionId})}catch(err){mostrarErro('✕ '+(err.message||'Erro ao processar. Tente novamente.'));btn.disabled=false;const ct={monthly:'mês',quarterly:'3 meses',semiannual:'6 meses',annual:'ano'};btn.textContent=planoSelecionado&&cicloSelecionado==='monthly'?'Assinar '+planoSelecionado.name+' — R$ '+planoSelecionado.price+'/mês':'Assinar '+planoSelecionado.name+' — R$ '+planoSelecionado.price+'/'+ct[cicloSelecionado]}}
+document.getElementById('modal-senha').addEventListener('click',function(e){if(e.target===this)fecharModal()});
+function updateTabSlider(){const tabs=document.getElementById('billing-tabs'),active=tabs.querySelector('.billing-cycle-btn.active'),slider=document.getElementById('tab-slider');if(!active||!slider)return;const tr=tabs.getBoundingClientRect(),ar=active.getBoundingClientRect();slider.style.left=(ar.left-tr.left)+'px';slider.style.width=ar.width+'px'}
+setTimeout(updateTabSlider,60);
+window.addEventListener('resize',updateTabSlider);
 
-(function() {
-  let saved = 'dark';
-  try { saved = localStorage.getItem('theme') || 'dark'; } catch(e) {}
-  applyTheme(saved);
-})();
+const cnpjPool=['12.345.678/0001-90','98.765.432/0001-10','11.282.373/0001-11','55.666.777/0001-05','33.444.555/0001-29','77.888.999/0001-44','22.111.000/0001-62','44.333.222/0001-73','66.555.444/0001-57','88.777.666/0001-18','10.203.040/0001-99','50.607.080/0001-31'];
+const msgs=['DAS emitido','DAS emitido','DAS emitido','DAS gerado','DAS emitido'];
+let termIdx=0,termTotal=cnpjPool.length,termDone=0;
+const termOutput=document.getElementById('terminal-output'),progFill=document.getElementById('progress-fill'),progCount=document.getElementById('progress-count');
+function addLine(type,cnpj,msg){const icons={ok:'✓',proc:'▶',err:'✕'},div=document.createElement('div');div.className='t-line '+type;div.innerHTML='<span class="t-st">'+icons[type]+'</span><span class="t-cnpj">'+cnpj+'</span><span class="t-msg"> '+msg+'</span>';termOutput.appendChild(div);while(termOutput.children.length>7)termOutput.removeChild(termOutput.firstChild)}
+function runTerm(){if(termIdx>=termTotal){termIdx=0;termDone=0;setTimeout(runTerm,2000);return}const cnpj=cnpjPool[termIdx];addLine('proc',cnpj,'— processando...');setTimeout(()=>{if(termOutput.lastChild)termOutput.removeChild(termOutput.lastChild);const ok=Math.random()>.07;addLine(ok?'ok':'err',cnpj,ok?'— '+msgs[termIdx%msgs.length]:'— tentando novamente');if(ok)termDone++;termIdx++;const pct=Math.round(termIdx/termTotal*100);progFill.style.width=pct+'%';progCount.textContent=termDone+' / '+termTotal;document.getElementById('stat-cnpjs').textContent=Math.max(180,termDone*30)+'+'},350+Math.random()*550);setTimeout(runTerm,900+Math.random()*1100)}
+setTimeout(runTerm,600);
 
-toggleBtn.addEventListener('click', () => {
-  const current = html.getAttribute('data-theme');
-  applyTheme(current === 'dark' ? 'light' : 'dark');
-  requestAnimationFrame(updateTabSlider);
-});
-
-/* ── STRIPE / SUPABASE ── */
-const STRIPE_PUBLIC_KEY = 'pk_live_51T1V85RYUOU0rVEyeGwp5gH2oun0XOJ5N3yvT6fcOkHq8gjzypGzEJHMuHf7NmZYpJZdTGKgtAQYJYMZUCLavU5V00OELwFrY3';
-const SUPABASE_URL = 'https://kzhoezukwpllgcxzkkbr.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6aG9lenVrd3BsbGdjeHpra2JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MzM5NTAsImV4cCI6MjA4NzIwOTk1MH0.AkahuDsRBgXKKAnbt7bN-eeGA-i6pC3kfhcvk-8p5VY';
-const stripe = Stripe(STRIPE_PUBLIC_KEY);
-
-let planoSelecionado = null;
-let cicloSelecionado = 'monthly';
-let tipoDoc = 'cnpj';
-
-const PRICE_IDS = {
-  starter: { monthly: 'price_1T4jZ3RYUOU0rVEyz3BCCuFa', quarterly: 'price_1T4jZ3RYUOU0rVEyLHLGmhsp', semiannual: 'price_1T4jZ3RYUOU0rVEyOjBSvSsD', annual: 'price_1T4jZ2RYUOU0rVEytdzz35tf' },
-  basic: { monthly: 'price_1T4jZ3RYUOU0rVEyj4AvRskw', quarterly: 'price_1T4jZ3RYUOU0rVEyYvPjPCgZ', semiannual: 'price_1T4jZ2RYUOU0rVEyJnKhPV3U', annual: 'price_1T4jZ3RYUOU0rVEyDx5Nx99v' },
-  pro: { monthly: 'price_1T4jZ2RYUOU0rVEy0354QOdR', quarterly: 'price_1T4jZ2RYUOU0rVEyaHIRPk7c', semiannual: 'price_1T4jZ2RYUOU0rVEyAl8utbQc', annual: 'price_1T4jZ0RYUOU0rVEyYrExCpDb' },
-  advanced: { monthly: 'price_1T4jZ6RYUOU0rVEy2pxqWgNO', quarterly: 'price_1T4jZ4RYUOU0rVEyciQCZEtw', semiannual: 'price_1T4jZ5RYUOU0rVEyf3W6NeZG', annual: 'price_1T4jZ5RYUOU0rVEyt9HwMSEM' },
-  business: { monthly: 'price_1T4jZ5RYUOU0rVEyGwTNtO1T', quarterly: 'price_1T4jZ5RYUOU0rVEyq3QYYvIM', semiannual: 'price_1T4jZ4RYUOU0rVEytyPYkFiJ', annual: 'price_1T4jZ4RYUOU0rVEyZ90HwZR1' },
-  enterprise: { monthly: 'price_1T4jZ4RYUOU0rVEyPuWClDU6', quarterly: 'price_1T4jZ5RYUOU0rVEyjsRrzUGy', semiannual: 'price_1T4jZ5RYUOU0rVEyT66xbKnE', annual: 'price_1T4jZ5RYUOU0rVEy3g15Cp1m' }
-};
-
-const DISCOUNT_TEXT = {
-  monthly: { billing: 'por mês' },
-  quarterly: { billing: 'a cada 3 meses' },
-  semiannual: { billing: 'a cada 6 meses' },
-  annual: { billing: 'por ano' }
-};
-
-function parseBRL(str) { return parseFloat(str.replace(/\./g, '').replace(',', '.')); }
-
-function calcularEconomia(card, ciclo) {
-  if (ciclo === 'monthly') return null;
-  const monthlyPrice = parseBRL(card.dataset.priceMonthly);
-  const keyMap = { quarterly: 'priceQuarterly', semiannual: 'priceSemiannual', annual: 'priceAnnual' };
-  const months = { quarterly: 3, semiannual: 6, annual: 12 };
-  const paidPrice = parseBRL(card.dataset[keyMap[ciclo]]);
-  const saved = monthlyPrice * months[ciclo] - paidPrice;
-  return 'Economize R$\u00a0' + saved.toFixed(2).replace('.', ',');
-}
-
-function calcularPorCNPJ(card, ciclo) {
-  const limit = parseInt(card.dataset.limit);
-  if (!limit || limit >= 9999) return null;
-  const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
-  const months = { monthly: 1, quarterly: 3, semiannual: 6, annual: 12 };
-  const totalPago = parseBRL(card.dataset[keyMap[ciclo]]);
-  return 'R$\u00a0' + (totalPago / limit / months[ciclo]).toFixed(2).replace('.', ',') + ' por CNPJ/mês';
-}
-
-const CUSTOM_PRICING = {
-  monthly: { base: '199<span>,90</span>', billing: 'fixo/mês', overage: '+ R$0,30 por CNPJ acima de 500', aviso: '<strong>R$199,90/mês</strong> base + <strong>R$0,30/CNPJ</strong> acima de 500' },
-  quarterly: { base: '539<span>,73</span>', billing: 'fixo a cada 3 meses', overage: '+ R$0,81 por CNPJ acima de 500', aviso: '<strong>R$539,73/trimestre</strong> base (R$179,91/mês) + <strong>R$0,81/CNPJ</strong> acima de 500 por trimestre' },
-  semiannual: { base: '959<span>,52</span>', billing: 'fixo a cada 6 meses', overage: '+ R$1,44 por CNPJ acima de 500', aviso: '<strong>R$959,52/semestre</strong> base (R$159,92/mês) + <strong>R$1,44/CNPJ</strong> acima de 500 por semestre' },
-  annual: { base: '1.679<span>,16</span>', billing: 'fixo por ano', overage: '+ R$2,52 por CNPJ acima de 500', aviso: '<strong>R$1.679,16/ano</strong> base (R$139,93/mês) + <strong>R$2,52/CNPJ</strong> acima de 500 por ano' }
-};
-
-function atualizarCardCustom() {
-  const cp = CUSTOM_PRICING[cicloSelecionado];
-  const card = document.querySelector('.plan-card.personalizado');
-  if (!card) return;
-  document.getElementById('custom-price').innerHTML = `R$ ${cp.base}`;
-  document.getElementById('custom-billing').textContent = cp.billing;
-  document.getElementById('custom-overage').textContent = cp.overage;
-  const savingsEl = card.querySelector('.plan-savings');
-  const saving = calcularEconomia(card, cicloSelecionado);
-  if (saving) {
-    if (!savingsEl) { const d = document.createElement('div'); d.className = 'plan-savings'; d.textContent = saving + ' na base'; card.appendChild(d); }
-    else { savingsEl.style.display='block'; savingsEl.textContent = saving + ' na base'; }
-  } else { if (savingsEl) savingsEl.style.display='none'; }
-  const avisoPreco = document.getElementById('custom-aviso-preco');
-  if (avisoPreco) avisoPreco.innerHTML = `💰 ${cp.aviso}`;
-}
-
-function selecionarCiclo(btn) {
-  document.querySelectorAll('.billing-cycle-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  cicloSelecionado = btn.dataset.cycle;
-  document.querySelectorAll('.plan-card').forEach(card => {
-    if (card.dataset.slug === 'personalizado') return;
-    const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
-    const price = card.dataset[keyMap[cicloSelecionado]];
-    const [reais, centavos] = price.split(',');
-    card.querySelector('.plan-price').innerHTML = `R$ ${reais}<span>,${centavos}</span>`;
-    card.querySelector('.plan-billing').textContent = DISCOUNT_TEXT[cicloSelecionado].billing;
-    const savingsEl = card.querySelector('.plan-savings');
-    const saving = calcularEconomia(card, cicloSelecionado);
-    if (saving) {
-      if (!savingsEl) { const d = document.createElement('div'); d.className='plan-savings'; d.textContent=saving; card.appendChild(d); }
-      else { savingsEl.style.display='block'; savingsEl.textContent = saving; }
-    } else { if (savingsEl) savingsEl.style.display='none'; }
-    let perCnpjEl = card.querySelector('.plan-per-cnpj');
-    const perCnpj = calcularPorCNPJ(card, cicloSelecionado);
-    if (perCnpj) {
-      if (!perCnpjEl) { const d = document.createElement('div'); d.className='plan-per-cnpj'; d.textContent=perCnpj; card.appendChild(d); }
-      else { perCnpjEl.textContent = perCnpj; }
-    }
-  });
-  atualizarCardCustom();
-  if (planoSelecionado && planoSelecionado.slug !== 'personalizado') {
-    const card = document.querySelector(`.plan-card[data-slug="${planoSelecionado.slug}"]`);
-    if (card) selecionarPlano(card);
-  }
-  requestAnimationFrame(updateTabSlider);
-}
-
-function selecionarPlano(el) {
-  document.querySelectorAll('.plan-card').forEach(c => { c.classList.remove('selected'); c.querySelector('.plan-check').textContent = ''; });
-  el.classList.add('selected');
-  el.querySelector('.plan-check').textContent = '✓';
-  const slug = el.dataset.slug;
-  if (slug === 'personalizado') {
-    atualizarCardCustom();
-    document.getElementById('custom-aviso-preco').innerHTML = CUSTOM_PRICING[cicloSelecionado].aviso;
-    document.getElementById('aviso-personalizado').style.display = 'block';
-    document.getElementById('plano-escolhido').style.display = 'none';
-    document.getElementById('btn-comprar').style.display = 'none';
-    planoSelecionado = { slug: 'personalizado', name: 'Custom', cycle: cicloSelecionado };
-    document.getElementById('erro-form').textContent = '';
-    return;
-  }
-  document.getElementById('aviso-personalizado').style.display = 'none';
-  document.getElementById('btn-comprar').style.display = 'block';
-  const keyMap = { monthly:'priceMonthly', quarterly:'priceQuarterly', semiannual:'priceSemiannual', annual:'priceAnnual' };
-  const price = el.dataset[keyMap[cicloSelecionado]];
-  planoSelecionado = {
-    slug, priceId: PRICE_IDS[slug][cicloSelecionado],
-    price, limit: el.dataset.limit,
-    name: el.querySelector('.plan-name').textContent,
-    cycle: cicloSelecionado
-  };
-  document.getElementById('plano-escolhido').style.display = 'flex';
-  document.getElementById('plano-nome-display').textContent = planoSelecionado.name;
-  document.getElementById('plano-preco-display').textContent = price;
-  const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
-  document.getElementById('plano-ciclo-display').textContent = cicloTexts[cicloSelecionado];
-  document.getElementById('erro-form').textContent = '';
-  document.getElementById('btn-comprar').textContent = cicloSelecionado === 'monthly'
-    ? `Assinar ${planoSelecionado.name} — R$ ${price}/mês`
-    : `Assinar ${planoSelecionado.name} — R$ ${price}/${cicloTexts[cicloSelecionado]}`;
-}
-
-function trocarDoc(tipo) {
-  tipoDoc = tipo;
-  document.getElementById('tab-cnpj').classList.toggle('active', tipo === 'cnpj');
-  document.getElementById('tab-cpf').classList.toggle('active', tipo === 'cpf');
-  document.getElementById('input-doc').maxLength = tipo === 'cnpj' ? 18 : 14;
-  document.getElementById('input-doc').value = '';
-}
-
-function mostrarErro(msg) { document.getElementById('erro-form').textContent = msg; }
-function esconderAvisoEmail() { document.getElementById('aviso-email-existente').style.display = 'none'; }
-function retornarParaPortal() { window.open('https://billing.stripe.com/p/login/eVqaEZgP5gVF59G7Nn6g800', '_blank'); }
-
-function abrirModal() {
-  const email = document.getElementById('input-email').value.trim();
-  if (email) document.getElementById('modal-email').value = email;
-  document.getElementById('modal-senha').classList.add('aberto');
-  document.getElementById('modal-erro').textContent = '';
-  document.getElementById('modal-sucesso').style.display = 'none';
-}
-function fecharModal() { document.getElementById('modal-senha').classList.remove('aberto'); }
-
-async function enviarRecuperacao() {
-  const email = document.getElementById('modal-email').value.trim();
-  const erroEl = document.getElementById('modal-erro');
-  erroEl.textContent = '';
-  if (!email) { erroEl.textContent = 'Digite seu email.'; return; }
-  try {
-    const res = await fetch(`${SUPABASE_URL}/functions/v1/recover-password`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
-      body: JSON.stringify({ email })
-    });
-    const data = await res.json();
-    if (data.error) erroEl.textContent = '✕ ' + data.error;
-    else { document.getElementById('modal-sucesso').style.display = 'block'; setTimeout(fecharModal, 3000); }
-  } catch { erroEl.textContent = 'Erro de conexão. Tente novamente.'; }
-}
-
-function validarEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-
-async function iniciarCompra() {
-  mostrarErro('');
-  if (document.getElementById('hp-field').value) return;
-  if (!document.getElementById('aceite-termos').checked) { mostrarErro('⚠️ Você precisa aceitar os Termos de Uso para continuar.'); return; }
-  const nome = document.getElementById('input-nome').value.trim();
-  const email = document.getElementById('input-email').value.trim();
-  const doc = document.getElementById('input-doc').value.trim().replace(/\D/g, '');
-  if (!planoSelecionado) { mostrarErro('⚠ Selecione um plano acima.'); return; }
-  if (!nome) { mostrarErro('⚠ Preencha seu nome.'); return; }
-  if (!validarEmail(email)) { mostrarErro('⚠ Email inválido.'); return; }
-  if (doc.length > 0) {
-    if (tipoDoc === 'cnpj' && doc.length !== 14) { mostrarErro('⚠ CNPJ inválido. Corrija ou deixe em branco.'); return; }
-    if (tipoDoc === 'cpf' && doc.length !== 11) { mostrarErro('⚠ CPF inválido. Corrija ou deixe em branco.'); return; }
-  }
-  const btn = document.getElementById('btn-comprar');
-  btn.disabled = true; btn.textContent = 'Processando...';
-  try {
-    const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
-      body: JSON.stringify({ email, nome, documento: doc || null, tipo_documento: doc ? tipoDoc : null, price_id: planoSelecionado.priceId, plan_slug: planoSelecionado.slug, billing_cycle: planoSelecionado.cycle })
-    });
-    const resultado = await res.json();
-    const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
-    if (resultado.error) {
-      if (resultado.error.toLowerCase().includes('already')) {
-        document.getElementById('aviso-email-existente').style.display = 'block';
-        document.getElementById('input-email').classList.add('erro-campo');
-        btn.disabled = false;
-        btn.textContent = cicloSelecionado === 'monthly' ? `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/mês` : `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/${cicloTexts[cicloSelecionado]}`;
-        return;
-      }
-      throw new Error(resultado.error);
-    }
-    await stripe.redirectToCheckout({ sessionId: resultado.sessionId });
-  } catch (err) {
-    mostrarErro('✕ ' + (err.message || 'Erro ao processar. Tente novamente.'));
-    btn.disabled = false;
-    const cicloTexts = { monthly: 'mês', quarterly: '3 meses', semiannual: '6 meses', annual: 'ano' };
-    btn.textContent = planoSelecionado && cicloSelecionado === 'monthly'
-      ? `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/mês`
-      : `Assinar ${planoSelecionado.name} — R$ ${planoSelecionado.price}/${cicloTexts[cicloSelecionado]}`;
-  }
-}
-
-document.getElementById('modal-senha').addEventListener('click', function(e) { if (e.target === this) fecharModal(); });
-
-/* ── TAB SLIDER ── */
-function updateTabSlider() {
-  const tabs = document.getElementById('billing-tabs');
-  const active = tabs.querySelector('.billing-cycle-btn.active');
-  const slider = document.getElementById('tab-slider');
-  if (!active || !slider) return;
-  const tabRect = tabs.getBoundingClientRect();
-  const activeRect = active.getBoundingClientRect();
-  slider.style.left = (activeRect.left - tabRect.left) + 'px';
-  slider.style.width = activeRect.width + 'px';
-}
-setTimeout(updateTabSlider, 60);
-window.addEventListener('resize', updateTabSlider);
-
-/* ── TERMINAL ANIMATION ── */
-const cnpjPool = [
-  '12.345.678/0001-90', '98.765.432/0001-10', '11.282.373/0001-11',
-  '55.666.777/0001-05', '33.444.555/0001-29', '77.888.999/0001-44',
-  '22.111.000/0001-62', '44.333.222/0001-73', '66.555.444/0001-57',
-  '88.777.666/0001-18', '10.203.040/0001-99', '50.607.080/0001-31'
-];
-const msgs = ['DAS emitido', 'DAS emitido', 'DAS emitido', 'DAS gerado', 'DAS emitido'];
-let termIdx = 0, termTotal = cnpjPool.length, termDone = 0;
-const termOutput = document.getElementById('terminal-output');
-const progFill = document.getElementById('progress-fill');
-const progCount = document.getElementById('progress-count');
-
-function addLine(type, cnpj, msg) {
-  const icons = { ok: '✓', proc: '▶', err: '✕' };
-  const div = document.createElement('div');
-  div.className = `t-line ${type}`;
-  div.innerHTML = `<span class="t-st">${icons[type]}</span><span class="t-cnpj">${cnpj}</span><span class="t-msg"> ${msg}</span>`;
-  termOutput.appendChild(div);
-  while (termOutput.children.length > 7) termOutput.removeChild(termOutput.firstChild);
-}
-
-function runTerm() {
-  if (termIdx >= termTotal) { termIdx = 0; termDone = 0; setTimeout(runTerm, 2000); return; }
-  const cnpj = cnpjPool[termIdx];
-  addLine('proc', cnpj, '— processando...');
-  setTimeout(() => {
-    if (termOutput.lastChild) termOutput.removeChild(termOutput.lastChild);
-    const ok = Math.random() > 0.07;
-    addLine(ok ? 'ok' : 'err', cnpj, ok ? `— ${msgs[termIdx % msgs.length]}` : '— tentando novamente');
-    if (ok) termDone++;
-    termIdx++;
-    const pct = Math.round((termIdx / termTotal) * 100);
-    progFill.style.width = pct + '%';
-    progCount.textContent = `${termDone} / ${termTotal}`;
-    document.getElementById('stat-cnpjs').textContent = Math.max(180, termDone * 30) + '+';
-  }, 350 + Math.random() * 550);
-  setTimeout(runTerm, 900 + Math.random() * 1100);
-}
-setTimeout(runTerm, 600);
-
-/* ── INIT ── */
-document.querySelectorAll('.plan-card').forEach(card => {
-  if (card.dataset.slug === 'personalizado') return;
-  const perCnpj = calcularPorCNPJ(card, 'monthly');
-  if (perCnpj) {
-    const div = document.createElement('div');
-    div.className = 'plan-per-cnpj';
-    div.textContent = perCnpj;
-    card.appendChild(div);
-  }
-});
+document.querySelectorAll('.plan-card').forEach(card=>{if(card.dataset.slug==='personalizado')return;const pc=calcularPorCNPJ(card,'monthly');if(pc){const d=document.createElement('div');d.className='plan-per-cnpj';d.textContent=pc;card.appendChild(d)}});
 </script>
 </body>
 </html>

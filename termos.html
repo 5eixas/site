@@ -120,9 +120,65 @@ table.data-table{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono'
 
 @media(max-width:900px){.doc-hero{flex-direction:column;}.doc-hero-left{border-right:none;border-bottom:2px solid var(--section-border);padding-right:0;margin-bottom:0;padding-bottom:32px;}.doc-hero-right{padding-left:0;padding-top:24px;}.rights-grid{grid-template-columns:1fr 1fr;}.right-item:nth-child(3n){border-right:1.5px solid var(--section-border);}.right-item:nth-child(2n){border-right:none;}}
 @media(max-width:640px){.page{padding:0 20px;}.doc-title{font-size:3.5rem;}.doc-tabs-wrap{flex-direction:column;}.doc-tab{border-right:none;border-bottom:1.5px solid var(--doc-tab-border);}.doc-tab:last-child{border-bottom:none;}.rights-grid{grid-template-columns:1fr;}.right-item{border-right:none;}.partners{grid-template-columns:1fr;}.partner-item{border-right:none;border-bottom:1.5px solid var(--section-border);}.partner-item:last-child{border-bottom:none;}}
+
+/* ══ NAV ══ */
+.site-nav{background:var(--nav-bg, var(--paper));border-bottom:1.5px solid var(--nav-border, var(--border));position:sticky;top:0;z-index:100;transition:background .2s,border-color .2s}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:50px}
+.nav-brand{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.16em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-link{display:flex;align-items:center;gap:7px;padding:0 18px;height:50px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--nav-link, var(--ink3));text-decoration:none;border-right:1.5px solid var(--nav-border, var(--border));transition:color .15s,background .15s;white-space:nowrap}
+.nav-link:first-child{border-left:1.5px solid var(--nav-border, var(--border))}
+.nav-link:hover{color:var(--lime);background:rgba(200,255,0,.04)}
+.nav-link svg{width:13px;height:13px;flex-shrink:0;opacity:.7;transition:opacity .15s}
+.nav-link:hover svg{opacity:1}
+.nav-dl{background:var(--lime);color:#0a0a08 !important;border-color:var(--lime) !important;font-weight:700;padding:0 22px;position:relative;overflow:hidden}
+[data-theme="light"] .nav-dl{background:var(--ink);color:var(--lime) !important;border-color:var(--ink) !important}
+.nav-dl::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-101%);transition:transform .25s ease}
+.nav-dl:hover{background:#d8ff30 !important;color:#0a0a08 !important;border-color:#d8ff30 !important}
+[data-theme="light"] .nav-dl:hover{background:#1a1a18 !important;color:var(--lime) !important;border-color:#1a1a18 !important}
+.nav-dl:hover::before{transform:translateX(0)}
+.nav-dl svg{opacity:1 !important}
+.nav-dl-pulse{width:5px;height:5px;background:#0a0a08;border-radius:50%;animation:blink 1.8s ease infinite;flex-shrink:0}
+[data-theme="light"] .nav-dl-pulse{background:var(--lime)}
+@media(max-width:768px){.nav-inner{padding:0 20px}.nav-link{padding:0 12px;font-size:9px;gap:5px}.nav-dl{padding:0 16px}}
+@media(max-width:640px){.nav-label{display:none}.nav-dl .nav-label{display:inline}}
 </style>
 </head>
 <body>
+<!-- ══ NAVIGATION ══ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-brand">MeiQueResolve</span>
+    <div class="nav-links">
+      <a href="https://meiqueresolve.com/" class="nav-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 6.8L8 2l6 4.8V14H10.5v-3.5h-5V14H2V6.8z"/>
+        </svg>
+        <span class="nav-label">Início</span>
+      </a>
+      <a href="https://meiqueresolve.com/termos.html" class="nav-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="1.5" width="10" height="13" rx="1.5"/>
+          <line x1="5.5" y1="5.5" x2="10.5" y2="5.5"/>
+          <line x1="5.5" y1="8" x2="10.5" y2="8"/>
+          <line x1="5.5" y1="10.5" x2="8.5" y2="10.5"/>
+        </svg>
+        <span class="nav-label">Termos</span>
+      </a>
+      <a href="https://linktr.ee/downloaddotidocontador" class="nav-link nav-dl" target="_blank" rel="noopener">
+        <div class="nav-dl-pulse"></div>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2v9"/>
+          <path d="M5 8l3 3 3-3"/>
+          <path d="M3 13h10"/>
+        </svg>
+        <span class="nav-label">Baixar Extensão</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
 
 <button class="theme-toggle" id="themeToggle" title="Alternar tema">☀️</button>
 
