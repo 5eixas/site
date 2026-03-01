@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagamento Confirmado — MeiQueResolve</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{--paper:#F0ECE3;--paper2:#E6E1D6;--paper3:#D8D2C5;--ink:#0C0C0A;--ink2:#3A3830;--ink3:#7A7568;--lime:#C8FF00;--lime2:#A8D800;--red:#FF2800;--green:#00A86B;--border:#0C0C0A;--border-light:#C0BAB0;--section-border:var(--ink);--btn-buy-bg:var(--ink);--btn-buy-color:var(--lime);--btn-buy-hover-bg:#1a1a18;--btn-buy-hover-shadow:var(--lime);--footer-border:var(--ink);--toggle-bg:var(--ink);--toggle-color:var(--lime);--toggle-hover-bg:var(--lime);--toggle-hover-color:var(--ink);}
+[data-theme="dark"]{--paper:#0a0a08;--paper2:#121210;--paper3:#1e1e18;--ink:#f0f0e6;--ink2:#c0c0b0;--ink3:#808070;--lime:#C8FF00;--lime2:#A8D800;--red:#FF5F5F;--green:#6FCF97;--border:#404036;--border-light:#5a5a4a;--section-border:#404036;--btn-buy-bg:var(--lime);--btn-buy-color:#0a0a08;--btn-buy-hover-bg:#d8ff30;--btn-buy-hover-shadow:#0a0a08;--footer-border:#404036;--toggle-bg:var(--lime);--toggle-color:#0a0a08;--toggle-hover-bg:var(--ink);--toggle-hover-color:var(--lime);}
+
+.theme-toggle{position:fixed;bottom:28px;right:28px;z-index:9999;width:42px;height:42px;background:var(--toggle-bg);color:var(--toggle-color);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s,color .2s,transform .15s;font-family:'IBM Plex Mono',monospace;}
+.theme-toggle:hover{background:var(--toggle-hover-bg);color:var(--toggle-hover-color);transform:scale(1.08);}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:'Barlow',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .2s,color .2s;display:flex;flex-direction:column;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.55;}
+
+.page{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 40px;flex:1;display:flex;flex-direction:column;}
+
+/* TOPBAR */
+.topbar{border-bottom:2px solid var(--section-border);padding:20px 0;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:36px;height:36px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--lime);letter-spacing:-1px;}
+[data-theme="dark"] .logo-mark{background:var(--lime);color:#0a0a08;}
+.logo-text{font-family:'Barlow',sans-serif;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.logo-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.status-stamp{display:flex;align-items:center;gap:7px;border:1.5px solid var(--green);padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+.status-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:blink 1.8s ease infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.ver-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;background:var(--paper2);border:1px solid var(--border-light);padding:5px 10px;}
+
+/* TICKER */
+.ticker{border-top:2px solid var(--section-border);border-bottom:2px solid var(--section-border);padding:9px 0;overflow:hidden;font-family:'Bebas Neue',cursive;font-size:12px;letter-spacing:.22em;color:var(--border-light);white-space:nowrap;animation:fadeUp .45s ease both;}
+
+/* SECTION RULE */
+.section-rule{display:flex;align-items:center;gap:0;margin:40px 0 0;border-top:2px solid var(--section-border);padding-top:12px;animation:fadeUp .45s .05s ease both;opacity:0;animation-fill-mode:both;}
+.section-rule-label{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:.08em;color:var(--ink);flex:1;}
+.section-rule-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.12em;text-transform:uppercase;}
+
+/* MAIN GRID */
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--section-border);margin:32px 0 80px;animation:fadeUp .45s .12s ease both;opacity:0;animation-fill-mode:both;}
+
+/* LEFT — big confirmation */
+.confirm-panel{padding:60px 48px;border-right:2px solid var(--section-border);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;position:relative;overflow:hidden;}
+.confirm-panel::after{content:'DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS · DAS ·';position:absolute;bottom:14px;left:0;right:0;font-family:'Bebas Neue',cursive;font-size:11px;letter-spacing:.22em;color:var(--border-light);white-space:nowrap;overflow:hidden;opacity:.45;}
+
+.confirm-tag{display:inline-block;background:var(--lime);color:#0a0a08;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;margin-bottom:28px;}
+[data-theme="light"] .confirm-tag{color:var(--ink);}
+
+.confirm-stamp{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(5rem,8vw,9rem);
+  line-height:.88;letter-spacing:-.02em;color:var(--ink);
+  margin-bottom:8px;
+  animation:fadeUp .5s ease both;
+}
+.confirm-stamp .outline{-webkit-text-stroke:2px var(--ink);color:transparent;}
+.confirm-stamp .lime{color:var(--lime);}
+
+.confirm-sub{font-size:16px;color:var(--ink2);line-height:1.65;margin-top:16px;max-width:380px;}
+.confirm-sub strong{color:var(--ink);font-weight:700;}
+
+/* Stats row */
+.confirm-stats{display:flex;gap:0;border-top:1.5px solid var(--border-light);margin-top:40px;padding-top:16px;}
+.cstat{flex:1;padding-right:20px;border-right:1.5px solid var(--border-light);}
+.cstat:last-child{border-right:none;padding-right:0;}
+.cstat-num{font-family:'Bebas Neue',cursive;font-size:36px;line-height:1;color:var(--lime);}
+.cstat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-top:3px;}
+
+/* RIGHT — instructions + CTA */
+.action-panel{padding:52px 48px;background:var(--paper2);display:flex;flex-direction:column;justify-content:space-between;}
+.action-heading{font-family:'Bebas Neue',cursive;font-size:26px;letter-spacing:.06em;color:var(--ink);margin-bottom:24px;padding-bottom:14px;border-bottom:1.5px solid var(--border-light);}
+
+/* Steps */
+.steps-list{margin-bottom:32px;}
+.step-row{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border-light);}
+.step-row:first-child{padding-top:0;}
+.step-row:last-child{border-bottom:none;}
+.step-icon{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;width:24px;height:24px;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+[data-theme="dark"] .step-icon{background:var(--lime);color:#0a0a08;}
+.step-icon.check{background:var(--green);color:#fff;}
+[data-theme="dark"] .step-icon.check{background:var(--green);color:#0a0a08;}
+.step-body{}
+.step-title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;}
+[data-theme="dark"] .step-title{color:var(--lime);}
+.step-desc{font-size:13px;color:var(--ink2);line-height:1.55;}
+.step-desc strong{color:var(--ink);font-weight:600;}
+
+/* Receipt snippet */
+.receipt-mini{background:var(--paper3);border:1px solid var(--border-light);padding:0;margin-bottom:32px;}
+[data-theme="dark"] .receipt-mini{background:#121210;border-color:#404036;}
+.receipt-mini-head{background:var(--lime);padding:8px 14px;display:flex;align-items:center;justify-content:space-between;}
+.receipt-mini-badge{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:#0a0a08;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:5px;}
+.receipt-mini-badge .dot{width:5px;height:5px;background:#0a0a08;border-radius:50%;}
+.receipt-mini-body{padding:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);line-height:2;}
+.receipt-mini-body .hi{color:var(--lime);}
+[data-theme="dark"] .receipt-mini-body .hi{color:var(--lime);}
+[data-theme="light"] .receipt-mini-body .hi{color:var(--ink);}
+
+/* CTA button */
+.btn-comprar{width:100%;padding:16px;background:var(--btn-buy-bg);border:none;color:var(--btn-buy-color);font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:.12em;cursor:pointer;transition:all .12s;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;}
+.btn-comprar::after{content:'→';font-family:'Barlow',sans-serif;font-size:20px;transition:transform .2s;}
+.btn-comprar:hover{background:var(--btn-buy-hover-bg);box-shadow:4px 4px 0 var(--btn-buy-hover-shadow);transform:translate(-2px,-2px);}
+.btn-comprar:hover::after{transform:translateX(4px);}
+
+.seguro{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--ink3);font-size:11px;font-family:'IBM Plex Mono',monospace;margin-top:14px;letter-spacing:.04em;}
+
+/* Footer */
+.page-footer{text-align:center;padding:28px 0 40px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);border-top:2px solid var(--footer-border);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes popIn{from{transform:scale(.6);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+@media(max-width:900px){.main-grid{grid-template-columns:1fr;}.confirm-panel{border-right:none;border-bottom:2px solid var(--section-border);padding:44px 32px 52px;}.action-panel{padding:44px 32px;}}
+@media(max-width:640px){.page{padding:0 20px;}.confirm-stamp{font-size:5rem;}.action-panel,.confirm-panel{padding:32px 22px;}.main-grid{margin-bottom:48px;}}
+
+/* ══ NAV ══ */
+.site-nav{background:var(--nav-bg, var(--paper));border-bottom:1.5px solid var(--nav-border, var(--border));position:sticky;top:0;z-index:100;transition:background .2s,border-color .2s}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:50px}
+.nav-brand{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.16em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-link{display:flex;align-items:center;gap:7px;padding:0 18px;height:50px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--nav-link, var(--ink3));text-decoration:none;border-right:1.5px solid var(--nav-border, var(--border));transition:color .15s,background .15s;white-space:nowrap}
+.nav-link:first-child{border-left:1.5px solid var(--nav-border, var(--border))}
+.nav-link:hover{color:var(--lime);background:rgba(200,255,0,.04)}
+.nav-link svg{width:13px;height:13px;flex-shrink:0;opacity:.7;transition:opacity .15s}
+.nav-link:hover svg{opacity:1}
+.nav-dl{background:var(--lime);color:#0a0a08 !important;border-color:var(--lime) !important;font-weight:700;padding:0 22px;position:relative;overflow:hidden}
+[data-theme="light"] .nav-dl{background:var(--ink);color:var(--lime) !important;border-color:var(--ink) !important}
+.nav-dl::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-101%);transition:transform .25s ease}
+.nav-dl:hover{background:#d8ff30 !important;color:#0a0a08 !important;border-color:#d8ff30 !important}
+[data-theme="light"] .nav-dl:hover{background:#1a1a18 !important;color:var(--lime) !important;border-color:#1a1a18 !important}
+.nav-dl:hover::before{transform:translateX(0)}
+.nav-dl svg{opacity:1 !important}
+.nav-dl-pulse{width:5px;height:5px;background:#0a0a08;border-radius:50%;animation:blink 1.8s ease infinite;flex-shrink:0}
+[data-theme="light"] .nav-dl-pulse{background:var(--lime)}
+@media(max-width:768px){.nav-inner{padding:0 20px}.nav-link{padding:0 12px;font-size:9px;gap:5px}.nav-dl{padding:0 16px}}
+@media(max-width:640px){.nav-label{display:none}.nav-dl .nav-label{display:inline}}
+</style>
+</head>
+<body>
+<!-- ══ NAVIGATION ══ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <span class="nav-brand">MeiQueResolve</span>
+    <div class="nav-links">
+      <a href="https://meiqueresolve.com/" class="nav-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 6.8L8 2l6 4.8V14H10.5v-3.5h-5V14H2V6.8z"/>
+        </svg>
+        <span class="nav-label">Início</span>
+      </a>
+      <a href="https://meiqueresolve.com/termos" class="nav-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="1.5" width="10" height="13" rx="1.5"/>
+          <line x1="5.5" y1="5.5" x2="10.5" y2="5.5"/>
+          <line x1="5.5" y1="8" x2="10.5" y2="8"/>
+          <line x1="5.5" y1="10.5" x2="8.5" y2="10.5"/>
+        </svg>
+        <span class="nav-label">Termos</span>
+      </a>
+      <a href="https://linktr.ee/downloaddotidocontador" class="nav-link nav-dl" target="_blank" rel="noopener">
+        <div class="nav-dl-pulse"></div>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 2v9"/>
+          <path d="M5 8l3 3 3-3"/>
+          <path d="M3 13h10"/>
+        </svg>
+        <span class="nav-label">Baixar Extensão</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+
+<button class="theme-toggle" id="themeToggle" title="Alternar tema">☀️</button>
+
+<div class="page">
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark">PG</div>
+      <div>
+        <div class="logo-text">MeiQueResolve</div>
+        <div class="logo-sub">Extensão para Chrome</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="status-stamp"><div class="status-dot"></div>Pagamento confirmado</div>
+      <div class="ver-badge">v2026</div>
+    </div>
+  </div>
+
+  <div class="ticker">PAGAMENTO CONFIRMADO · ASSINATURA ATIVA · ACESSO LIBERADO · PAGAMENTO CONFIRMADO · ASSINATURA ATIVA · ACESSO LIBERADO · PAGAMENTO CONFIRMADO · ASSINATURA ATIVA ·</div>
+
+  <div class="section-rule">
+    <div class="section-rule-label">Bem-vindo ao MeiQueResolve</div>
+    <div class="section-rule-num">Assinatura ativa</div>
+  </div>
+
+  <div class="main-grid">
+
+    <!-- LEFT — big confirmation -->
+    <div class="confirm-panel">
+      <div>
+        <div class="confirm-tag">✓ Transação aprovada</div>
+        <div class="confirm-stamp">
+          PAGA<span class="outline">MENTO</span><br>
+          <span class="lime">CONFIRMADO</span>
+        </div>
+        <p class="confirm-sub">
+          Sua assinatura foi ativada com sucesso.<br>
+          <strong>Bem-vindo ao MeiQueResolve 2026!</strong> Agora você pode emitir todos os DAS dos seus clientes MEI em segundos.
+        </p>
+        <div class="confirm-stats">
+          <div class="cstat">
+            <div class="cstat-num">180+</div>
+            <div class="cstat-label">CNPJs/hora</div>
+          </div>
+          <div class="cstat">
+            <div class="cstat-num">20s</div>
+            <div class="cstat-label">Por emissão</div>
+          </div>
+          <div class="cstat">
+            <div class="cstat-num">100%</div>
+            <div class="cstat-label">Automático</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — next steps + CTA -->
+    <div class="action-panel">
+      <div>
+        <div class="action-heading">Próximos passos</div>
+
+        <div class="steps-list">
+          <div class="step-row">
+            <div class="step-icon check">✓</div>
+            <div class="step-body">
+              <div class="step-title">Assinatura ativada</div>
+              <div class="step-desc">Seu plano está ativo e o acesso foi liberado automaticamente.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-icon check">✓</div>
+            <div class="step-body">
+              <div class="step-title">E-mail de confirmação</div>
+              <div class="step-desc">Você receberá em breve um e-mail com todos os detalhes da assinatura.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-icon">03</div>
+            <div class="step-body">
+              <div class="step-title">Instalar a extensão</div>
+              <div class="step-desc">Baixe e instale a extensão do Chrome. Use o <strong>mesmo e-mail e senha</strong> do cadastro para fazer login.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-icon">04</div>
+            <div class="step-body">
+              <div class="step-title">Começar a emitir</div>
+              <div class="step-desc">Cadastre seus clientes MEI e automatize a emissão de todas as guias DAS.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini terminal snippet -->
+        <div class="receipt-mini">
+          <div class="receipt-mini-head">
+            <div class="receipt-mini-badge"><div class="dot"></div>MeiQueResolve.js · pronto para uso</div>
+          </div>
+          <div class="receipt-mini-body">
+            <div><span class="hi">✓</span> Conta criada com sucesso</div>
+            <div><span class="hi">✓</span> Plano ativo — acesso liberado</div>
+            <div><span class="hi">▶</span> Aguardando instalação da extensão...</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <a href="https://linktr.ee/downloaddotidocontador" class="btn-comprar" target="_blank" rel="noopener noreferrer">
+          Receber link da extensão
+        </a>
+        <div class="seguro">🔒 Acesso seguro via Chrome Extension</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">MeiQueResolve · PGMEI Automação 2026 · Todos os direitos reservados</div>
+</div>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const h=document.documentElement;
+  const d=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeToggle').textContent=d?'🌙':'☀️';
+});
+</script>
+</body>
+</html>
