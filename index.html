@@ -252,7 +252,7 @@ hr.divider{border:none;border-top:1.5px solid var(--border-light);margin:24px 0}
         </svg>
         <span class="nav-label">Início</span>
       </a>
-      <a href="https://meiqueresolve.com/termos.html" class="nav-link">
+      <a href="https://meiqueresolve.com/termos" class="nav-link">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="1.5" width="10" height="13" rx="1.5"/>
           <line x1="5.5" y1="5.5" x2="10.5" y2="5.5"/>
@@ -554,4 +554,5 @@ setTimeout(runTerm,600);
 document.querySelectorAll('.plan-card').forEach(card=>{if(card.dataset.slug==='personalizado')return;const pc=calcularPorCNPJ(card,'monthly');if(pc){const d=document.createElement('div');d.className='plan-per-cnpj';d.textContent=pc;card.appendChild(d)}});
 </script>
 </body>
+
 </html>
