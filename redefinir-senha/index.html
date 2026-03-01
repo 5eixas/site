@@ -281,7 +281,7 @@ const EDGE_RESET='https://kzhoezukwpllgcxzkkbr.supabase.co/functions/v1/reset-pa
 
 // THEME
 const html=document.documentElement;
-document.getElementById('themeToggle').addEventListener('click',()=>{
+document.getElementById('themeToggle')?.addEventListener('click',()=>{
   const d=html.getAttribute('data-theme')==='dark';
   html.setAttribute('data-theme',d?'light':'dark');
   document.getElementById('themeToggle').textContent=d?'🌙':'☀️';
